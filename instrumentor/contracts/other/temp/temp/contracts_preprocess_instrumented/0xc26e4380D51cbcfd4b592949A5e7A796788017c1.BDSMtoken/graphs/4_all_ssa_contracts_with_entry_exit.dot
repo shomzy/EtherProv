@@ -1,0 +1,613 @@
+strict digraph {
+subgraph cluster_BDSMtoken  {
+label = "[BDSMtoken]" 
+subgraph cluster_BDSMtoken_BDSMtoken {
+label = "[BDSMtoken_BDSMtoken]" 
+subgraph cluster_BDSMtoken_BDSMtoken_1_0 {
+label = "[EXPRESSION owner = msg.sender]" 
+"BDSMtoken_BDSMtoken_1_0" [label="Node Type: Assignment BDSMtoken_BDSMtoken_1_0
+SSA:
+owner_1(address) := msg.sender(address)
+
+state_vars_written: owner" color="red"];
+
+}
+subgraph cluster_BDSMtoken_BDSMtoken_0_0 {
+label = "[ENTRY_POINT]" 
+"BDSMtoken_BDSMtoken_0_0" [label="Node Type: Phi BDSMtoken_BDSMtoken_0_0
+SSA:
+totalSupply_1(uint256) := ϕ(['totalSupply_0'])
+" color="black"];
+
+}
+subgraph cluster_BDSMtoken_BDSMtoken_2_0 {
+label = "[EXPRESSION balances[owner] = totalSupply]" 
+"BDSMtoken_BDSMtoken_2_0" [label="Node Type: Index BDSMtoken_BDSMtoken_2_0
+SSA:
+REF_296(uint256) -> balances_0[owner_1]
+
+state_vars_read: owner
+state_vars_written: balances" color="red"];
+
+"BDSMtoken_BDSMtoken_2_2" [label="Node Type: Assignment BDSMtoken_BDSMtoken_2_2
+SSA:
+REF_296 (->balances_1) := totalSupply_1(uint256)
+
+state_vars_read: totalSupply
+state_vars_written: balances" color="red"];
+
+"BDSMtoken_BDSMtoken_2_1" [label="Node Type: Phi BDSMtoken_BDSMtoken_2_1
+SSA:
+balances_1(mapping(address => uint256)) := ϕ(['balances_0'])
+
+state_vars_written: balances" color="red"];
+
+}
+}
+subgraph cluster_BDSMtoken_add_uint256_uint256 {
+label = "[BDSMtoken_add_uint256_uint256]" 
+subgraph cluster_BDSMtoken_add_uint256_uint256_2_0 {
+label = "[EXPRESSION assert(bool)(c >= a)]" 
+"BDSMtoken_add_uint256_uint256_2_0" [label="Node Type: Binary BDSMtoken_add_uint256_uint256_2_0
+SSA:
+TMP_619(bool) = c_1 >= a_1
+" color="black"];
+
+"BDSMtoken_add_uint256_uint256_2_1" [label="Node Type: SolidityCall BDSMtoken_add_uint256_uint256_2_1
+SSA:
+TMP_620(None) = SOLIDITY_CALL assert(bool)(TMP_619)
+" color="black"];
+
+}
+subgraph cluster_BDSMtoken_add_uint256_uint256_3_0 {
+label = "[RETURN c]" 
+"BDSMtoken_add_uint256_uint256_3_0" [label="Node Type: Return BDSMtoken_add_uint256_uint256_3_0
+SSA:
+RETURN c_1
+" color="black"];
+
+}
+subgraph cluster_BDSMtoken_add_uint256_uint256_0_0 {
+label = "[ENTRY_POINT]" 
+"BDSMtoken_add_uint256_uint256_0_0" [label="Node Type: Phi BDSMtoken_add_uint256_uint256_0_0
+SSA:
+a_1(uint256) := ϕ(['REF_305', 'REF_301'])
+" color="black"];
+
+"BDSMtoken_add_uint256_uint256_0_1" [label="Node Type: Phi BDSMtoken_add_uint256_uint256_0_1
+SSA:
+b_1(uint256) := ϕ(['_value_1', '_value_1'])
+" color="black"];
+
+}
+subgraph cluster_BDSMtoken_add_uint256_uint256_1_0 {
+label = "[NEW VARIABLE c = a + b]" 
+"BDSMtoken_add_uint256_uint256_1_0" [label="Node Type: Binary BDSMtoken_add_uint256_uint256_1_0
+SSA:
+TMP_618(uint256) = a_1 + b_1
+" color="black"];
+
+"BDSMtoken_add_uint256_uint256_1_1" [label="Node Type: Assignment BDSMtoken_add_uint256_uint256_1_1
+SSA:
+c_1(uint256) := TMP_618(uint256)
+" color="black"];
+
+}
+}
+subgraph cluster_BDSMtoken_transferFrom_address_address_uint256 {
+label = "[BDSMtoken_transferFrom_address_address_uint256]" 
+subgraph cluster_BDSMtoken_transferFrom_address_address_uint256_2_0 {
+label = "[EXPRESSION require(bool)(_value < allowed[_from][msg.sender])]" 
+"BDSMtoken_transferFrom_address_address_uint256_2_1" [label="Node Type: Index BDSMtoken_transferFrom_address_address_uint256_2_1
+SSA:
+REF_303(uint256) -> REF_302[msg.sender]
+
+state_vars_written: allowed" color="red"];
+
+"BDSMtoken_transferFrom_address_address_uint256_2_2" [label="Node Type: Binary BDSMtoken_transferFrom_address_address_uint256_2_2
+SSA:
+TMP_628(bool) = _value_1 < REF_303
+
+state_vars_read: allowed" color="red"];
+
+"BDSMtoken_transferFrom_address_address_uint256_2_3" [label="Node Type: SolidityCall BDSMtoken_transferFrom_address_address_uint256_2_3
+SSA:
+TMP_629(None) = SOLIDITY_CALL require(bool)(TMP_628)
+" color="black"];
+
+"BDSMtoken_transferFrom_address_address_uint256_2_0" [label="Node Type: Index BDSMtoken_transferFrom_address_address_uint256_2_0
+SSA:
+REF_302(mapping(address => uint256)) -> allowed_1[_from_1]
+
+state_vars_written: allowed" color="red"];
+
+}
+subgraph cluster_BDSMtoken_transferFrom_address_address_uint256_5_0 {
+label = "[EXPRESSION sub(allowed[_from][msg.sender],_value)]" 
+"BDSMtoken_transferFrom_address_address_uint256_5_2" [label="Node Type: InternalCall BDSMtoken_transferFrom_address_address_uint256_5_2
+SSA:
+TMP_632(uint256) = INTERNAL_CALL, BDSMtoken.sub(uint256,uint256)(REF_309,_value_1)
+
+state_vars_read: allowed" color="red"];
+
+"BDSMtoken_transferFrom_address_address_uint256_5_0" [label="Node Type: Index BDSMtoken_transferFrom_address_address_uint256_5_0
+SSA:
+REF_308(mapping(address => uint256)) -> allowed_3[_from_1]
+
+state_vars_written: allowed" color="red"];
+
+"BDSMtoken_transferFrom_address_address_uint256_5_1" [label="Node Type: Index BDSMtoken_transferFrom_address_address_uint256_5_1
+SSA:
+REF_309(uint256) -> REF_308[msg.sender]
+
+state_vars_written: allowed" color="red"];
+
+}
+subgraph cluster_BDSMtoken_transferFrom_address_address_uint256_6_0 {
+label = "[EXPRESSION Transfer(_from,_to,_value)]" 
+"BDSMtoken_transferFrom_address_address_uint256_6_0" [label="Node Type: EventCall BDSMtoken_transferFrom_address_address_uint256_6_0
+SSA:
+Emit Transfer()
+" color="black"];
+
+}
+subgraph cluster_BDSMtoken_transferFrom_address_address_uint256_7_0 {
+label = "[RETURN true]" 
+"BDSMtoken_transferFrom_address_address_uint256_7_0" [label="Node Type: Return BDSMtoken_transferFrom_address_address_uint256_7_0
+SSA:
+RETURN True
+" color="black"];
+
+}
+subgraph cluster_BDSMtoken_transferFrom_address_address_uint256_3_0 {
+label = "[EXPRESSION balances[_to] = add(balances[_to],_value)]" 
+"BDSMtoken_transferFrom_address_address_uint256_3_0" [label="Node Type: Index BDSMtoken_transferFrom_address_address_uint256_3_0
+SSA:
+REF_304(uint256) -> balances_8[_to_1]
+
+state_vars_written: balances" color="red"];
+
+"BDSMtoken_transferFrom_address_address_uint256_3_1" [label="Node Type: Index BDSMtoken_transferFrom_address_address_uint256_3_1
+SSA:
+REF_305(uint256) -> balances_8[_to_1]
+
+state_vars_written: balances" color="red"];
+
+"BDSMtoken_transferFrom_address_address_uint256_3_2" [label="Node Type: InternalCall BDSMtoken_transferFrom_address_address_uint256_3_2
+SSA:
+TMP_630(uint256) = INTERNAL_CALL, BDSMtoken.add(uint256,uint256)(REF_305,_value_1)
+
+state_vars_read: balances" color="red"];
+
+"BDSMtoken_transferFrom_address_address_uint256_3_4" [label="Node Type: Assignment BDSMtoken_transferFrom_address_address_uint256_3_4
+SSA:
+REF_304 (->balances_10) := TMP_630(uint256)
+
+state_vars_written: balances" color="red"];
+
+"BDSMtoken_transferFrom_address_address_uint256_3_3" [label="Node Type: Phi BDSMtoken_transferFrom_address_address_uint256_3_3
+SSA:
+balances_10(mapping(address => uint256)) := ϕ(['balances_8'])
+
+state_vars_written: balances" color="red"];
+
+}
+subgraph cluster_BDSMtoken_transferFrom_address_address_uint256_4_0 {
+label = "[EXPRESSION balances[_from] = sub(balances[_from],_value)]" 
+"BDSMtoken_transferFrom_address_address_uint256_4_0" [label="Node Type: Index BDSMtoken_transferFrom_address_address_uint256_4_0
+SSA:
+REF_306(uint256) -> balances_10[_from_1]
+
+state_vars_written: balances" color="red"];
+
+"BDSMtoken_transferFrom_address_address_uint256_4_1" [label="Node Type: Index BDSMtoken_transferFrom_address_address_uint256_4_1
+SSA:
+REF_307(uint256) -> balances_10[_from_1]
+
+state_vars_written: balances" color="red"];
+
+"BDSMtoken_transferFrom_address_address_uint256_4_2" [label="Node Type: InternalCall BDSMtoken_transferFrom_address_address_uint256_4_2
+SSA:
+TMP_631(uint256) = INTERNAL_CALL, BDSMtoken.sub(uint256,uint256)(REF_307,_value_1)
+
+state_vars_read: balances" color="red"];
+
+"BDSMtoken_transferFrom_address_address_uint256_4_4" [label="Node Type: Assignment BDSMtoken_transferFrom_address_address_uint256_4_4
+SSA:
+REF_306 (->balances_12) := TMP_631(uint256)
+
+state_vars_written: balances" color="red"];
+
+"BDSMtoken_transferFrom_address_address_uint256_4_3" [label="Node Type: Phi BDSMtoken_transferFrom_address_address_uint256_4_3
+SSA:
+balances_12(mapping(address => uint256)) := ϕ(['balances_10'])
+
+state_vars_written: balances" color="red"];
+
+}
+subgraph cluster_BDSMtoken_transferFrom_address_address_uint256_0_0 {
+label = "[ENTRY_POINT]" 
+"BDSMtoken_transferFrom_address_address_uint256_0_0" [label="Node Type: Phi BDSMtoken_transferFrom_address_address_uint256_0_0
+SSA:
+balances_8(mapping(address => uint256)) := ϕ(['balances_7', 'balances_12', 'balances_2', 'balances_0', 'balances_1'])
+" color="black"];
+
+"BDSMtoken_transferFrom_address_address_uint256_0_1" [label="Node Type: Phi BDSMtoken_transferFrom_address_address_uint256_0_1
+SSA:
+allowed_1(mapping(address => mapping(address => uint256))) := ϕ(['allowed_4', 'allowed_5', 'allowed_6', 'allowed_0'])
+" color="black"];
+
+}
+subgraph cluster_BDSMtoken_transferFrom_address_address_uint256_1_0 {
+label = "[EXPRESSION require(bool)(_to != 0x0)]" 
+"BDSMtoken_transferFrom_address_address_uint256_1_0" [label="Node Type: Binary BDSMtoken_transferFrom_address_address_uint256_1_0
+SSA:
+TMP_626(bool) = _to_1 != 0
+" color="black"];
+
+"BDSMtoken_transferFrom_address_address_uint256_1_1" [label="Node Type: SolidityCall BDSMtoken_transferFrom_address_address_uint256_1_1
+SSA:
+TMP_627(None) = SOLIDITY_CALL require(bool)(TMP_626)
+" color="black"];
+
+}
+}
+subgraph cluster_BDSMtoken_transfer_address_uint256 {
+label = "[BDSMtoken_transfer_address_uint256]" 
+subgraph cluster_BDSMtoken_transfer_address_uint256_2_0 {
+label = "[EXPRESSION balances[msg.sender] = sub(balances[msg.sender],_value)]" 
+"BDSMtoken_transfer_address_uint256_2_3" [label="Node Type: Phi BDSMtoken_transfer_address_uint256_2_3
+SSA:
+balances_5(mapping(address => uint256)) := ϕ(['balances_3'])
+
+state_vars_written: balances" color="red"];
+
+"BDSMtoken_transfer_address_uint256_2_4" [label="Node Type: Assignment BDSMtoken_transfer_address_uint256_2_4
+SSA:
+REF_298 (->balances_5) := TMP_623(uint256)
+
+state_vars_written: balances" color="red"];
+
+"BDSMtoken_transfer_address_uint256_2_0" [label="Node Type: Index BDSMtoken_transfer_address_uint256_2_0
+SSA:
+REF_298(uint256) -> balances_3[msg.sender]
+
+state_vars_written: balances" color="red"];
+
+"BDSMtoken_transfer_address_uint256_2_1" [label="Node Type: Index BDSMtoken_transfer_address_uint256_2_1
+SSA:
+REF_299(uint256) -> balances_3[msg.sender]
+
+state_vars_written: balances" color="red"];
+
+"BDSMtoken_transfer_address_uint256_2_2" [label="Node Type: InternalCall BDSMtoken_transfer_address_uint256_2_2
+SSA:
+TMP_623(uint256) = INTERNAL_CALL, BDSMtoken.sub(uint256,uint256)(REF_299,_value_1)
+
+state_vars_read: balances" color="red"];
+
+}
+subgraph cluster_BDSMtoken_transfer_address_uint256_3_0 {
+label = "[EXPRESSION balances[_to] = add(balances[_to],_value)]" 
+"BDSMtoken_transfer_address_uint256_3_0" [label="Node Type: Index BDSMtoken_transfer_address_uint256_3_0
+SSA:
+REF_300(uint256) -> balances_5[_to_1]
+
+state_vars_written: balances" color="red"];
+
+"BDSMtoken_transfer_address_uint256_3_1" [label="Node Type: Index BDSMtoken_transfer_address_uint256_3_1
+SSA:
+REF_301(uint256) -> balances_5[_to_1]
+
+state_vars_written: balances" color="red"];
+
+"BDSMtoken_transfer_address_uint256_3_2" [label="Node Type: InternalCall BDSMtoken_transfer_address_uint256_3_2
+SSA:
+TMP_624(uint256) = INTERNAL_CALL, BDSMtoken.add(uint256,uint256)(REF_301,_value_1)
+
+state_vars_read: balances" color="red"];
+
+"BDSMtoken_transfer_address_uint256_3_4" [label="Node Type: Assignment BDSMtoken_transfer_address_uint256_3_4
+SSA:
+REF_300 (->balances_7) := TMP_624(uint256)
+
+state_vars_written: balances" color="red"];
+
+"BDSMtoken_transfer_address_uint256_3_3" [label="Node Type: Phi BDSMtoken_transfer_address_uint256_3_3
+SSA:
+balances_7(mapping(address => uint256)) := ϕ(['balances_5'])
+
+state_vars_written: balances" color="red"];
+
+}
+subgraph cluster_BDSMtoken_transfer_address_uint256_4_0 {
+label = "[EXPRESSION Transfer(msg.sender,_to,_value)]" 
+"BDSMtoken_transfer_address_uint256_4_0" [label="Node Type: EventCall BDSMtoken_transfer_address_uint256_4_0
+SSA:
+Emit Transfer()
+" color="black"];
+
+}
+subgraph cluster_BDSMtoken_transfer_address_uint256_5_0 {
+label = "[RETURN true]" 
+"BDSMtoken_transfer_address_uint256_5_0" [label="Node Type: Return BDSMtoken_transfer_address_uint256_5_0
+SSA:
+RETURN True
+" color="black"];
+
+}
+subgraph cluster_BDSMtoken_transfer_address_uint256_0_0 {
+label = "[ENTRY_POINT]" 
+"BDSMtoken_transfer_address_uint256_0_0" [label="Node Type: Phi BDSMtoken_transfer_address_uint256_0_0
+SSA:
+balances_3(mapping(address => uint256)) := ϕ(['balances_7', 'balances_12', 'balances_2', 'balances_0', 'balances_1'])
+" color="black"];
+
+}
+subgraph cluster_BDSMtoken_transfer_address_uint256_1_0 {
+label = "[EXPRESSION require(bool)(_to != 0x0)]" 
+"BDSMtoken_transfer_address_uint256_1_0" [label="Node Type: Binary BDSMtoken_transfer_address_uint256_1_0
+SSA:
+TMP_621(bool) = _to_1 != 0
+" color="black"];
+
+"BDSMtoken_transfer_address_uint256_1_1" [label="Node Type: SolidityCall BDSMtoken_transfer_address_uint256_1_1
+SSA:
+TMP_622(None) = SOLIDITY_CALL require(bool)(TMP_621)
+" color="black"];
+
+}
+}
+subgraph cluster_BDSMtoken_balanceOf_address {
+label = "[BDSMtoken_balanceOf_address]" 
+subgraph cluster_BDSMtoken_balanceOf_address_0_0 {
+label = "[ENTRY_POINT]" 
+"BDSMtoken_balanceOf_address_0_0" [label="Node Type: Phi BDSMtoken_balanceOf_address_0_0
+SSA:
+balances_2(mapping(address => uint256)) := ϕ(['balances_7', 'balances_12', 'balances_2', 'balances_0', 'balances_1'])
+" color="black"];
+
+}
+subgraph cluster_BDSMtoken_balanceOf_address_1_0 {
+label = "[RETURN balances[_owner]]" 
+"BDSMtoken_balanceOf_address_1_0" [label="Node Type: Index BDSMtoken_balanceOf_address_1_0
+SSA:
+REF_297(uint256) -> balances_2[_owner_1]
+
+state_vars_written: balances" color="red"];
+
+"BDSMtoken_balanceOf_address_1_1" [label="Node Type: Return BDSMtoken_balanceOf_address_1_1
+SSA:
+RETURN REF_297
+
+state_vars_read: balances" color="red"];
+
+}
+}
+subgraph cluster_BDSMtoken_sub_uint256_uint256 {
+label = "[BDSMtoken_sub_uint256_uint256]" 
+subgraph cluster_BDSMtoken_sub_uint256_uint256_0_0 {
+label = "[ENTRY_POINT]" 
+"BDSMtoken_sub_uint256_uint256_0_0" [label="Node Type: Phi BDSMtoken_sub_uint256_uint256_0_0
+SSA:
+a_1(uint256) := ϕ(['REF_299', 'REF_309', 'REF_307'])
+" color="black"];
+
+"BDSMtoken_sub_uint256_uint256_0_1" [label="Node Type: Phi BDSMtoken_sub_uint256_uint256_0_1
+SSA:
+b_1(uint256) := ϕ(['_value_1', '_value_1'])
+" color="black"];
+
+}
+subgraph cluster_BDSMtoken_sub_uint256_uint256_1_0 {
+label = "[EXPRESSION assert(bool)(b <= a)]" 
+"BDSMtoken_sub_uint256_uint256_1_0" [label="Node Type: Binary BDSMtoken_sub_uint256_uint256_1_0
+SSA:
+TMP_615(bool) = b_1 <= a_1
+" color="black"];
+
+"BDSMtoken_sub_uint256_uint256_1_1" [label="Node Type: SolidityCall BDSMtoken_sub_uint256_uint256_1_1
+SSA:
+TMP_616(None) = SOLIDITY_CALL assert(bool)(TMP_615)
+" color="black"];
+
+}
+subgraph cluster_BDSMtoken_sub_uint256_uint256_2_0 {
+label = "[RETURN a - b]" 
+"BDSMtoken_sub_uint256_uint256_2_0" [label="Node Type: Binary BDSMtoken_sub_uint256_uint256_2_0
+SSA:
+TMP_617(uint256) = a_1 - b_1
+" color="black"];
+
+"BDSMtoken_sub_uint256_uint256_2_1" [label="Node Type: Return BDSMtoken_sub_uint256_uint256_2_1
+SSA:
+RETURN TMP_617
+" color="black"];
+
+}
+}
+subgraph cluster_BDSMtoken_approve_address_uint256 {
+label = "[BDSMtoken_approve_address_uint256]" 
+subgraph cluster_BDSMtoken_approve_address_uint256_1_0 {
+label = "[EXPRESSION allowed[msg.sender][_spender] = _value]" 
+"BDSMtoken_approve_address_uint256_1_0" [label="Node Type: Index BDSMtoken_approve_address_uint256_1_0
+SSA:
+REF_310(mapping(address => uint256)) -> allowed_4[msg.sender]
+
+state_vars_written: allowed" color="red"];
+
+"BDSMtoken_approve_address_uint256_1_1" [label="Node Type: Index BDSMtoken_approve_address_uint256_1_1
+SSA:
+REF_311(uint256) -> REF_310[_spender_1]
+
+state_vars_written: allowed" color="red"];
+
+"BDSMtoken_approve_address_uint256_1_3" [label="Node Type: Assignment BDSMtoken_approve_address_uint256_1_3
+SSA:
+REF_311 (->allowed_5) := _value_1(uint256)
+
+state_vars_written: allowed" color="red"];
+
+"BDSMtoken_approve_address_uint256_1_2" [label="Node Type: Phi BDSMtoken_approve_address_uint256_1_2
+SSA:
+allowed_5(mapping(address => mapping(address => uint256))) := ϕ(['allowed_4'])
+
+state_vars_written: allowed" color="red"];
+
+}
+subgraph cluster_BDSMtoken_approve_address_uint256_2_0 {
+label = "[EXPRESSION Approval(msg.sender,_spender,_value)]" 
+"BDSMtoken_approve_address_uint256_2_0" [label="Node Type: EventCall BDSMtoken_approve_address_uint256_2_0
+SSA:
+Emit Approval()
+" color="black"];
+
+}
+subgraph cluster_BDSMtoken_approve_address_uint256_3_0 {
+label = "[RETURN true]" 
+"BDSMtoken_approve_address_uint256_3_0" [label="Node Type: Return BDSMtoken_approve_address_uint256_3_0
+SSA:
+RETURN True
+" color="black"];
+
+}
+"BDSMtoken_approve_address_uint256_0_0" [label="BDSMtoken_approve_address_uint256_0_0
+ENTRY_POINT"];
+
+}
+subgraph cluster_BDSMtoken_allowance_address_address {
+label = "[BDSMtoken_allowance_address_address]" 
+subgraph cluster_BDSMtoken_allowance_address_address_0_0 {
+label = "[ENTRY_POINT]" 
+"BDSMtoken_allowance_address_address_0_0" [label="Node Type: Phi BDSMtoken_allowance_address_address_0_0
+SSA:
+allowed_6(mapping(address => mapping(address => uint256))) := ϕ(['allowed_4', 'allowed_5', 'allowed_6', 'allowed_0'])
+" color="black"];
+
+}
+subgraph cluster_BDSMtoken_allowance_address_address_1_0 {
+label = "[RETURN allowed[_owner][_spender]]" 
+"BDSMtoken_allowance_address_address_1_0" [label="Node Type: Index BDSMtoken_allowance_address_address_1_0
+SSA:
+REF_312(mapping(address => uint256)) -> allowed_6[_owner_1]
+
+state_vars_written: allowed" color="red"];
+
+"BDSMtoken_allowance_address_address_1_1" [label="Node Type: Index BDSMtoken_allowance_address_address_1_1
+SSA:
+REF_313(uint256) -> REF_312[_spender_1]
+
+state_vars_written: allowed" color="red"];
+
+"BDSMtoken_allowance_address_address_1_2" [label="Node Type: Return BDSMtoken_allowance_address_address_1_2
+SSA:
+RETURN REF_313
+
+state_vars_read: allowed" color="red"];
+
+}
+}
+subgraph cluster_BDSMtoken_constructor {
+label = "[BDSMtoken_constructor]" 
+"BDSMtoken_constructor_2_0" [label="BDSMtoken_constructor_2_0
+OTHER_ENTRYPOINT totalSupply = 1000000000000"];
+
+"BDSMtoken_constructor_0_0" [label="BDSMtoken_constructor_0_0
+OTHER_ENTRYPOINT symbol = BDSM"];
+
+"BDSMtoken_constructor_1_0" [label="BDSMtoken_constructor_1_0
+OTHER_ENTRYPOINT name = BDSMtoken"];
+
+}
+subgraph cluster_BDSMtoken_slitherConstructorConstantVariables {
+label = "[BDSMtoken_slitherConstructorConstantVariables]" 
+"BDSMtoken_slitherConstructorConstantVariables_0_0" [label="BDSMtoken_slitherConstructorConstantVariables_0_0
+OTHER_ENTRYPOINT decimals = 12"];
+
+}
+}
+"BDSMtoken_transfer_address_uint256_3_4" -> "BDSMtoken_transfer_address_uint256_4_0" [color="black"]
+"BDSMtoken_transfer_address_uint256_4_0" -> "BDSMtoken_transfer_address_uint256_5_0" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_1_0" -> "BDSMtoken_transferFrom_address_address_uint256_1_1" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_0_1" -> "BDSMtoken_transferFrom_address_address_uint256_1_0" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_2_0" -> "BDSMtoken_transferFrom_address_address_uint256_2_1" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_1_1" -> "BDSMtoken_transferFrom_address_address_uint256_2_0" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_2_1" -> "BDSMtoken_transferFrom_address_address_uint256_2_2" [color="black"]
+"BDSMtoken_BDSMtoken_0_0" -> "BDSMtoken_BDSMtoken_1_0" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_2_2" -> "BDSMtoken_transferFrom_address_address_uint256_2_3" [color="black"]
+"BDSMtoken_BDSMtoken_1_0" -> "BDSMtoken_BDSMtoken_2_0" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_3_0" -> "BDSMtoken_transferFrom_address_address_uint256_3_1" [color="black"]
+"BDSMtoken_BDSMtoken_2_1" -> "BDSMtoken_BDSMtoken_2_2" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_2_3" -> "BDSMtoken_transferFrom_address_address_uint256_3_0" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_3_1" -> "BDSMtoken_transferFrom_address_address_uint256_3_2" [color="black"]
+"BDSMtoken_sub_uint256_uint256_0_0" -> "BDSMtoken_sub_uint256_uint256_0_1" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_3_2" -> "BDSMtoken_transferFrom_address_address_uint256_3_3" [color="black"]
+"BDSMtoken_sub_uint256_uint256_1_0" -> "BDSMtoken_sub_uint256_uint256_1_1" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_3_3" -> "BDSMtoken_transferFrom_address_address_uint256_3_4" [color="black"]
+"BDSMtoken_sub_uint256_uint256_0_1" -> "BDSMtoken_sub_uint256_uint256_1_0" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_4_0" -> "BDSMtoken_transferFrom_address_address_uint256_4_1" [color="black"]
+"BDSMtoken_sub_uint256_uint256_2_0" -> "BDSMtoken_sub_uint256_uint256_2_1" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_3_4" -> "BDSMtoken_transferFrom_address_address_uint256_4_0" [color="black"]
+"BDSMtoken_sub_uint256_uint256_1_1" -> "BDSMtoken_sub_uint256_uint256_2_0" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_4_1" -> "BDSMtoken_transferFrom_address_address_uint256_4_2" [color="black"]
+"BDSMtoken_balanceOf_address_1_0" -> "BDSMtoken_balanceOf_address_1_1" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_4_2" -> "BDSMtoken_transferFrom_address_address_uint256_4_3" [color="black"]
+"BDSMtoken_add_uint256_uint256_0_0" -> "BDSMtoken_add_uint256_uint256_0_1" [color="black"]
+"ENTRY" -> "BDSMtoken_BDSMtoken_0_0" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_4_3" -> "BDSMtoken_transferFrom_address_address_uint256_4_4" [color="black"]
+"BDSMtoken_sub_uint256_uint256_2_1" -> "EXIT" [color="black"]
+"BDSMtoken_add_uint256_uint256_1_0" -> "BDSMtoken_add_uint256_uint256_1_1" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_5_0" -> "BDSMtoken_transferFrom_address_address_uint256_5_1" [color="black"]
+"ENTRY" -> "BDSMtoken_transfer_address_uint256_0_0" [color="black"]
+"BDSMtoken_add_uint256_uint256_0_1" -> "BDSMtoken_add_uint256_uint256_1_0" [color="black"]
+"ENTRY" -> "BDSMtoken_sub_uint256_uint256_0_0" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_4_4" -> "BDSMtoken_transferFrom_address_address_uint256_5_0" [color="black"]
+"BDSMtoken_add_uint256_uint256_2_0" -> "BDSMtoken_add_uint256_uint256_2_1" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_5_1" -> "BDSMtoken_transferFrom_address_address_uint256_5_2" [color="black"]
+"ENTRY" -> "BDSMtoken_constructor_0_0" [color="black"]
+"BDSMtoken_add_uint256_uint256_1_1" -> "BDSMtoken_add_uint256_uint256_2_0" [color="black"]
+"ENTRY" -> "BDSMtoken_transferFrom_address_address_uint256_0_0" [color="black"]
+"BDSMtoken_allowance_address_address_1_0" -> "BDSMtoken_allowance_address_address_1_1" [color="black"]
+"BDSMtoken_BDSMtoken_2_2" -> "EXIT" [color="black"]
+"BDSMtoken_balanceOf_address_0_0" -> "BDSMtoken_balanceOf_address_1_0" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_5_2" -> "BDSMtoken_transferFrom_address_address_uint256_6_0" [color="black"]
+"ENTRY" -> "BDSMtoken_slitherConstructorConstantVariables_0_0" [color="black"]
+"BDSMtoken_add_uint256_uint256_2_1" -> "BDSMtoken_add_uint256_uint256_3_0" [color="black"]
+"ENTRY" -> "BDSMtoken_approve_address_uint256_0_0" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_6_0" -> "BDSMtoken_transferFrom_address_address_uint256_7_0" [color="black"]
+"BDSMtoken_transfer_address_uint256_1_0" -> "BDSMtoken_transfer_address_uint256_1_1" [color="black"]
+"BDSMtoken_approve_address_uint256_1_0" -> "BDSMtoken_approve_address_uint256_1_1" [color="black"]
+"ENTRY" -> "BDSMtoken_balanceOf_address_0_0" [color="black"]
+"BDSMtoken_transfer_address_uint256_0_0" -> "BDSMtoken_transfer_address_uint256_1_0" [color="black"]
+"ENTRY" -> "BDSMtoken_add_uint256_uint256_0_0" [color="black"]
+"BDSMtoken_approve_address_uint256_0_0" -> "BDSMtoken_approve_address_uint256_1_0" [color="black"]
+"BDSMtoken_transfer_address_uint256_2_0" -> "BDSMtoken_transfer_address_uint256_2_1" [color="black"]
+"BDSMtoken_approve_address_uint256_1_1" -> "BDSMtoken_approve_address_uint256_1_2" [color="black"]
+"ENTRY" -> "BDSMtoken_allowance_address_address_0_0" [color="black"]
+"BDSMtoken_BDSMtoken_2_0" -> "BDSMtoken_BDSMtoken_2_1" [color="black"]
+"BDSMtoken_transfer_address_uint256_1_1" -> "BDSMtoken_transfer_address_uint256_2_0" [color="black"]
+"BDSMtoken_approve_address_uint256_1_2" -> "BDSMtoken_approve_address_uint256_1_3" [color="black"]
+"BDSMtoken_constructor_2_0" -> "EXIT" [color="black"]
+"BDSMtoken_transfer_address_uint256_2_1" -> "BDSMtoken_transfer_address_uint256_2_2" [color="black"]
+"BDSMtoken_allowance_address_address_0_0" -> "BDSMtoken_allowance_address_address_1_0" [color="black"]
+"BDSMtoken_approve_address_uint256_3_0" -> "EXIT" [color="black"]
+"BDSMtoken_transfer_address_uint256_2_2" -> "BDSMtoken_transfer_address_uint256_2_3" [color="black"]
+"BDSMtoken_slitherConstructorConstantVariables_0_0" -> "EXIT" [color="black"]
+"BDSMtoken_approve_address_uint256_1_3" -> "BDSMtoken_approve_address_uint256_2_0" [color="black"]
+"BDSMtoken_allowance_address_address_1_2" -> "EXIT" [color="black"]
+"BDSMtoken_transfer_address_uint256_2_3" -> "BDSMtoken_transfer_address_uint256_2_4" [color="black"]
+"BDSMtoken_approve_address_uint256_2_0" -> "BDSMtoken_approve_address_uint256_3_0" [color="black"]
+"BDSMtoken_balanceOf_address_1_1" -> "EXIT" [color="black"]
+"BDSMtoken_transfer_address_uint256_3_0" -> "BDSMtoken_transfer_address_uint256_3_1" [color="black"]
+"BDSMtoken_add_uint256_uint256_3_0" -> "EXIT" [color="black"]
+"BDSMtoken_allowance_address_address_1_1" -> "BDSMtoken_allowance_address_address_1_2" [color="black"]
+"BDSMtoken_transfer_address_uint256_2_4" -> "BDSMtoken_transfer_address_uint256_3_0" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_7_0" -> "EXIT" [color="black"]
+"BDSMtoken_transfer_address_uint256_3_1" -> "BDSMtoken_transfer_address_uint256_3_2" [color="black"]
+"BDSMtoken_transfer_address_uint256_5_0" -> "EXIT" [color="black"]
+"BDSMtoken_constructor_0_0" -> "BDSMtoken_constructor_1_0" [color="black"]
+"BDSMtoken_transfer_address_uint256_3_2" -> "BDSMtoken_transfer_address_uint256_3_3" [color="black"]
+"BDSMtoken_constructor_1_0" -> "BDSMtoken_constructor_2_0" [color="black"]
+"BDSMtoken_transfer_address_uint256_3_3" -> "BDSMtoken_transfer_address_uint256_3_4" [color="black"]
+"BDSMtoken_transferFrom_address_address_uint256_0_0" -> "BDSMtoken_transferFrom_address_address_uint256_0_1" [color="black"]
+}

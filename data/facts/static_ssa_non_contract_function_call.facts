@@ -1,0 +1,5 @@
+3	BDSMtoken#sub#uint256#uint256#1#1	assert(bool)
+3	BDSMtoken#add#uint256#uint256#2#1	assert(bool)
+3	BDSMtoken#transfer#address#uint256#1#1	require(bool)
+3	BDSMtoken#transferFrom#address#address#uint256#1#1	require(bool)
+3	BDSMtoken#transferFrom#address#address#uint256#2#3	require(bool)

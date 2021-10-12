@@ -1,0 +1,152 @@
+strict digraph {
+subgraph cluster_VouchCoin  {
+label = "[VouchCoin]" 
+subgraph cluster_VouchCoin_transfer_address_uint256 {
+label = "[VouchCoin_transfer_address_uint256]" 
+"VouchCoin_transfer_address_uint256_6_0" [label="Node Type: END_IF VouchCoin_transfer_address_uint256_6_0
+" color="black"];
+
+"VouchCoin_transfer_address_uint256_4_0" [label="Node Type: IF VouchCoin_transfer_address_uint256_4_0
+EXPRESSION:
+balanceOf[owner] < _value
+
+state_vars_read: balanceOf,owner
+state_vars_written: balanceOf" color="red"];
+
+"VouchCoin_transfer_address_uint256_9_0" [label="Node Type: END_IF VouchCoin_transfer_address_uint256_9_0
+" color="black"];
+
+"VouchCoin_transfer_address_uint256_5_0" [label="Node Type: THROW VouchCoin_transfer_address_uint256_5_0
+" color="black"];
+
+"VouchCoin_transfer_address_uint256_3_0" [label="Node Type: END_IF VouchCoin_transfer_address_uint256_3_0
+" color="black"];
+
+"VouchCoin_transfer_address_uint256_8_0" [label="Node Type: THROW VouchCoin_transfer_address_uint256_8_0
+" color="black"];
+
+"VouchCoin_transfer_address_uint256_0_0" [label="Node Type: ENTRY_POINT VouchCoin_transfer_address_uint256_0_0
+" color="black"];
+
+"VouchCoin_transfer_address_uint256_12_0" [label="Node Type: EXPRESSION VouchCoin_transfer_address_uint256_12_0
+EXPRESSION:
+Transfer(owner,_to,_value)
+" color="black"];
+
+"VouchCoin_transfer_address_uint256_1_0" [label="Node Type: IF VouchCoin_transfer_address_uint256_1_0
+EXPRESSION:
+_to == 0x0
+" color="black"];
+
+"VouchCoin_transfer_address_uint256_10_0" [label="Node Type: EXPRESSION VouchCoin_transfer_address_uint256_10_0
+EXPRESSION:
+balanceOf[owner] -= _value
+
+state_vars_read: balanceOf,owner
+state_vars_written: balanceOf" color="red"];
+
+"VouchCoin_transfer_address_uint256_2_0" [label="Node Type: THROW VouchCoin_transfer_address_uint256_2_0
+" color="black"];
+
+"VouchCoin_transfer_address_uint256_11_0" [label="Node Type: EXPRESSION VouchCoin_transfer_address_uint256_11_0
+EXPRESSION:
+balanceOf[_to] += _value
+
+state_vars_read: balanceOf
+state_vars_written: balanceOf" color="red"];
+
+"VouchCoin_transfer_address_uint256_7_0" [label="Node Type: IF VouchCoin_transfer_address_uint256_7_0
+EXPRESSION:
+balanceOf[_to] + _value < balanceOf[_to]
+
+state_vars_read: balanceOf
+state_vars_written: balanceOf" color="red"];
+
+}
+subgraph cluster_VouchCoin_VouchCoin {
+label = "[VouchCoin_VouchCoin]" 
+"VouchCoin_VouchCoin_1_0" [label="Node Type: EXPRESSION VouchCoin_VouchCoin_1_0
+EXPRESSION:
+owner = msg.sender
+
+state_vars_written: owner" color="red"];
+
+"VouchCoin_VouchCoin_3_0" [label="Node Type: EXPRESSION VouchCoin_VouchCoin_3_0
+EXPRESSION:
+totalSupply = 10000000000000000
+
+state_vars_written: totalSupply" color="red"];
+
+"VouchCoin_VouchCoin_0_0" [label="Node Type: ENTRY_POINT VouchCoin_VouchCoin_0_0
+" color="black"];
+
+"VouchCoin_VouchCoin_2_0" [label="Node Type: EXPRESSION VouchCoin_VouchCoin_2_0
+EXPRESSION:
+balanceOf[msg.sender] = 10000000000000000
+
+state_vars_written: balanceOf" color="red"];
+
+"VouchCoin_VouchCoin_5_0" [label="Node Type: EXPRESSION VouchCoin_VouchCoin_5_0
+EXPRESSION:
+decimals = 8
+
+state_vars_written: decimals" color="red"];
+
+"VouchCoin_VouchCoin_4_0" [label="Node Type: EXPRESSION VouchCoin_VouchCoin_4_0
+EXPRESSION:
+name = VouchCoin
+
+state_vars_written: name" color="red"];
+
+}
+subgraph cluster_VouchCoin_fallback {
+label = "[VouchCoin_fallback]" 
+"VouchCoin_fallback_1_0" [label="Node Type: THROW VouchCoin_fallback_1_0
+" color="black"];
+
+"VouchCoin_fallback_0_0" [label="Node Type: ENTRY_POINT VouchCoin_fallback_0_0
+" color="black"];
+
+}
+subgraph cluster_VouchCoin_balance_address {
+label = "[VouchCoin_balance_address]" 
+"VouchCoin_balance_address_1_0" [label="Node Type: RETURN VouchCoin_balance_address_1_0
+EXPRESSION:
+balanceOf[user]
+
+state_vars_read: balanceOf
+state_vars_written: balanceOf" color="red"];
+
+"VouchCoin_balance_address_0_0" [label="Node Type: ENTRY_POINT VouchCoin_balance_address_0_0
+" color="black"];
+
+}
+subgraph cluster_VouchCoin_constructor {
+label = "[VouchCoin_constructor]" 
+"VouchCoin_constructor_0_0" [label="Node Type: OTHER_ENTRYPOINT VouchCoin_constructor_0_0
+EXPRESSION:
+standard = VouchCoin
+" color="black"];
+
+}
+}
+"VouchCoin_transfer_address_uint256_4_0" -> "VouchCoin_transfer_address_uint256_5_0" [label="True" color="black"]
+"VouchCoin_transfer_address_uint256_3_0" -> "VouchCoin_transfer_address_uint256_4_0" [color="black"]
+"VouchCoin_transfer_address_uint256_4_0" -> "VouchCoin_transfer_address_uint256_6_0" [label="False" color="black"]
+"VouchCoin_transfer_address_uint256_7_0" -> "VouchCoin_transfer_address_uint256_8_0" [label="True" color="black"]
+"VouchCoin_VouchCoin_1_0" -> "VouchCoin_VouchCoin_2_0" [color="black"]
+"VouchCoin_transfer_address_uint256_6_0" -> "VouchCoin_transfer_address_uint256_7_0" [color="black"]
+"VouchCoin_transfer_address_uint256_7_0" -> "VouchCoin_transfer_address_uint256_9_0" [label="False" color="black"]
+"VouchCoin_transfer_address_uint256_9_0" -> "VouchCoin_transfer_address_uint256_10_0" [color="black"]
+"VouchCoin_transfer_address_uint256_10_0" -> "VouchCoin_transfer_address_uint256_11_0" [color="black"]
+"VouchCoin_transfer_address_uint256_11_0" -> "VouchCoin_transfer_address_uint256_12_0" [color="black"]
+"VouchCoin_fallback_0_0" -> "VouchCoin_fallback_1_0" [color="black"]
+"VouchCoin_VouchCoin_2_0" -> "VouchCoin_VouchCoin_3_0" [color="black"]
+"VouchCoin_balance_address_0_0" -> "VouchCoin_balance_address_1_0" [color="black"]
+"VouchCoin_transfer_address_uint256_1_0" -> "VouchCoin_transfer_address_uint256_3_0" [label="False" color="black"]
+"VouchCoin_transfer_address_uint256_1_0" -> "VouchCoin_transfer_address_uint256_2_0" [label="True" color="black"]
+"VouchCoin_VouchCoin_3_0" -> "VouchCoin_VouchCoin_4_0" [color="black"]
+"VouchCoin_transfer_address_uint256_0_0" -> "VouchCoin_transfer_address_uint256_1_0" [color="black"]
+"VouchCoin_VouchCoin_0_0" -> "VouchCoin_VouchCoin_1_0" [color="black"]
+"VouchCoin_VouchCoin_4_0" -> "VouchCoin_VouchCoin_5_0" [color="black"]
+}

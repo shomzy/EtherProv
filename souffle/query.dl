@@ -1,0 +1,2083 @@
+.decl static_contract(batch_id:symbol, 
+								contract_id:symbol, 
+								contract_name:symbol,
+								is_signature_only:symbol)
+.input static_contract
+
+
+
+.decl static_contract_state_parameter(batch_id:symbol, 
+														contract_state_parameter_id:symbol, 
+														static_contract_id:symbol, 
+														solidity_type:symbol, 
+														name:symbol, 
+														initial_value:symbol)
+.input static_contract_state_parameter
+
+
+
+.decl static_function(batch_id:symbol, 
+								function_id:symbol, 
+								static_contract_id:symbol, 
+								name:symbol, 
+								type:symbol, 
+								static_entry_node_id:symbol, 
+								is_payable:symbol, 
+								visibility:symbol)
+.input static_function
+
+
+
+.decl static_function_parameter(batch_id:symbol, 
+												function_parameter_id:symbol, 
+												static_function_id:symbol, 
+												order_index:symbol, 
+												solidity_type:symbol, 
+												name:symbol)
+.input static_function_parameter
+
+
+
+.decl static_node(batch_id:symbol, 
+							node_id:symbol, 
+							static_function_id:symbol, 
+							type:symbol, 
+							expression:symbol)
+.input static_node
+
+
+
+.decl static_variable(batch_id:symbol, 
+								variable_id:symbol, 
+								static_contract_id:symbol, 
+								static_function_id:symbol, 
+								name:symbol, 
+								solidity_type:symbol, 
+								is_storage:symbol,
+								is_const:symbol,
+								visibility:symbol,
+								expression:symbol)
+.input static_variable
+
+
+
+.decl static_edge(batch_id:symbol, 
+							edge_id:symbol, 
+							from_static_node_id:symbol, 
+							to_static_node_id:symbol)
+.input static_edge
+
+
+
+.decl static_ssa_edge(batch_id:symbol, 
+							ssa_edge_id:symbol, 
+							from_static_ssa_node_id:symbol, 
+							to_static_ssa_node_id:symbol,
+							is_to_call_site:symbol,
+							related_to_call_site_edge_id:symbol)
+.input static_ssa_edge
+
+
+
+.decl static_path(batch_id:symbol, 
+							path_id:symbol, 
+							static_edge_id:symbol)
+.input static_path
+
+
+
+.decl static_path_first_read_last_written_state_parameter(batch_id:symbol, 
+																					path_first_read_last_written_state_parameter_id:symbol, 
+																					static_path_id:symbol, 
+																					static_contract_state_parameter_id:symbol, 
+																					first_read_or_last_written:symbol)
+.input static_path_first_read_last_written_state_parameter
+
+
+
+.decl static_ssa_node(batch_id:symbol, 
+									ssa_node_id:symbol, 
+									static_node_id:symbol, 
+									type:symbol, 
+									expression:symbol,
+									call_value:symbol,									
+									is_true_branch:symbol,
+									is_false_branch:symbol)
+.input static_ssa_node
+
+
+
+.decl static_ssa_node_variable(batch_id:symbol, 
+												ssa_node_variable_id:symbol, 												
+												static_node_variable_id:symbol, 
+												name:symbol, 
+												solidity_type:symbol, 
+												expression:symbol, 
+												points_to:symbol, 
+												is_storage:symbol,
+												is_const:symbol,
+												visibility:symbol)
+.input static_ssa_node_variable
+
+
+
+.decl static_ssa_node_operation_with_l_value(batch_id:symbol, 
+																	static_ssa_node_id:symbol, 
+																	lvalue_static_ssa_node_variable_id:symbol)
+.input static_ssa_node_operation_with_l_value
+
+
+
+.decl static_ssa_node_index(batch_id:symbol, 
+								static_ssa_node_id:symbol, 
+								variable_left_static_ssa_node_variable_id:symbol,
+								variable_right_static_ssa_node_variable_id:symbol)
+.input static_ssa_node_index
+
+
+
+.decl static_ssa_non_contract_function_call(batch_id:symbol, 
+															static_ssa_node_id:symbol, 
+															name:symbol)
+.input static_ssa_non_contract_function_call
+
+
+
+.decl static_ssa_function_return_variable(batch_id:symbol, 
+															static_ssa_node_id:symbol, 
+															static_ssa_node_variable_id:symbol,
+															order:symbol)
+.input static_ssa_function_return_variable
+
+
+
+.decl static_ssa_node_read_variable(batch_id:symbol, 
+														static_ssa_node_id:symbol, 
+														static_ssa_node_variable_id:symbol, 
+														order:symbol)
+.input static_ssa_node_read_variable
+
+
+
+.decl dynamic_contract(batch_id:symbol, 
+									contract_id:symbol, 
+									deployer_address:symbol, 
+									initial_ether:symbol, 
+									contract_address:symbol,
+									contract_name:symbol)
+.input dynamic_contract
+
+
+
+.decl dynamic_smart_contract_call(smart_contract_call_id:symbol, 													
+													dynamic_contract_id:symbol, 
+													block_id:symbol, 
+													transaction_id:symbol, 
+													caller_address:symbol, 
+													ether_start:symbol, 
+													ether_end:symbol, 
+													static_function_id:symbol)
+.input dynamic_smart_contract_call
+
+
+
+.decl dynamic_smart_contract_function_call_parameter(dynamic_smart_contract_call_id:symbol, 
+																					static_function_parameter_id:symbol, 
+																					value:symbol)
+.input dynamic_smart_contract_function_call_parameter
+
+
+
+.decl dynamic_path(dynamic_smart_contract_call_id:symbol, 
+								static_path_id:symbol, 
+								order:symbol, 
+								path_count:symbol)
+.input dynamic_path
+
+
+
+.decl dynamic_smart_contract_call_state_parameter_written(dynamic_smart_contract_call_state_parameter_written_id:symbol, 
+																						dynamic_smart_contract_call_id:symbol, 
+																						static_contract_state_parameter_id:symbol, 
+																						value:symbol, 
+																						prev_dynamic_smart_contract_call_state_parameter_written:symbol)
+.input dynamic_smart_contract_call_state_parameter_written 
+
+
+
+.decl dynamic_smart_contract_call_state_parameter_read(dynamic_smart_contract_call_id:symbol, 
+																						static_contract_state_parameter_id:symbol, 
+																						dynamic_smart_contract_call_state_parameter_written:symbol)
+.input dynamic_smart_contract_call_state_parameter_read 
+  
+  
+  
+/**********************************************************************
+* 					variable_may_depend_on START
+**********************************************************************/
+.decl ref_to_real_variable_dependency(batch_id:symbol, ref_ssa_node_variable_id:symbol, real_ssa_variable_id:symbol)  				
+
+			ref_to_real_variable_dependency(batch_id, ref_ssa_node_variable_id, points_to_ssa_variable_id) :- 
+						static_ssa_node_operation_with_l_value(batch_id,
+																							_, 
+																							ref_ssa_node_variable_id),			
+						static_ssa_node_variable(batch_id,
+																ref_ssa_node_variable_id, 												
+																_, 
+																_, 
+																_, 
+																_, 
+																points_to_ssa_variable_id, 
+																_,
+																_,
+																_), points_to_ssa_variable_id != "NULL".												
+.output  ref_to_real_variable_dependency
+
+
+.decl guaranteed_lvalue_to_ref_or_read_variables_dependency(batch_id:symbol, ssa_variable_id1:symbol, ssa_variable_id2:symbol)
+
+			guaranteed_lvalue_to_ref_or_read_variables_dependency(batch_id, lvalue_ssa_node_variable_id, read_ssa_node_variable_id) :- 			
+						static_ssa_node_operation_with_l_value(batch_id, 
+																						ssa_node_id, 
+																						lvalue_ssa_node_variable_id),
+						static_ssa_node_read_variable(batch_id, 
+																		ssa_node_id, 
+																		read_ssa_node_variable_id, 
+																		_).
+
+			guaranteed_lvalue_to_ref_or_read_variables_dependency(batch_id, ref_ssa_node_variable_id, real_ssa_variable_id) :- 				
+						ref_to_real_variable_dependency(batch_id, 
+																ref_ssa_node_variable_id,
+																real_ssa_variable_id).
+																
+			guaranteed_lvalue_to_ref_or_read_variables_dependency(batch_id, real_ssa_variable_id, ref_ssa_node_variable_id) :- 				
+						ref_to_real_variable_dependency(batch_id, 
+																ref_ssa_node_variable_id,
+																real_ssa_variable_id).
+.output  guaranteed_lvalue_to_ref_or_read_variables_dependency
+
+
+.decl lvalue_to_function_return_dependency(batch_id:symbol, lvalue_ssa_variable_id:symbol, f_return_ssa_variable_id:symbol)
+
+			lvalue_to_function_return_dependency(batch_id, lvalue_ssa_variable_id, f_return_ssa_variable_id) :- 
+						
+						static_ssa_node_operation_with_l_value(batch_id, 
+																					ssa_node_id, 
+																					lvalue_ssa_variable_id),
+						static_ssa_function_return_variable(batch_id, 
+																		ssa_node_id, 
+																		f_return_ssa_variable_id,
+																		_).
+															
+.output  lvalue_to_function_return_dependency
+
+
+.decl lvalue_to_index_dependency(batch_id:symbol, lvalue_ssa_variable_id:symbol, index_variable_id:symbol)
+
+			lvalue_to_index_dependency(batch_id, lvalue_ssa_variable_id, index_left_ssa_variable_id) :- 
+						
+						static_ssa_node_operation_with_l_value(batch_id, 
+																					ssa_node_id, 
+																					lvalue_ssa_variable_id),
+						static_ssa_node_index(batch_id, 
+															ssa_node_id, 
+															index_left_ssa_variable_id,
+															_).
+
+			lvalue_to_index_dependency(batch_id, lvalue_ssa_variable_id, index_right_ssa_variable_id) :- 
+						
+						static_ssa_node_operation_with_l_value(batch_id, 
+																					ssa_node_id, 
+																					lvalue_ssa_variable_id),
+						static_ssa_node_index(batch_id, 
+															ssa_node_id, 
+															_,
+															index_right_ssa_variable_id).
+															
+.output  lvalue_to_index_dependency
+
+
+.decl guaranteed_variables_dependency(batch_id:symbol, lvalue_ssa_variable_id:symbol, read_variable_id:symbol)
+
+			guaranteed_variables_dependency(batch_id, lvalue_ssa_variable_id, read_variable_id) :- 			
+						guaranteed_lvalue_to_ref_or_read_variables_dependency(batch_id, lvalue_ssa_variable_id, read_variable_id).
+
+			guaranteed_variables_dependency(batch_id, lvalue_ssa_variable_id, read_variable_id) :- 						
+						lvalue_to_function_return_dependency(batch_id, lvalue_ssa_variable_id, read_variable_id).
+
+			guaranteed_variables_dependency(batch_id, lvalue_ssa_variable_id, read_variable_id) :- 						
+						lvalue_to_index_dependency(batch_id, lvalue_ssa_variable_id, read_variable_id).
+			
+.output  guaranteed_variables_dependency
+
+
+.decl variable_may_depend_on(batch_id:symbol, lvalue_ssa_variable_id:symbol, read_variable_id:symbol)
+
+			variable_may_depend_on(batch_id, lvalue_ssa_variable_id, read_variable_id) :- 			
+						guaranteed_variables_dependency(batch_id, lvalue_ssa_variable_id, read_variable_id).
+			
+			variable_may_depend_on(batch_id, lvalue_ssa_variable_id, lvalue_ssa_variable_id) :- 			
+						guaranteed_variables_dependency(batch_id, lvalue_ssa_variable_id, _).
+						
+			variable_may_depend_on(batch_id, rvalue_variable_id, rvalue_variable_id) :- 			
+						guaranteed_variables_dependency(batch_id, _, rvalue_variable_id).
+						
+			variable_may_depend_on(batch_id, lvalue_ssa_variable_id, read_variable_id) :- 			
+						variable_may_depend_on(batch_id, lvalue_ssa_variable_id, t_variable_id),
+						variable_may_depend_on(batch_id, t_variable_id, read_variable_id).
+						//,lvalue_ssa_variable_id != read_variable_id
+									
+.output  variable_may_depend_on
+/**********************************************************************
+* 					variable_may_depend_on END
+**********************************************************************/
+
+
+  /**********************************************************************
+* 					liquid_ether_compliance START
+**********************************************************************/
+.decl ssa_node_with_liquidifiable_function_calls(batch_id:symbol, ssa_node_id:symbol)
+
+			ssa_node_with_liquidifiable_function_calls(batch_id, ssa_node_id) :- static_ssa_non_contract_function_call(batch_id, ssa_node_id, "suicide(address)").												
+			ssa_node_with_liquidifiable_function_calls(batch_id, ssa_node_id) :- static_ssa_non_contract_function_call(batch_id, ssa_node_id, "selfdestruct(address)").						
+			ssa_node_with_liquidifiable_function_calls(batch_id, ssa_node_id) :- static_ssa_non_contract_function_call(batch_id, ssa_node_id, "ecrecover(bytes32,uint8,bytes32,bytes32)").						
+.output  ssa_node_with_liquidifiable_function_calls
+
+
+.decl ssa_node_with_call_value_not_0(batch_id:symbol, ssa_node_id:symbol)
+
+			ssa_node_with_call_value_not_0(batch_id, ssa_node_id) :-						
+						static_ssa_node(batch_id, 
+													ssa_node_id, 
+													_, 
+													_, 
+													_,
+													call_value,
+													_,
+													_),
+						static_ssa_node_variable(batch_id, 
+												call_value, 												
+												_, 
+												name, 
+												"uint256"/*solidity_type*/, 
+												_, 
+												_, 
+												_,
+												"True"/*is_const*/,
+												_), name != "0".
+			
+.output  ssa_node_with_call_value_not_0
+
+
+.decl ssa_node_with_call_value_dependent_on_sender_data(batch_id:symbol, ssa_node_id:symbol)
+
+			ssa_node_with_call_value_dependent_on_sender_data(batch_id, ssa_node_id) :-						
+						static_ssa_node(batch_id, 
+													ssa_node_id, 
+													_, 
+													_, 
+													_,
+													call_value,
+													_,
+													_),
+						static_ssa_node_variable(batch_id, 
+												call_value, 												
+												_, 
+												_, 
+												"uint256"/*solidity_type*/, 
+												_, 
+												_, 
+												_,
+												"False"/*is_const*/,
+												_), 
+						variable_may_depend_on(batch_id, 
+																call_value, 
+																"Client#msg.value").
+			
+.output  ssa_node_with_call_value_dependent_on_sender_data
+
+
+.decl liquid_ether_compliance(batch_id:symbol, ssa_node_id:symbol)
+
+			liquid_ether_compliance(batch_id, ssa_node_id) :- ssa_node_with_liquidifiable_function_calls(batch_id, ssa_node_id).
+			liquid_ether_compliance(batch_id, ssa_node_id) :- ssa_node_with_call_value_not_0(batch_id, ssa_node_id).
+			liquid_ether_compliance(batch_id, ssa_node_id) :- ssa_node_with_call_value_dependent_on_sender_data(batch_id, ssa_node_id).
+			
+.output liquid_ether_compliance
+
+
+.decl liquid_ether_compliance_detailed(batch_id:symbol, ssa_node_id:symbol, expression:symbol)
+
+			liquid_ether_compliance_detailed(batch_id, ssa_node_id, expression) :- 
+						liquid_ether_compliance(batch_id, 
+																ssa_node_id),						
+						static_ssa_node(batch_id, 
+													ssa_node_id, 
+													static_node_id, 
+													_, 
+													_/*ssa_expression*/,
+													_,									
+													_,
+													_),
+						static_node(batch_id, 
+											static_node_id, 
+											_, 
+											_, 
+											expression).
+			
+.output liquid_ether_compliance_detailed
+ 
+
+/**********************************************************************
+* 					liquid_ether_compliance END
+**********************************************************************/
+
+
+.decl ssa_node_graph(batch_id:symbol, from_ssa_node_id:symbol, to_ssa_node_id:symbol)
+
+			ssa_node_graph(batch_id, from_ssa_node_id, to_ssa_node_id) :- 
+						static_ssa_edge(batch_id, 
+													_,
+													from_ssa_node_id, 
+													to_ssa_node_id,
+													_,
+													_).
+			
+.output  ssa_node_graph
+
+
+.decl ssa_node_may_be_followed_by(batch_id:symbol, ssa_node_id:symbol, followed_by_ssa_node_id:symbol)
+
+			ssa_node_may_be_followed_by(batch_id, from_ssa_node_id, to_ssa_node_id) :- 
+						ssa_node_graph(batch_id, 
+														from_ssa_node_id, 
+														to_ssa_node_id).
+						
+			ssa_node_may_be_followed_by(batch_id, from_ssa_node_id, to_ssa_node_id) :- 
+						ssa_node_may_be_followed_by(batch_id, 
+																			from_ssa_node_id, 
+																			t),
+						ssa_node_may_be_followed_by(batch_id, 
+																			t, 
+																			to_ssa_node_id).
+			
+.output  ssa_node_may_be_followed_by
+
+
+/**********************************************************************
+* 					no_writes_after_calls_violation START
+**********************************************************************/
+
+.decl ssa_nodes_with_storage_writes(batch_id:symbol, ssa_node_id:symbol, lvalue_ssa_node_variable_id:symbol)
+
+		ssa_nodes_with_storage_writes(batch_id, ssa_node_id, lvalue_ssa_node_variable_id) :- 
+						static_ssa_node_operation_with_l_value(batch_id, 
+																						ssa_node_id, 
+																						lvalue_ssa_node_variable_id),
+						static_ssa_node(batch_id, 
+													ssa_node_id, 
+													_, 
+													"Assignment"/*type*/, 
+													_,
+													_,
+													_,
+													_),
+						static_ssa_node_variable(batch_id, 
+																lvalue_ssa_node_variable_id, 												
+																_, 
+																_, 
+																_, 
+																_, 
+																"NULL"/*points_to*/, 
+																"True"/*is_storage*/,
+																_,
+																_).
+																					
+		ssa_nodes_with_storage_writes(batch_id, ssa_node_id, lvalue_ssa_node_variable_id) :- 
+						static_ssa_node_operation_with_l_value(batch_id, 
+																						ssa_node_id, 
+																						lvalue_ssa_node_variable_id),
+						static_ssa_node(batch_id, 
+													ssa_node_id, 
+													_, 
+													"Assignment"/*type*/, 
+													_,
+													_,
+													_,
+													_),																			
+						static_ssa_node_variable(batch_id, 
+																lvalue_ssa_node_variable_id, 												
+																_, 
+																_, 
+																_, 
+																_, 
+																points_to, 
+																_,
+																_,
+																_), points_to != "NULL",		
+						static_ssa_node_variable(batch_id, 
+																points_to, 												
+																_, 
+																_, 
+																_, 
+																_, 
+																"NULL"/*points_to*/, 
+																"True"/*is_storage*/,
+																_,
+																_).
+									
+.output  ssa_nodes_with_storage_writes
+
+
+.decl no_writes_after_calls_violation(batch_id:symbol, low_level_call_node_id:symbol, storage_write_node_id:symbol, lvalue_ssa_node_variable_id:symbol)
+
+			no_writes_after_calls_violation(batch_id, ssa_node_id, followed_by_ssa_node_id, lvalue_ssa_node_variable_id) :- 						
+						static_ssa_node(batch_id, 
+													ssa_node_id, 
+													_, 
+													"LowLevelCall"/*type*/, 
+													_,
+													_,
+													_,
+													_),						
+						ssa_node_may_be_followed_by(batch_id, 
+																			ssa_node_id, 
+																			followed_by_ssa_node_id),
+						ssa_nodes_with_storage_writes(batch_id, 
+																			followed_by_ssa_node_id, 
+																			lvalue_ssa_node_variable_id).
+									
+.output no_writes_after_calls_violation
+
+
+.decl no_writes_after_calls_violation_detailed(batch_id:symbol, low_level_call_ssa_node_id:symbol, low_level_call_expression:symbol, storage_write_ssa_node_id:symbol, storage_write_expression:symbol)
+
+			no_writes_after_calls_violation_detailed(batch_id, low_level_call_ssa_node_id, low_level_call_expression, storage_write_ssa_node_id, storage_write_expression) :- 
+						no_writes_after_calls_violation(batch_id, low_level_call_ssa_node_id, storage_write_ssa_node_id, _),				
+						static_ssa_node(batch_id, 
+													low_level_call_ssa_node_id, 
+													low_level_call_node_id, 
+													_, 
+													_/*low_level_call_ssa_expression*/,
+													_,									
+													_,
+													_),
+						static_node(batch_id, 
+											low_level_call_node_id, 
+											_, 
+											_, 
+											low_level_call_expression),
+						static_ssa_node(batch_id, 
+													storage_write_ssa_node_id, 
+													storage_write_node_id, 
+													_, 
+													_/*storage_write_ssa_expression*/,
+													_,									
+													_,
+													_),
+						static_node(batch_id, 
+											storage_write_node_id, 
+											_, 
+											_, 
+											storage_write_expression).
+			
+.output no_writes_after_calls_violation_detailed  
+
+/**********************************************************************
+* 					no_writes_after_calls_violation END
+**********************************************************************/
+
+
+
+/**********************************************************************
+* 					restricted_writes_violation START
+**********************************************************************/
+
+.decl static_ssa_edge_call_site_calls_and_returns_only(batch_id:symbol, 
+																					ssa_edge_id:symbol, 
+																					from_static_ssa_node_id:symbol, 
+																					to_static_ssa_node_id:symbol,
+																					is_to_call_site:symbol,
+																					related_to_call_site_edge_id:symbol)
+
+			static_ssa_edge_call_site_calls_and_returns_only(batch_id, 
+																						ssa_edge_id, 
+																						from_static_ssa_node_id, 
+																						to_static_ssa_node_id,
+																						is_to_call_site,
+																						related_to_call_site_edge_id) :- 
+					static_ssa_edge(batch_id, 
+												ssa_edge_id, 
+												from_static_ssa_node_id, 
+												to_static_ssa_node_id,
+												is_to_call_site,
+												related_to_call_site_edge_id), is_to_call_site = "True".
+												
+			static_ssa_edge_call_site_calls_and_returns_only(batch_id, 
+																						ssa_edge_id, 
+																						from_static_ssa_node_id, 
+																						to_static_ssa_node_id,
+																						is_to_call_site,
+																						related_to_call_site_edge_id) :- 
+					static_ssa_edge(batch_id, 
+												ssa_edge_id, 
+												from_static_ssa_node_id, 
+												to_static_ssa_node_id,
+												is_to_call_site,
+												related_to_call_site_edge_id), related_to_call_site_edge_id != "NULL".
+									
+.output  static_ssa_edge_call_site_calls_and_returns_only
+
+
+.decl static_ssa_edge_without_call_site_calls_and_returns(batch_id:symbol, 
+																						ssa_edge_id:symbol, 
+																						from_static_ssa_node_id:symbol, 
+																						to_static_ssa_node_id:symbol,
+																						is_to_call_site:symbol,
+																						related_to_call_site_edge_id:symbol)
+
+			static_ssa_edge_without_call_site_calls_and_returns(batch_id, 
+																							ssa_edge_id, 
+																							from_static_ssa_node_id, 
+																							to_static_ssa_node_id,
+																							is_to_call_site,
+																							related_to_call_site_edge_id) :- 
+					static_ssa_edge(batch_id, 
+												ssa_edge_id, 
+												from_static_ssa_node_id, 
+												to_static_ssa_node_id,
+												is_to_call_site,
+												related_to_call_site_edge_id),
+					!static_ssa_edge_call_site_calls_and_returns_only(batch_id, 
+																						ssa_edge_id, 
+																						_, 
+																						_,
+																						_,
+																						_).
+									
+.output  static_ssa_edge_without_call_site_calls_and_returns
+
+
+.decl ssa_node_graph_roots(batch_id:symbol, root_ssa_node_id:symbol)
+
+			/*ssa_node_graph_roots(batch_id, to_ssa_node_id) :- 
+					ssa_node_graph(batch_id, 
+												"ENTRY", 
+												to_ssa_node_id).*/
+												
+			ssa_node_graph_roots(batch_id, static_entry_node_id) :- 
+					static_function(batch_id, 
+								_, 
+								_, 
+								_, 
+								_, 
+								static_entry_node_id, 
+								_, 
+								"public"/*visibility*/).
+			
+			ssa_node_graph_roots(batch_id, static_entry_node_id) :- 
+					static_function(batch_id, 
+								_, 
+								_, 
+								_, 
+								_, 
+								static_entry_node_id, 
+								_, 
+								"external"/*visibility*/).
+									
+.output  ssa_node_graph_roots
+
+
+.decl reachable_ssa_edge_id_from_root(batch_id:symbol, root_ssa_node_id:symbol, from_ssa_node_id:symbol, to_ssa_node_id:symbol)
+
+			reachable_ssa_edge_id_from_root(batch_id, root_ssa_node_id, root_ssa_node_id, to_ssa_node_id) :- 
+					ssa_node_graph_roots(batch_id, root_ssa_node_id),
+					static_ssa_edge_without_call_site_calls_and_returns(batch_id, 
+																									_, 
+																									root_ssa_node_id/*from_static_ssa_node_id*/, 
+																									to_ssa_node_id,
+																									_,
+																									_).
+																									
+			reachable_ssa_edge_id_from_root(batch_id, root_ssa_node_id, existing_to_ssa_node_id, new_to_ssa_node_id) :- 
+					reachable_ssa_edge_id_from_root(batch_id, 
+																			root_ssa_node_id, 
+																			_, 
+																			existing_to_ssa_node_id),
+					static_ssa_edge_without_call_site_calls_and_returns(batch_id, 
+																									_, 
+																									existing_to_ssa_node_id, 
+																									new_to_ssa_node_id,
+																									_,
+																									_).
+																									
+			reachable_ssa_edge_id_from_root(batch_id, root_ssa_node_id, existing_from_ssa_node_id, new_to_ssa_node_id) :- 
+					reachable_ssa_edge_id_from_root(batch_id, 
+																			root_ssa_node_id, 
+																			existing_from_ssa_node_id, 
+																			_),
+					static_ssa_edge_call_site_calls_and_returns_only(batch_id, 
+																									_, 
+																									existing_from_ssa_node_id, 
+																									new_to_ssa_node_id,
+																									"True"/*is_to_call_site*/,
+																									_).
+			
+			reachable_ssa_edge_id_from_root(batch_id, root_ssa_node_id, new_from_ssa_node_id, existing_from_ssa_node_id2) :- 
+					reachable_ssa_edge_id_from_root(batch_id, 
+																			root_ssa_node_id, 
+																			existing_from_ssa_node_id1, 
+																			existing_to_ssa_node_id),			
+					static_ssa_edge(batch_id, 
+												ssa_edge_id, 
+												existing_from_ssa_node_id1, 
+												existing_to_ssa_node_id,
+												"True"/*is_to_call_site*/,
+												_),
+					static_ssa_edge(batch_id, 
+												_, 
+												new_from_ssa_node_id, 
+												existing_from_ssa_node_id2,
+												_,
+												ssa_edge_id/*related_to_call_site_edge_id*/).
+														
+.output  reachable_ssa_edge_id_from_root
+
+
+.decl root_ssa_node_id_may_be_followed_by(batch_id:symbol, root_ssa_node_id:symbol, followed_by_ssa_node_id:symbol)
+
+			root_ssa_node_id_may_be_followed_by(batch_id, root_ssa_node_id, to_ssa_node_id) :-
+						reachable_ssa_edge_id_from_root(batch_id, 
+																			root_ssa_node_id, 
+																			_, 
+																			to_ssa_node_id).						
+			
+.output  root_ssa_node_id_may_be_followed_by
+
+
+
+.decl ssa_node_graph_roots_of_paths_with_branches(batch_id:symbol, root_ssa_node_id:symbol)
+
+			ssa_node_graph_roots_of_paths_with_branches(batch_id, root_ssa_node_id) :- 						
+						root_ssa_node_id_may_be_followed_by(batch_id, 
+																					root_ssa_node_id, 
+																					followed_by_ssa_node_id),
+						static_ssa_node(batch_id, 
+													followed_by_ssa_node_id, 
+														_, 
+													"Condition"/*type*/, 
+													_,
+													_,
+													_,
+													_).
+									
+.output  ssa_node_graph_roots_of_paths_with_branches
+
+
+.decl ssa_node_with_storage_write_dependent_of_sender(batch_id:symbol, ssa_node_id:symbol)
+
+		ssa_node_with_storage_write_dependent_of_sender(batch_id, ssa_node_id) :- 
+						ssa_nodes_with_storage_writes(batch_id, 
+																			ssa_node_id, 
+																			lvalue_ssa_node_variable_id),						
+						variable_may_depend_on(batch_id, 
+																lvalue_ssa_node_variable_id, 
+																"Client#msg.sender").
+									
+.output  ssa_node_with_storage_write_dependent_of_sender
+
+
+
+.decl ssa_nodes_with_storage_writes_independent_of_sender(batch_id:symbol, ssa_node_id:symbol)
+
+		ssa_nodes_with_storage_writes_independent_of_sender(batch_id, ssa_node_id) :- 
+						ssa_nodes_with_storage_writes(batch_id, 
+																					ssa_node_id, 
+																					lvalue_ssa_node_variable_id),						
+						!variable_may_depend_on(batch_id, 
+																lvalue_ssa_node_variable_id, 
+																"Client#msg.sender").
+									
+.output  ssa_nodes_with_storage_writes_independent_of_sender
+
+
+.decl root_ssa_node_of_path_without_branches_containing_storage_write_independent_of_sender(batch_id:symbol, root_ssa_node_id:symbol, ssa_node_id:symbol, independent_of_sender_ssa_node_variable_id:symbol)
+
+			root_ssa_node_of_path_without_branches_containing_storage_write_independent_of_sender(batch_id, root_ssa_node_id, followed_by_ssa_node_id, lvalue_ssa_node_variable_id) :- 						
+						!ssa_node_graph_roots_of_paths_with_branches(batch_id, root_ssa_node_id),
+						root_ssa_node_id_may_be_followed_by(batch_id, 
+																root_ssa_node_id, 
+																followed_by_ssa_node_id),						
+						static_ssa_node_operation_with_l_value(batch_id, 
+																						followed_by_ssa_node_id, 
+																						lvalue_ssa_node_variable_id),						
+						ssa_nodes_with_storage_writes_independent_of_sender(batch_id, followed_by_ssa_node_id).
+									
+.output  root_ssa_node_of_path_without_branches_containing_storage_write_independent_of_sender
+
+
+
+.decl root_ssa_node_of_paths_with_branches_dependent_of_sender(batch_id:symbol, root_ssa_node_id:symbol, ssa_node_id:symbol, condition_ssa_node_variable_id:symbol)
+
+			root_ssa_node_of_paths_with_branches_dependent_of_sender(batch_id, root_ssa_node_id, followed_by_ssa_node_id, ssa_node_variable_id) :- 		
+						ssa_node_graph_roots_of_paths_with_branches(batch_id, root_ssa_node_id),
+						root_ssa_node_id_may_be_followed_by(batch_id, 
+																						root_ssa_node_id, 
+																						followed_by_ssa_node_id),
+						static_ssa_node(batch_id, 
+														followed_by_ssa_node_id, 
+														_, 
+														"Condition"/*type*/, 
+														_,
+														_,
+														_,
+														_),
+						static_ssa_node_read_variable(batch_id, 
+																		followed_by_ssa_node_id, 
+																		ssa_node_variable_id, 
+																		_),
+						variable_may_depend_on(batch_id, 
+														ssa_node_variable_id, 
+														"Client#msg.sender").
+									
+.output  root_ssa_node_of_paths_with_branches_dependent_of_sender
+
+
+.decl root_ssa_node_of_path_with_branches_with_storage_write_independent_of_sender(batch_id:symbol, root_ssa_node_id:symbol, ssa_node_id:symbol)
+
+			root_ssa_node_of_path_with_branches_with_storage_write_independent_of_sender(batch_id, root_ssa_node_id, followed_by_ssa_node_id) :- 		
+						ssa_node_graph_roots_of_paths_with_branches(batch_id, root_ssa_node_id),
+						root_ssa_node_id_may_be_followed_by(batch_id, 
+																						root_ssa_node_id, 
+																						followed_by_ssa_node_id),
+						ssa_nodes_with_storage_writes_independent_of_sender(batch_id, followed_by_ssa_node_id).
+									
+.output  root_ssa_node_of_path_with_branches_with_storage_write_independent_of_sender
+
+
+
+.decl restricted_writes_violation(batch_id:symbol, root_ssa_node_id:symbol)
+
+			restricted_writes_violation(batch_id, root_ssa_node_id) :- 																						
+						root_ssa_node_of_path_without_branches_containing_storage_write_independent_of_sender(batch_id, 
+																																									root_ssa_node_id,
+																																									_, 
+																																									_).
+																																			
+			restricted_writes_violation(batch_id, root_ssa_node_id) :- 						
+						!root_ssa_node_of_paths_with_branches_dependent_of_sender(batch_id, 
+																															root_ssa_node_id, 
+																															_, 
+																															_),
+						root_ssa_node_of_path_with_branches_with_storage_write_independent_of_sender(batch_id, 
+																																					root_ssa_node_id, 
+																																					_).
+															
+.output restricted_writes_violation
+
+/**********************************************************************
+* 					restricted_writes_violation END
+**********************************************************************/
+
+
+
+.decl static_analysis_results(batch_id:symbol, compliance_violation_name:symbol)
+			static_analysis_results(batch_id, "liquid_ether_compliance") :- 																						
+						liquid_ether_compliance(batch_id, _).	
+			
+			static_analysis_results(batch_id, "liquid_ether_violation") :- 	
+						static_contract(batch_id, 
+												_, 
+												_,
+												_),
+						!liquid_ether_compliance(batch_id, _).	
+						
+			static_analysis_results(batch_id, "no_writes_after_calls_violation") :- 																						
+						no_writes_after_calls_violation(batch_id, 
+																		_, 
+																		_,
+																		_).
+			
+			static_analysis_results(batch_id, "no_writes_after_calls_compliance") :- 		
+						static_contract(batch_id, 
+												_, 
+												_,
+												_),																				
+						!no_writes_after_calls_violation(batch_id, 
+																		_, 
+																		_,
+																		_).
+																		
+			static_analysis_results(batch_id, "restricted_writes_violation") :- 																						
+						restricted_writes_violation(batch_id, _).
+			
+			static_analysis_results(batch_id, "restricted_writes_compliance") :- 				
+						static_contract(batch_id, 
+												_, 
+												_,
+												_),			
+						!restricted_writes_violation(batch_id, _).
+					
+.output static_analysis_results
+
+
+
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ ///////////////////////////////////////////////////////////	Dynamic analysis queries ///////////////////////////////////////////////////////////
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+  
+.decl contract_call_data(batch_id:symbol, caller_address:symbol, dynamic_contract_id:symbol, function_id:symbol, param_name:symbol, value:symbol)	
+
+contract_call_data(batch_id, caller_address, dynamic_contract_id, function_id, param_name, value) :- 			
+			dynamic_smart_contract_call("08113caa-0a09-42bd-bf7b-2acaeda9a84c", //smart_contract_call_id, 
+															dynamic_contract_id, 
+															_, /*block_id*/
+															_, /*transaction_id*/
+															caller_address,
+															_, /*ether_start*/
+															_, /*ether_end*/
+															_ /*static_function_id*/),
+			dynamic_contract(batch_id, 
+									_, /*dynamic_contract_id*/ 
+									_, 
+									_, 
+									dynamic_contract_id,
+									_),
+			dynamic_smart_contract_function_call_parameter("08113caa-0a09-42bd-bf7b-2acaeda9a84c", /*dynamic_smart_contract_call_id*/
+																							  function_parameter_id, 
+																							  value),				
+			static_function_parameter(batch_id,
+													   function_parameter_id, 
+													   function_id, 
+													   _, /*order_index*/
+													   _, /*solidity_type*/
+													   param_name).
+
+.output contract_call_data
+
+/*
+output:
+0xe49472458a0e3a24730B8170Db6B4d78CF37737c	0x4e46C340B72ad35ff9ae781c103509e582d573F5	Client#sendAmountUserAPI#uint256#address	amount	100
+
+*/
+
+
+.decl contract_call_changed_states(state_parameter_id:symbol, current_value:symbol, prev_value:symbol)	
+
+contract_call_changed_states(state_parameter_id, current_value, prev_value) :- 			
+			dynamic_smart_contract_call_state_parameter_written(_, /*dynamic_smart_contract_call_state_parameter_written_id*/ 
+																									 "08113caa-0a09-42bd-bf7b-2acaeda9a84c", /*dynamic_smart_contract_call_id*/
+																									 state_parameter_id,
+																									 current_value,
+																									 prev_state_parameter_id),
+			dynamic_smart_contract_call_state_parameter_written(prev_state_parameter_id, /*dynamic_smart_contract_call_state_parameter_written_id*/ 
+																									 _, /*dynamic_smart_contract_call_id*/
+																									 _, /*state_parameter_id*/
+																									 prev_value,
+																									 _ /*prev_dynamic_smart_contract_call_state_parameter_written*/).
+
+.output contract_call_changed_states
+/*
+output:
+Client#_balance	1884	2000
+
+*/
+
+
+
+.decl decoded_path(path_id:symbol, edge_id:symbol, from_node_id:symbol, to_node_id:symbol, type:symbol, expression:symbol)	
+
+decoded_path(path_id, edge_id, from_node_id, to_node_id, type, expression) :- 			
+			dynamic_smart_contract_call("08113caa-0a09-42bd-bf7b-2acaeda9a84c", //smart_contract_call_id, 
+															dynamic_contract_id, 
+															_, /*block_id*/
+															_, /*transaction_id*/
+															_ /*caller_address*/,
+															_, /*ether_start*/
+															_, /*ether_end*/
+															_ /*static_function_id*/),
+			dynamic_contract(batch_id, 
+									_, /*dynamic_contract_id*/
+									_, 
+									_, 
+									dynamic_contract_id,
+									_),																			
+			dynamic_path("08113caa-0a09-42bd-bf7b-2acaeda9a84c", /*dynamic_smart_contract_call_id*/
+									path_id, 
+									_, /*order*/
+									_ /*path_count*/),
+			static_path(batch_id, 
+							   path_id, 
+							   edge_id),
+			static_edge(batch_id, 
+								edge_id, 
+								from_node_id, 
+								to_node_id),
+			 static_node(batch_id, 
+								 from_node_id, 
+								 _, /*static_function_id*/
+								 type, 
+								 expression).																		
+
+.output decoded_path
+ 
+ 
+ 
+
+ 
+ 
+ /*
+ output: 
+6	251	Client#sendAmountUserAPI#uint256#address#0#0	Client#sendAmountUserAPI#uint256#address#1#0	ENTRY_POINT	None
+6	252	Client#sendAmountUserAPI#uint256#address#1#0	Client#sendAmount#uint256#address#0#0	EXPRESSION	sendAmount(amount,toClientAddress)
+6	224	Client#sendAmount#uint256#address#0#0	Client#sendAmount#uint256#address#1#0	ENTRY_POINT	None
+6	225	Client#sendAmount#uint256#address#1#0	Client#sendAmount#uint256#address#2#0	IF	msg.sender == _userAddress
+6	229	Client#sendAmount#uint256#address#2#0	Client#sendAmount#uint256#address#3#0	IF	amount > 0
+6	230	Client#sendAmount#uint256#address#3#0	Client#sendAmount#uint256#address#4#0	NEW VARIABLE	toClient = Client(toClientAddress)
+6	231	Client#sendAmount#uint256#address#4#0	Client#_sendAmount#uint256#Client#0#0	EXPRESSION	_sendAmount(amount,toClient)
+6	235	Client#_sendAmount#uint256#Client#0#0	Client#_sendAmount#uint256#Client#1#0	ENTRY_POINT	None
+6	236	Client#_sendAmount#uint256#Client#1#0	Bank#getCurrentFeeContractAPI#uint256#string#0#0	NEW VARIABLE	fee = _bank.getCurrentFeeContractAPI(_balance,_accountType)
+6	198	Bank#getCurrentFeeContractAPI#uint256#string#0#0	Bank#getCurrentFeeContractAPI#uint256#string#1#0	ENTRY_POINT	None
+6	199	Bank#getCurrentFeeContractAPI#uint256#string#1#0	Bank#getCurrentFeeContractAPI#uint256#string#2#0	NEW VARIABLE	sendFee = 0
+6	200	Bank#getCurrentFeeContractAPI#uint256#string#2#0	Bank#getCurrentFeeContractAPI#uint256#string#3#0	NEW VARIABLE	underMinBalanceFee = 0
+6	201	Bank#getCurrentFeeContractAPI#uint256#string#3#0	Bank#getCurrentFeeContractAPI#uint256#string#4#0	NEW VARIABLE	isPreferred = keccak256(bytes)(abi.encodePacked(accountType)) == keccak256(bytes)(abi.encodePacked(preferred))
+6	202	Bank#getCurrentFeeContractAPI#uint256#string#4#0	Bank#getCurrentFeeContractAPI#uint256#string#9#0	IF	isPreferred
+6	203	Bank#getCurrentFeeContractAPI#uint256#string#9#0	Bank#getCurrentFeeContractAPI#uint256#string#10#0	EXPRESSION	sendFee = _premiumAccSendFee
+6	204	Bank#getCurrentFeeContractAPI#uint256#string#10#0	Bank#getCurrentFeeContractAPI#uint256#string#11#0	IF	balance < _premiumAccMinBalance
+6	205	Bank#getCurrentFeeContractAPI#uint256#string#11#0	Bank#getCurrentFeeContractAPI#uint256#string#12#0	EXPRESSION	underMinBalanceFee = _premiumAccUnderMinBalanceFee
+6	206	Bank#getCurrentFeeContractAPI#uint256#string#12#0	Bank#getCurrentFeeContractAPI#uint256#string#13#0	END_IF	None
+6	207	Bank#getCurrentFeeContractAPI#uint256#string#13#0	Bank#getCurrentFeeContractAPI#uint256#string#14#0	END_IF	None
+6	208	Bank#getCurrentFeeContractAPI#uint256#string#14#0	Bank#getCurrentFeeContractAPI#uint256#string#15#0	NEW VARIABLE	totalFee = sendFee + underMinBalanceFee
+6	237	Bank#getCurrentFeeContractAPI#uint256#string#15#0	Client#_sendAmount#uint256#Client#2#0	RETURN	totalFee
+6	238	Client#_sendAmount#uint256#Client#2#0	Client#_sendAmount#uint256#Client#3#0	NEW VARIABLE	newBalance = _balance - amount - fee
+6	239	Client#_sendAmount#uint256#Client#3#0	Client#_sendAmount#uint256#Client#4#0	IF	newBalance >= 0
+6	240	Client#_sendAmount#uint256#Client#4#0	Client#addAmountContractAPI#uint256#0#0	EXPRESSION	toClient.addAmountContractAPI(amount)
+6	255	Client#addAmountContractAPI#uint256#0#0	Client#addAmountContractAPI#uint256#1#0	ENTRY_POINT	None
+6	241	Client#addAmountContractAPI#uint256#1#0	Client#_sendAmount#uint256#Client#5#0	EXPRESSION	_balance += amount
+6	242	Client#_sendAmount#uint256#Client#5#0	Bank#depositFeeContractAPI#uint256#0#0	EXPRESSION	_bank.depositFeeContractAPI(fee)
+6	223	Bank#depositFeeContractAPI#uint256#0#0	Bank#depositFeeContractAPI#uint256#1#0	ENTRY_POINT	None
+6	243	Bank#depositFeeContractAPI#uint256#1#0	Client#_sendAmount#uint256#Client#6#0	EXPRESSION	_balance += fee
+6	244	Client#_sendAmount#uint256#Client#6#0	Client#_sendAmount#uint256#Client#8#0	EXPRESSION	_balance = newBalance
+6	232	Client#_sendAmount#uint256#Client#8#0	Client#sendAmount#uint256#address#6#0	END_IF	None
+6	228	Client#sendAmount#uint256#address#6#0	Client#sendAmount#uint256#address#8#0	END_IF	None
+6	253	Client#sendAmount#uint256#address#8#0	Client#sendAmountUserAPI#uint256#address#2#0	END_IF	None
+6	273	Client#sendAmountUserAPI#uint256#address#2#0	EXIT	RETURN	None
+ */
+ 
+ 
+ 
+  /*
+output:
+(querying send with 2000 when the balance has only 1884)
+
+contract_call_data:
+0xe49472458a0e3a24730B8170Db6B4d78CF37737c	0x4e46C340B72ad35ff9ae781c103509e582d573F5	Client#sendAmountUserAPI#uint256#address	amount	2000
+
+get_balance:
+Client#_balance	115792089237316195423570985008687907853269984665640564039457584007913129639804	1884
+
+*/
+
+
+
+.decl tainted_state_ids(batch_id:symbol, tainted_state_id:symbol)	
+
+	tainted_state_ids("1", "8217e66b-b9c4-4e05-9267-feb692fb2c3e"). 			
+
+	tainted_state_ids(batch_id, new_tainted_state_id) :- 		
+				tainted_state_ids(batch_id, known_tainted_state_id),
+				dynamic_smart_contract_call_state_parameter_read(contract_call_id, /*dynamic_smart_contract_call_id*/ 
+																									  _, /*static_contract_state_parameter_id*/
+																									  known_tainted_state_id /*dynamic_smart_contract_call_state_parameter_written*/),
+				dynamic_smart_contract_call_state_parameter_written(_, /*dynamic_smart_contract_call_state_parameter_written_id*/
+																										 contract_call_id, /*dynamic_smart_contract_call_id*/
+																										 _, /*state_parameter_id*/
+																										 _, /*current_value*/
+																										 new_tainted_state_id /*prev_written_state_id*/).
+.output tainted_state_ids
+
+
+
+.decl tainted_contract_call_ids(batch_id:symbol, tainted_state_id:symbol, tainted_call_id:symbol)	
+
+	tainted_contract_call_ids(batch_id, tainted_state_id, tainted_call_id) :- 		
+				tainted_state_ids(batch_id, tainted_state_id),
+				dynamic_smart_contract_call_state_parameter_read(tainted_call_id, /*dynamic_smart_contract_call_id*/ 
+																									  _, /*static_contract_state_parameter_id*/
+																									  tainted_state_id /*dynamic_smart_contract_call_state_parameter_written*/).
+				
+.output tainted_contract_call_ids
+
+
+
+
+ 
+ /*
+static_contract(contract_id, contract_name, is_signature_only)
+static_contract_state_parameter(contract_state_parameter_id, static_contract_id, solidity_type, name, initial_value)
+static_function(function_id, static_contract_id, name, type, static_entry_node_id, is_payable, visibility)
+static_function_parameter(function_parameter_id, static_function_id, order_index, solidity_type, name)
+static_node(node_id, static_function_id, type, expression)
+static_variable(variable_id, static_contract_id, static_function_id, name, solidity_type, is_storage, is_const, visibility, expression)
+static_edge(edge_id, from_static_node_id, to_static_node_id)
+static_ssa_edge(ssa_edge_id, from_static_ssa_node_id, to_static_ssa_node_id, is_to_call_site, related_to_call_site_edge_id)
+static_path(path_id, static_edge_id)
+static_path_first_read_last_written_state_parameter(path_first_read_last_written_state_parameter_id, static_path_id, static_contract_state_parameter_id, first_read_or_last_written)
+static_ssa_node(ssa_node_id, static_node_id, type, expression, call_value, is_true_branch, is_false_branch)
+static_ssa_node_variable(ssa_node_variable_id, static_node_variable_id, name, solidity_type, expression, points_to, is_storage, is_const, visibility)
+static_ssa_node_operation_with_l_value(static_ssa_node_id, lvalue_static_ssa_node_variable_id)
+static_ssa_node_index(static_ssa_node_id, variable_left_static_ssa_node_variable_id, variable_right_static_ssa_node_variable_id)
+static_ssa_non_contract_function_call(static_ssa_node_id, name)
+static_ssa_function_return_variable(static_ssa_node_id, static_ssa_node_variable_id, order)
+static_ssa_node_read_variable(static_ssa_node_id, static_ssa_node_variable_id, order)
+dynamic_contract(contract_id, deployer_address, initial_ether, contract_address, contract_name)
+dynamic_smart_contract_call(smart_contract_call_id, dynamic_contract_id, block_id, transaction_id, caller_address, ether_start, ether_end, static_function_id)
+dynamic_smart_contract_function_call_parameter(dynamic_smart_contract_call_id, static_function_parameter_id, value)
+dynamic_path(dynamic_smart_contract_call_id, static_path_id, order, path_count)
+dynamic_smart_contract_call_state_parameter_written(dynamic_smart_contract_call_state_parameter_written_id, dynamic_smart_contract_call_id, static_contract_state_parameter_id, value, prev_dynamic_smart_contract_call_state_parameter_written)
+dynamic_smart_contract_call_state_parameter_read(dynamic_smart_contract_call_id, static_contract_state_parameter_id, dynamic_smart_contract_call_state_parameter_written)
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

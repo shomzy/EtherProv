@@ -1,0 +1,1601 @@
+strict digraph {
+subgraph cluster_EthDeposit  {
+label = "[EthDeposit]" 
+subgraph cluster_EthDeposit_ToSponsor {
+label = "[EthDeposit_ToSponsor]" 
+subgraph cluster_EthDeposit_ToSponsor_1_0 {
+label = "[IF msg.value >= 1000000000000000000]" 
+"EthDeposit_ToSponsor_1_1" [label="Node Type: Condition EthDeposit_ToSponsor_1_1
+SSA:
+CONDITION TMP_189
+" color="black"];
+
+"EthDeposit_ToSponsor_1_0" [label="Node Type: Binary EthDeposit_ToSponsor_1_0
+SSA:
+TMP_189(bool) = msg.value >= 1000000000000000000
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_ToSponsor_2_0 {
+label = "[IF Sponsors[msg.sender] == 0]" 
+"EthDeposit_ToSponsor_2_0" [label="Node Type: Index EthDeposit_ToSponsor_2_0
+SSA:
+REF_116(uint256) -> Sponsors_1[msg.sender]
+
+state_vars_written: Sponsors" color="red"];
+
+"EthDeposit_ToSponsor_2_1" [label="Node Type: Binary EthDeposit_ToSponsor_2_1
+SSA:
+TMP_190(bool) = REF_116 == 0
+
+state_vars_read: Sponsors" color="red"];
+
+"EthDeposit_ToSponsor_2_2" [label="Node Type: Condition EthDeposit_ToSponsor_2_2
+SSA:
+CONDITION TMP_190
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_ToSponsor_3_0 {
+label = "[EXPRESSION SponsorsQty ++]" 
+"EthDeposit_ToSponsor_3_0" [label="Node Type: Assignment EthDeposit_ToSponsor_3_0
+SSA:
+TMP_191(uint256) := SponsorsQty_1(uint256)
+
+state_vars_read: SponsorsQty" color="red"];
+
+"EthDeposit_ToSponsor_3_1" [label="Node Type: Binary EthDeposit_ToSponsor_3_1
+SSA:
+SponsorsQty_2(uint256) = SponsorsQty_1 + 1
+
+state_vars_read: SponsorsQty
+state_vars_written: SponsorsQty" color="red"];
+
+}
+subgraph cluster_EthDeposit_ToSponsor_5_0 {
+label = "[EXPRESSION Sponsors[msg.sender] += msg.value]" 
+"EthDeposit_ToSponsor_5_0" [label="Node Type: Index EthDeposit_ToSponsor_5_0
+SSA:
+REF_117(uint256) -> Sponsors_1[msg.sender]
+
+state_vars_written: Sponsors" color="red"];
+
+"EthDeposit_ToSponsor_5_2" [label="Node Type: Binary EthDeposit_ToSponsor_5_2
+SSA:
+REF_117(-> Sponsors_2) = REF_117 + msg.value
+
+state_vars_read: Sponsors
+state_vars_written: Sponsors" color="red"];
+
+"EthDeposit_ToSponsor_5_1" [label="Node Type: Phi EthDeposit_ToSponsor_5_1
+SSA:
+Sponsors_2(mapping(address => uint256)) := ϕ(['Sponsors_1'])
+
+state_vars_written: Sponsors" color="red"];
+
+}
+subgraph cluster_EthDeposit_ToSponsor_6_0 {
+label = "[EXPRESSION CharterCapital += msg.value]" 
+"EthDeposit_ToSponsor_6_0" [label="Node Type: Binary EthDeposit_ToSponsor_6_0
+SSA:
+CharterCapital_2(uint256) = CharterCapital_1 + msg.value
+
+state_vars_read: CharterCapital
+state_vars_written: CharterCapital" color="red"];
+
+}
+subgraph cluster_EthDeposit_ToSponsor_0_0 {
+label = "[ENTRY_POINT]" 
+"EthDeposit_ToSponsor_0_0" [label="Node Type: Phi EthDeposit_ToSponsor_0_0
+SSA:
+SponsorsQty_1(uint256) := ϕ(['SponsorsQty_0', 'SponsorsQty_2'])
+" color="black"];
+
+"EthDeposit_ToSponsor_0_1" [label="Node Type: Phi EthDeposit_ToSponsor_0_1
+SSA:
+CharterCapital_1(uint256) := ϕ(['CharterCapital_2', 'CharterCapital_0', 'CharterCapital_4'])
+" color="black"];
+
+"EthDeposit_ToSponsor_0_2" [label="Node Type: Phi EthDeposit_ToSponsor_0_2
+SSA:
+Sponsors_1(mapping(address => uint256)) := ϕ(['Sponsors_3', 'Sponsors_2', 'Sponsors_0'])
+" color="black"];
+
+}
+"EthDeposit_ToSponsor_7_0" [label="EthDeposit_ToSponsor_7_0
+END_IF"];
+
+"EthDeposit_ToSponsor_4_0" [label="EthDeposit_ToSponsor_4_0
+END_IF"];
+
+}
+subgraph cluster_EthDeposit_canManage {
+label = "[EthDeposit_canManage]" 
+subgraph cluster_EthDeposit_canManage_1_0 {
+label = "[RETURN (msg.sender == Manager || msg.sender == owner)]" 
+"EthDeposit_canManage_1_1" [label="Node Type: Binary EthDeposit_canManage_1_1
+SSA:
+TMP_174(bool) = msg.sender == owner_2
+
+state_vars_read: owner" color="red"];
+
+"EthDeposit_canManage_1_2" [label="Node Type: Binary EthDeposit_canManage_1_2
+SSA:
+TMP_175(bool) = TMP_173 || TMP_174
+" color="black"];
+
+"EthDeposit_canManage_1_3" [label="Node Type: Return EthDeposit_canManage_1_3
+SSA:
+RETURN TMP_175
+" color="black"];
+
+"EthDeposit_canManage_1_0" [label="Node Type: Binary EthDeposit_canManage_1_0
+SSA:
+TMP_173(bool) = msg.sender == Manager_3
+
+state_vars_read: Manager" color="red"];
+
+}
+subgraph cluster_EthDeposit_canManage_0_0 {
+label = "[ENTRY_POINT]" 
+"EthDeposit_canManage_0_0" [label="Node Type: Phi EthDeposit_canManage_0_0
+SSA:
+owner_2(address) := ϕ(['owner_0', 'owner_1'])
+" color="black"];
+
+"EthDeposit_canManage_0_1" [label="Node Type: Phi EthDeposit_canManage_0_1
+SSA:
+Manager_3(address) := ϕ(['Manager_1', 'Manager_4', 'Manager_0'])
+" color="black"];
+
+}
+}
+subgraph cluster_EthDeposit_ChangeManager_address {
+label = "[EthDeposit_ChangeManager_address]" 
+subgraph cluster_EthDeposit_ChangeManager_address_1_0 {
+label = "[IF canManage()]" 
+"EthDeposit_ChangeManager_address_1_0" [label="Node Type: InternalCall EthDeposit_ChangeManager_address_1_0
+SSA:
+TMP_176(bool) = INTERNAL_CALL, EthDeposit.canManage()()
+" color="black"];
+
+"EthDeposit_ChangeManager_address_1_1" [label="Node Type: Condition EthDeposit_ChangeManager_address_1_1
+SSA:
+CONDITION TMP_176
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_ChangeManager_address_2_0 {
+label = "[EXPRESSION NewManager = _newManager]" 
+"EthDeposit_ChangeManager_address_2_0" [label="Node Type: Assignment EthDeposit_ChangeManager_address_2_0
+SSA:
+NewManager_1(address) := _newManager_1(address)
+
+state_vars_written: NewManager" color="red"];
+
+}
+"EthDeposit_ChangeManager_address_0_0" [label="EthDeposit_ChangeManager_address_0_0
+ENTRY_POINT"];
+
+"EthDeposit_ChangeManager_address_3_0" [label="EthDeposit_ChangeManager_address_3_0
+END_IF"];
+
+}
+subgraph cluster_EthDeposit_ConfirmManager {
+label = "[EthDeposit_ConfirmManager]" 
+subgraph cluster_EthDeposit_ConfirmManager_0_0 {
+label = "[ENTRY_POINT]" 
+"EthDeposit_ConfirmManager_0_0" [label="Node Type: Phi EthDeposit_ConfirmManager_0_0
+SSA:
+NewManager_2(address) := ϕ(['NewManager_1', 'NewManager_0'])
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_ConfirmManager_1_0 {
+label = "[IF msg.sender == NewManager]" 
+"EthDeposit_ConfirmManager_1_0" [label="Node Type: Binary EthDeposit_ConfirmManager_1_0
+SSA:
+TMP_177(bool) = msg.sender == NewManager_2
+
+state_vars_read: NewManager" color="red"];
+
+"EthDeposit_ConfirmManager_1_1" [label="Node Type: Condition EthDeposit_ConfirmManager_1_1
+SSA:
+CONDITION TMP_177
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_ConfirmManager_2_0 {
+label = "[EXPRESSION Manager = NewManager]" 
+"EthDeposit_ConfirmManager_2_0" [label="Node Type: Assignment EthDeposit_ConfirmManager_2_0
+SSA:
+Manager_4(address) := NewManager_2(address)
+
+state_vars_read: NewManager
+state_vars_written: Manager" color="red"];
+
+}
+"EthDeposit_ConfirmManager_3_0" [label="EthDeposit_ConfirmManager_3_0
+END_IF"];
+
+}
+subgraph cluster_EthDeposit_WithdrawToSponsor_address_uint256 {
+label = "[EthDeposit_WithdrawToSponsor_address_uint256]" 
+subgraph cluster_EthDeposit_WithdrawToSponsor_address_uint256_0_0 {
+label = "[ENTRY_POINT]" 
+"EthDeposit_WithdrawToSponsor_address_uint256_0_0" [label="Node Type: Phi EthDeposit_WithdrawToSponsor_address_uint256_0_0
+SSA:
+CharterCapital_3(uint256) := ϕ(['CharterCapital_2', 'CharterCapital_0', 'CharterCapital_4'])
+" color="black"];
+
+"EthDeposit_WithdrawToSponsor_address_uint256_0_1" [label="Node Type: Phi EthDeposit_WithdrawToSponsor_address_uint256_0_1
+SSA:
+Sponsors_3(mapping(address => uint256)) := ϕ(['Sponsors_3', 'Sponsors_2', 'Sponsors_0'])
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_WithdrawToSponsor_address_uint256_7_0 {
+label = "[END_IF]" 
+"EthDeposit_WithdrawToSponsor_address_uint256_7_0" [label="Node Type: Phi EthDeposit_WithdrawToSponsor_address_uint256_7_0
+SSA:
+CharterCapital_7(uint256) := ϕ(['CharterCapital_5', 'CharterCapital_6'])
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_WithdrawToSponsor_address_uint256_1_0 {
+label = "[IF Sponsors[_addr] > 0]" 
+"EthDeposit_WithdrawToSponsor_address_uint256_1_0" [label="Node Type: Index EthDeposit_WithdrawToSponsor_address_uint256_1_0
+SSA:
+REF_118(uint256) -> Sponsors_3[_addr_1]
+
+state_vars_written: Sponsors" color="red"];
+
+"EthDeposit_WithdrawToSponsor_address_uint256_1_1" [label="Node Type: Binary EthDeposit_WithdrawToSponsor_address_uint256_1_1
+SSA:
+TMP_192(bool) = REF_118 > 0
+
+state_vars_read: Sponsors" color="red"];
+
+"EthDeposit_WithdrawToSponsor_address_uint256_1_2" [label="Node Type: Condition EthDeposit_WithdrawToSponsor_address_uint256_1_2
+SSA:
+CONDITION TMP_192
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_WithdrawToSponsor_address_uint256_2_0 {
+label = "[IF isOwner()]" 
+"EthDeposit_WithdrawToSponsor_address_uint256_2_0" [label="Node Type: InternalCall EthDeposit_WithdrawToSponsor_address_uint256_2_0
+SSA:
+TMP_193(bool) = INTERNAL_CALL, Owned.isOwner()()
+" color="black"];
+
+"EthDeposit_WithdrawToSponsor_address_uint256_2_1" [label="Node Type: Condition EthDeposit_WithdrawToSponsor_address_uint256_2_1
+SSA:
+CONDITION TMP_193
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_WithdrawToSponsor_address_uint256_3_0 {
+label = "[IF _addr.send(_wei)]" 
+"EthDeposit_WithdrawToSponsor_address_uint256_3_0" [label="Node Type: Send EthDeposit_WithdrawToSponsor_address_uint256_3_0
+SSA:
+TMP_194 = SEND dest:_addr_1 value:_wei_1
+" color="black"];
+
+"EthDeposit_WithdrawToSponsor_address_uint256_3_1" [label="Node Type: Condition EthDeposit_WithdrawToSponsor_address_uint256_3_1
+SSA:
+CONDITION TMP_194
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_WithdrawToSponsor_address_uint256_4_0 {
+label = "[IF CharterCapital >= _wei]" 
+"EthDeposit_WithdrawToSponsor_address_uint256_4_0" [label="Node Type: Binary EthDeposit_WithdrawToSponsor_address_uint256_4_0
+SSA:
+TMP_195(bool) = CharterCapital_4 >= _wei_1
+
+state_vars_read: CharterCapital" color="red"];
+
+"EthDeposit_WithdrawToSponsor_address_uint256_4_1" [label="Node Type: Condition EthDeposit_WithdrawToSponsor_address_uint256_4_1
+SSA:
+CONDITION TMP_195
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_WithdrawToSponsor_address_uint256_5_0 {
+label = "[EXPRESSION CharterCapital -= _wei]" 
+"EthDeposit_WithdrawToSponsor_address_uint256_5_0" [label="Node Type: Binary EthDeposit_WithdrawToSponsor_address_uint256_5_0
+SSA:
+CharterCapital_5(uint256) = CharterCapital_4 - _wei_1
+
+state_vars_read: CharterCapital
+state_vars_written: CharterCapital" color="red"];
+
+}
+subgraph cluster_EthDeposit_WithdrawToSponsor_address_uint256_6_0 {
+label = "[EXPRESSION CharterCapital = 0]" 
+"EthDeposit_WithdrawToSponsor_address_uint256_6_0" [label="Node Type: Assignment EthDeposit_WithdrawToSponsor_address_uint256_6_0
+SSA:
+CharterCapital_6(uint256) := 0(uint256)
+
+state_vars_written: CharterCapital" color="red"];
+
+}
+"EthDeposit_WithdrawToSponsor_address_uint256_10_0" [label="EthDeposit_WithdrawToSponsor_address_uint256_10_0
+END_IF"];
+
+"EthDeposit_WithdrawToSponsor_address_uint256_9_0" [label="EthDeposit_WithdrawToSponsor_address_uint256_9_0
+END_IF"];
+
+"EthDeposit_WithdrawToSponsor_address_uint256_8_0" [label="EthDeposit_WithdrawToSponsor_address_uint256_8_0
+END_IF"];
+
+}
+subgraph cluster_EthDeposit_StartPaymens {
+label = "[EthDeposit_StartPaymens]" 
+subgraph cluster_EthDeposit_StartPaymens_1_0 {
+label = "[IF canManage()]" 
+"EthDeposit_StartPaymens_1_0" [label="Node Type: InternalCall EthDeposit_StartPaymens_1_0
+SSA:
+TMP_178(bool) = INTERNAL_CALL, EthDeposit.canManage()()
+" color="black"];
+
+"EthDeposit_StartPaymens_1_1" [label="Node Type: Condition EthDeposit_StartPaymens_1_1
+SSA:
+CONDITION TMP_178
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_StartPaymens_2_0 {
+label = "[EXPRESSION AuthorizePayments(true)]" 
+"EthDeposit_StartPaymens_2_0" [label="Node Type: InternalCall EthDeposit_StartPaymens_2_0
+SSA:
+INTERNAL_CALL, EthDeposit.AuthorizePayments(bool)(True)
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_StartPaymens_3_0 {
+label = "[EXPRESSION StartOfPayments(msg.sender,now)]" 
+"EthDeposit_StartPaymens_3_0" [label="Node Type: EventCall EthDeposit_StartPaymens_3_0
+SSA:
+Emit StartOfPayments()
+" color="black"];
+
+}
+"EthDeposit_StartPaymens_0_0" [label="EthDeposit_StartPaymens_0_0
+ENTRY_POINT"];
+
+"EthDeposit_StartPaymens_4_0" [label="EthDeposit_StartPaymens_4_0
+END_IF"];
+
+}
+subgraph cluster_EthDeposit_Deposit {
+label = "[EthDeposit_Deposit]" 
+subgraph cluster_EthDeposit_Deposit_1_0 {
+label = "[EXPRESSION FixProfit()]" 
+"EthDeposit_Deposit_1_0" [label="Node Type: InternalCall EthDeposit_Deposit_1_0
+SSA:
+INTERNAL_CALL, EthDeposit.FixProfit()()
+" color="black"];
+
+"EthDeposit_Deposit_1_1" [label="Node Type: PhiCallback EthDeposit_Deposit_1_1
+SSA:
+Lenders_2(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_8'])
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_Deposit_0_0 {
+label = "[ENTRY_POINT]" 
+"EthDeposit_Deposit_0_0" [label="Node Type: Phi EthDeposit_Deposit_0_0
+SSA:
+Lenders_1(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_8', 'Lenders_11', 'Lenders_0', 'Lenders_3', 'Lenders_4'])
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_Deposit_2_0 {
+label = "[EXPRESSION Lenders[msg.sender].Amount += msg.value]" 
+"EthDeposit_Deposit_2_0" [label="Node Type: Index EthDeposit_Deposit_2_0
+SSA:
+REF_120(EthDeposit.Lender) -> Lenders_2[msg.sender]
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_Deposit_2_1" [label="Node Type: Member EthDeposit_Deposit_2_1
+SSA:
+REF_121(uint256) -> REF_120.Amount
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_Deposit_2_3" [label="Node Type: Binary EthDeposit_Deposit_2_3
+SSA:
+REF_121(-> Lenders_3) = REF_121 + msg.value
+
+state_vars_read: Lenders
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_Deposit_2_2" [label="Node Type: Phi EthDeposit_Deposit_2_2
+SSA:
+Lenders_3(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_2'])
+
+state_vars_written: Lenders" color="red"];
+
+}
+}
+subgraph cluster_EthDeposit_StopPaymens {
+label = "[EthDeposit_StopPaymens]" 
+subgraph cluster_EthDeposit_StopPaymens_1_0 {
+label = "[IF canManage()]" 
+"EthDeposit_StopPaymens_1_0" [label="Node Type: InternalCall EthDeposit_StopPaymens_1_0
+SSA:
+TMP_181(bool) = INTERNAL_CALL, EthDeposit.canManage()()
+" color="black"];
+
+"EthDeposit_StopPaymens_1_1" [label="Node Type: Condition EthDeposit_StopPaymens_1_1
+SSA:
+CONDITION TMP_181
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_StopPaymens_2_0 {
+label = "[EXPRESSION AuthorizePayments(false)]" 
+"EthDeposit_StopPaymens_2_0" [label="Node Type: InternalCall EthDeposit_StopPaymens_2_0
+SSA:
+INTERNAL_CALL, EthDeposit.AuthorizePayments(bool)(False)
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_StopPaymens_3_0 {
+label = "[EXPRESSION EndOfPayments(msg.sender,now)]" 
+"EthDeposit_StopPaymens_3_0" [label="Node Type: EventCall EthDeposit_StopPaymens_3_0
+SSA:
+Emit EndOfPayments()
+" color="black"];
+
+}
+"EthDeposit_StopPaymens_0_0" [label="EthDeposit_StopPaymens_0_0
+ENTRY_POINT"];
+
+"EthDeposit_StopPaymens_4_0" [label="EthDeposit_StopPaymens_4_0
+END_IF"];
+
+}
+subgraph cluster_EthDeposit_AuthorizePayments_bool {
+label = "[EthDeposit_AuthorizePayments_bool]" 
+subgraph cluster_EthDeposit_AuthorizePayments_bool_1_0 {
+label = "[IF isOwner()]" 
+"EthDeposit_AuthorizePayments_bool_1_0" [label="Node Type: InternalCall EthDeposit_AuthorizePayments_bool_1_0
+SSA:
+TMP_184(bool) = INTERNAL_CALL, Owned.isOwner()()
+" color="black"];
+
+"EthDeposit_AuthorizePayments_bool_1_1" [label="Node Type: Condition EthDeposit_AuthorizePayments_bool_1_1
+SSA:
+CONDITION TMP_184
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_AuthorizePayments_bool_2_0 {
+label = "[EXPRESSION paymentsAllowed = val]" 
+"EthDeposit_AuthorizePayments_bool_2_0" [label="Node Type: Assignment EthDeposit_AuthorizePayments_bool_2_0
+SSA:
+paymentsAllowed_1(bool) := val_1(bool)
+
+state_vars_written: paymentsAllowed" color="red"];
+
+}
+"EthDeposit_AuthorizePayments_bool_3_0" [label="EthDeposit_AuthorizePayments_bool_3_0
+END_IF"];
+
+"EthDeposit_AuthorizePayments_bool_0_0" [label="EthDeposit_AuthorizePayments_bool_0_0
+ENTRY_POINT"];
+
+}
+subgraph cluster_EthDeposit_SetPrcntRate_uint256 {
+label = "[EthDeposit_SetPrcntRate_uint256]" 
+subgraph cluster_EthDeposit_SetPrcntRate_uint256_0_0 {
+label = "[ENTRY_POINT]" 
+"EthDeposit_SetPrcntRate_uint256_0_0" [label="Node Type: Phi EthDeposit_SetPrcntRate_uint256_0_0
+SSA:
+PrcntRate_1(uint256) := ϕ(['PrcntRate_0', 'PrcntRate_2'])
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_SetPrcntRate_uint256_1_0 {
+label = "[IF canManage()]" 
+"EthDeposit_SetPrcntRate_uint256_1_0" [label="Node Type: InternalCall EthDeposit_SetPrcntRate_uint256_1_0
+SSA:
+TMP_185(bool) = INTERNAL_CALL, EthDeposit.canManage()()
+" color="black"];
+
+"EthDeposit_SetPrcntRate_uint256_1_1" [label="Node Type: Condition EthDeposit_SetPrcntRate_uint256_1_1
+SSA:
+CONDITION TMP_185
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_SetPrcntRate_uint256_2_0 {
+label = "[IF val != PrcntRate]" 
+"EthDeposit_SetPrcntRate_uint256_2_0" [label="Node Type: Binary EthDeposit_SetPrcntRate_uint256_2_0
+SSA:
+TMP_186(bool) = val_1 != PrcntRate_2
+
+state_vars_read: PrcntRate" color="red"];
+
+"EthDeposit_SetPrcntRate_uint256_2_1" [label="Node Type: Condition EthDeposit_SetPrcntRate_uint256_2_1
+SSA:
+CONDITION TMP_186
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_SetPrcntRate_uint256_3_0 {
+label = "[IF val >= 1]" 
+"EthDeposit_SetPrcntRate_uint256_3_0" [label="Node Type: Binary EthDeposit_SetPrcntRate_uint256_3_0
+SSA:
+TMP_187(bool) = val_1 >= 1
+" color="black"];
+
+"EthDeposit_SetPrcntRate_uint256_3_1" [label="Node Type: Condition EthDeposit_SetPrcntRate_uint256_3_1
+SSA:
+CONDITION TMP_187
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_SetPrcntRate_uint256_4_0 {
+label = "[EXPRESSION PrcntRate = val]" 
+"EthDeposit_SetPrcntRate_uint256_4_0" [label="Node Type: Assignment EthDeposit_SetPrcntRate_uint256_4_0
+SSA:
+PrcntRate_3(uint256) := val_1(uint256)
+
+state_vars_written: PrcntRate" color="red"];
+
+}
+"EthDeposit_SetPrcntRate_uint256_7_0" [label="EthDeposit_SetPrcntRate_uint256_7_0
+END_IF"];
+
+"EthDeposit_SetPrcntRate_uint256_6_0" [label="EthDeposit_SetPrcntRate_uint256_6_0
+END_IF"];
+
+"EthDeposit_SetPrcntRate_uint256_5_0" [label="EthDeposit_SetPrcntRate_uint256_5_0
+END_IF"];
+
+}
+subgraph cluster_EthDeposit_fallback {
+label = "[EthDeposit_fallback]" 
+subgraph cluster_EthDeposit_fallback_1_0 {
+label = "[EXPRESSION ToSponsor()]" 
+"EthDeposit_fallback_1_0" [label="Node Type: InternalCall EthDeposit_fallback_1_0
+SSA:
+INTERNAL_CALL, EthDeposit.ToSponsor()()
+" color="black"];
+
+}
+"EthDeposit_fallback_0_0" [label="EthDeposit_fallback_0_0
+ENTRY_POINT"];
+
+}
+subgraph cluster_EthDeposit_CheckProfit_address {
+label = "[EthDeposit_CheckProfit_address]" 
+subgraph cluster_EthDeposit_CheckProfit_address_0_0 {
+label = "[ENTRY_POINT]" 
+"EthDeposit_CheckProfit_address_0_0" [label="Node Type: Phi EthDeposit_CheckProfit_address_0_0
+SSA:
+addr_1(address) := ϕ(['msg.sender'])
+" color="black"];
+
+"EthDeposit_CheckProfit_address_0_1" [label="Node Type: Phi EthDeposit_CheckProfit_address_0_1
+SSA:
+PrcntRate_4(uint256) := ϕ(['PrcntRate_0', 'PrcntRate_2'])
+" color="black"];
+
+"EthDeposit_CheckProfit_address_0_2" [label="Node Type: Phi EthDeposit_CheckProfit_address_0_2
+SSA:
+Lenders_4(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_8', 'Lenders_11', 'Lenders_0', 'Lenders_3', 'Lenders_4'])
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_CheckProfit_address_1_0 {
+label = "[RETURN ((Lenders[addr].Amount / 100) * PrcntRate) * ((now - Lenders[addr].LastLendTime) / 86400)]" 
+"EthDeposit_CheckProfit_address_1_0" [label="Node Type: Index EthDeposit_CheckProfit_address_1_0
+SSA:
+REF_122(EthDeposit.Lender) -> Lenders_4[addr_1]
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_CheckProfit_address_1_1" [label="Node Type: Member EthDeposit_CheckProfit_address_1_1
+SSA:
+REF_123(uint256) -> REF_122.Amount
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_CheckProfit_address_1_2" [label="Node Type: Binary EthDeposit_CheckProfit_address_1_2
+SSA:
+TMP_197(uint256) = REF_123 / 100
+
+state_vars_read: Lenders" color="red"];
+
+"EthDeposit_CheckProfit_address_1_3" [label="Node Type: Binary EthDeposit_CheckProfit_address_1_3
+SSA:
+TMP_198(uint256) = TMP_197 * PrcntRate_4
+
+state_vars_read: PrcntRate" color="red"];
+
+"EthDeposit_CheckProfit_address_1_4" [label="Node Type: Index EthDeposit_CheckProfit_address_1_4
+SSA:
+REF_124(EthDeposit.Lender) -> Lenders_4[addr_1]
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_CheckProfit_address_1_5" [label="Node Type: Member EthDeposit_CheckProfit_address_1_5
+SSA:
+REF_125(uint256) -> REF_124.LastLendTime
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_CheckProfit_address_1_6" [label="Node Type: Binary EthDeposit_CheckProfit_address_1_6
+SSA:
+TMP_199(uint256) = now - REF_125
+
+state_vars_read: Lenders" color="red"];
+
+"EthDeposit_CheckProfit_address_1_7" [label="Node Type: Binary EthDeposit_CheckProfit_address_1_7
+SSA:
+TMP_200(uint256) = TMP_199 / 86400
+" color="black"];
+
+"EthDeposit_CheckProfit_address_1_8" [label="Node Type: Binary EthDeposit_CheckProfit_address_1_8
+SSA:
+TMP_201(uint256) = TMP_198 * TMP_200
+" color="black"];
+
+"EthDeposit_CheckProfit_address_1_9" [label="Node Type: Return EthDeposit_CheckProfit_address_1_9
+SSA:
+RETURN TMP_201
+" color="black"];
+
+}
+}
+subgraph cluster_EthDeposit_changeOwner_address {
+label = "[EthDeposit_changeOwner_address]" 
+subgraph cluster_EthDeposit_changeOwner_address_1_0 {
+label = "[IF isOwner()]" 
+"EthDeposit_changeOwner_address_1_0" [label="Node Type: InternalCall EthDeposit_changeOwner_address_1_0
+SSA:
+TMP_163(bool) = INTERNAL_CALL, Owned.isOwner()()
+" color="black"];
+
+"EthDeposit_changeOwner_address_1_1" [label="Node Type: Condition EthDeposit_changeOwner_address_1_1
+SSA:
+CONDITION TMP_163
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_changeOwner_address_2_0 {
+label = "[EXPRESSION newOwner = addr]" 
+"EthDeposit_changeOwner_address_2_0" [label="Node Type: Assignment EthDeposit_changeOwner_address_2_0
+SSA:
+newOwner_1(address) := addr_1(address)
+
+state_vars_written: newOwner" color="red"];
+
+}
+"EthDeposit_changeOwner_address_0_0" [label="EthDeposit_changeOwner_address_0_0
+ENTRY_POINT"];
+
+"EthDeposit_changeOwner_address_3_0" [label="EthDeposit_changeOwner_address_3_0
+END_IF"];
+
+}
+subgraph cluster_EthDeposit_confirmOwner {
+label = "[EthDeposit_confirmOwner]" 
+subgraph cluster_EthDeposit_confirmOwner_0_0 {
+label = "[ENTRY_POINT]" 
+"EthDeposit_confirmOwner_0_0" [label="Node Type: Phi EthDeposit_confirmOwner_0_0
+SSA:
+newOwner_2(address) := ϕ(['newOwner_0', 'newOwner_1'])
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_confirmOwner_1_0 {
+label = "[IF msg.sender == newOwner]" 
+"EthDeposit_confirmOwner_1_0" [label="Node Type: Binary EthDeposit_confirmOwner_1_0
+SSA:
+TMP_164(bool) = msg.sender == newOwner_2
+
+state_vars_read: newOwner" color="red"];
+
+"EthDeposit_confirmOwner_1_1" [label="Node Type: Condition EthDeposit_confirmOwner_1_1
+SSA:
+CONDITION TMP_164
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_confirmOwner_2_0 {
+label = "[EXPRESSION owner = newOwner]" 
+"EthDeposit_confirmOwner_2_0" [label="Node Type: Assignment EthDeposit_confirmOwner_2_0
+SSA:
+owner_1(address) := newOwner_2(address)
+
+state_vars_read: newOwner
+state_vars_written: owner" color="red"];
+
+}
+"EthDeposit_confirmOwner_3_0" [label="EthDeposit_confirmOwner_3_0
+END_IF"];
+
+}
+subgraph cluster_EthDeposit_isOwner {
+label = "[EthDeposit_isOwner]" 
+subgraph cluster_EthDeposit_isOwner_0_0 {
+label = "[ENTRY_POINT]" 
+"EthDeposit_isOwner_0_0" [label="Node Type: Phi EthDeposit_isOwner_0_0
+SSA:
+owner_2(address) := ϕ(['owner_1', 'owner_0'])
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_isOwner_1_0 {
+label = "[RETURN owner == msg.sender]" 
+"EthDeposit_isOwner_1_0" [label="Node Type: Binary EthDeposit_isOwner_1_0
+SSA:
+TMP_165(bool) = owner_2 == msg.sender
+
+state_vars_read: owner" color="red"];
+
+"EthDeposit_isOwner_1_1" [label="Node Type: Return EthDeposit_isOwner_1_1
+SSA:
+RETURN TMP_165
+" color="black"];
+
+}
+}
+subgraph cluster_EthDeposit_FixProfit {
+label = "[EthDeposit_FixProfit]" 
+subgraph cluster_EthDeposit_FixProfit_0_0 {
+label = "[ENTRY_POINT]" 
+"EthDeposit_FixProfit_0_0" [label="Node Type: Phi EthDeposit_FixProfit_0_0
+SSA:
+Lenders_5(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_8', 'Lenders_11', 'Lenders_0', 'Lenders_3', 'Lenders_4'])
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_FixProfit_1_0 {
+label = "[IF Lenders[msg.sender].Amount > 0]" 
+"EthDeposit_FixProfit_1_0" [label="Node Type: Index EthDeposit_FixProfit_1_0
+SSA:
+REF_126(EthDeposit.Lender) -> Lenders_5[msg.sender]
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_FixProfit_1_1" [label="Node Type: Member EthDeposit_FixProfit_1_1
+SSA:
+REF_127(uint256) -> REF_126.Amount
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_FixProfit_1_2" [label="Node Type: Binary EthDeposit_FixProfit_1_2
+SSA:
+TMP_202(bool) = REF_127 > 0
+
+state_vars_read: Lenders" color="red"];
+
+"EthDeposit_FixProfit_1_3" [label="Node Type: Condition EthDeposit_FixProfit_1_3
+SSA:
+CONDITION TMP_202
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_FixProfit_2_0 {
+label = "[EXPRESSION Lenders[msg.sender].Reserved += CheckProfit(msg.sender)]" 
+"EthDeposit_FixProfit_2_0" [label="Node Type: Index EthDeposit_FixProfit_2_0
+SSA:
+REF_128(EthDeposit.Lender) -> Lenders_5[msg.sender]
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_FixProfit_2_1" [label="Node Type: Member EthDeposit_FixProfit_2_1
+SSA:
+REF_129(uint256) -> REF_128.Reserved
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_FixProfit_2_2" [label="Node Type: InternalCall EthDeposit_FixProfit_2_2
+SSA:
+TMP_203(uint256) = INTERNAL_CALL, EthDeposit.CheckProfit(address)(msg.sender)
+" color="black"];
+
+"EthDeposit_FixProfit_2_3" [label="Node Type: PhiCallback EthDeposit_FixProfit_2_3
+SSA:
+Lenders_6(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_4'])
+" color="black"];
+
+"EthDeposit_FixProfit_2_5" [label="Node Type: Binary EthDeposit_FixProfit_2_5
+SSA:
+REF_129(-> Lenders_7) = REF_129 + TMP_203
+
+state_vars_read: Lenders
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_FixProfit_2_4" [label="Node Type: Phi EthDeposit_FixProfit_2_4
+SSA:
+Lenders_7(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_5'])
+
+state_vars_written: Lenders" color="red"];
+
+}
+subgraph cluster_EthDeposit_FixProfit_4_0 {
+label = "[EXPRESSION Lenders[msg.sender].LastLendTime = now]" 
+"EthDeposit_FixProfit_4_0" [label="Node Type: Index EthDeposit_FixProfit_4_0
+SSA:
+REF_130(EthDeposit.Lender) -> Lenders_7[msg.sender]
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_FixProfit_4_1" [label="Node Type: Member EthDeposit_FixProfit_4_1
+SSA:
+REF_131(uint256) -> REF_130.LastLendTime
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_FixProfit_4_3" [label="Node Type: Assignment EthDeposit_FixProfit_4_3
+SSA:
+REF_131 (->Lenders_8) := now(uint256)
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_FixProfit_4_2" [label="Node Type: Phi EthDeposit_FixProfit_4_2
+SSA:
+Lenders_8(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_7'])
+
+state_vars_written: Lenders" color="red"];
+
+}
+"EthDeposit_FixProfit_3_0" [label="EthDeposit_FixProfit_3_0
+END_IF"];
+
+}
+subgraph cluster_EthDeposit_WthdrawAllToCreator {
+label = "[EthDeposit_WthdrawAllToCreator]" 
+subgraph cluster_EthDeposit_WthdrawAllToCreator_0_0 {
+label = "[ENTRY_POINT]" 
+"EthDeposit_WthdrawAllToCreator_0_0" [label="Node Type: Phi EthDeposit_WthdrawAllToCreator_0_0
+SSA:
+creator_1(address) := ϕ(['creator_0'])
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_WthdrawAllToCreator_1_0 {
+label = "[IF msg.sender == creator]" 
+"EthDeposit_WthdrawAllToCreator_1_0" [label="Node Type: Binary EthDeposit_WthdrawAllToCreator_1_0
+SSA:
+TMP_166(bool) = msg.sender == creator_1
+
+state_vars_read: creator" color="red"];
+
+"EthDeposit_WthdrawAllToCreator_1_1" [label="Node Type: Condition EthDeposit_WthdrawAllToCreator_1_1
+SSA:
+CONDITION TMP_166
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_WthdrawAllToCreator_2_0 {
+label = "[EXPRESSION creator.transfer(this.balance)]" 
+"EthDeposit_WthdrawAllToCreator_2_0" [label="Node Type: Balance EthDeposit_WthdrawAllToCreator_2_0
+SSA:
+REF_113 -> BALANCE this
+" color="black"];
+
+"EthDeposit_WthdrawAllToCreator_2_1" [label="Node Type: Transfer EthDeposit_WthdrawAllToCreator_2_1
+SSA:
+Transfer dest:creator_1 value:REF_113
+
+state_vars_read: creator" color="red"];
+
+}
+"EthDeposit_WthdrawAllToCreator_3_0" [label="EthDeposit_WthdrawAllToCreator_3_0
+END_IF"];
+
+}
+subgraph cluster_EthDeposit_WthdrawToCreator_uint256 {
+label = "[EthDeposit_WthdrawToCreator_uint256]" 
+subgraph cluster_EthDeposit_WthdrawToCreator_uint256_0_0 {
+label = "[ENTRY_POINT]" 
+"EthDeposit_WthdrawToCreator_uint256_0_0" [label="Node Type: Phi EthDeposit_WthdrawToCreator_uint256_0_0
+SSA:
+creator_2(address) := ϕ(['creator_0'])
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_WthdrawToCreator_uint256_1_0 {
+label = "[IF msg.sender == creator]" 
+"EthDeposit_WthdrawToCreator_uint256_1_0" [label="Node Type: Binary EthDeposit_WthdrawToCreator_uint256_1_0
+SSA:
+TMP_168(bool) = msg.sender == creator_2
+
+state_vars_read: creator" color="red"];
+
+"EthDeposit_WthdrawToCreator_uint256_1_1" [label="Node Type: Condition EthDeposit_WthdrawToCreator_uint256_1_1
+SSA:
+CONDITION TMP_168
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_WthdrawToCreator_uint256_2_0 {
+label = "[EXPRESSION creator.transfer(val)]" 
+"EthDeposit_WthdrawToCreator_uint256_2_0" [label="Node Type: Transfer EthDeposit_WthdrawToCreator_uint256_2_0
+SSA:
+Transfer dest:creator_2 value:val_1
+
+state_vars_read: creator" color="red"];
+
+}
+"EthDeposit_WthdrawToCreator_uint256_3_0" [label="EthDeposit_WthdrawToCreator_uint256_3_0
+END_IF"];
+
+}
+subgraph cluster_EthDeposit_WthdrawTo_address_uint256 {
+label = "[EthDeposit_WthdrawTo_address_uint256]" 
+subgraph cluster_EthDeposit_WthdrawTo_address_uint256_0_0 {
+label = "[ENTRY_POINT]" 
+"EthDeposit_WthdrawTo_address_uint256_0_0" [label="Node Type: Phi EthDeposit_WthdrawTo_address_uint256_0_0
+SSA:
+creator_3(address) := ϕ(['creator_0'])
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_WthdrawTo_address_uint256_1_0 {
+label = "[IF msg.sender == creator]" 
+"EthDeposit_WthdrawTo_address_uint256_1_0" [label="Node Type: Binary EthDeposit_WthdrawTo_address_uint256_1_0
+SSA:
+TMP_170(bool) = msg.sender == creator_3
+
+state_vars_read: creator" color="red"];
+
+"EthDeposit_WthdrawTo_address_uint256_1_1" [label="Node Type: Condition EthDeposit_WthdrawTo_address_uint256_1_1
+SSA:
+CONDITION TMP_170
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_WthdrawTo_address_uint256_2_0 {
+label = "[EXPRESSION addr.transfer(val)]" 
+"EthDeposit_WthdrawTo_address_uint256_2_0" [label="Node Type: Transfer EthDeposit_WthdrawTo_address_uint256_2_0
+SSA:
+Transfer dest:addr_1 value:val_1
+" color="black"];
+
+}
+"EthDeposit_WthdrawTo_address_uint256_3_0" [label="EthDeposit_WthdrawTo_address_uint256_3_0
+END_IF"];
+
+}
+subgraph cluster_EthDeposit_WitdrawLenderProfit {
+label = "[EthDeposit_WitdrawLenderProfit]" 
+subgraph cluster_EthDeposit_WitdrawLenderProfit_0_0 {
+label = "[ENTRY_POINT]" 
+"EthDeposit_WitdrawLenderProfit_0_0" [label="Node Type: Phi EthDeposit_WitdrawLenderProfit_0_0
+SSA:
+paymentsAllowed_2(bool) := ϕ(['paymentsAllowed_0', 'paymentsAllowed_1'])
+" color="black"];
+
+"EthDeposit_WitdrawLenderProfit_0_1" [label="Node Type: Phi EthDeposit_WitdrawLenderProfit_0_1
+SSA:
+Lenders_9(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_8', 'Lenders_11', 'Lenders_0', 'Lenders_3', 'Lenders_4'])
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_WitdrawLenderProfit_1_0 {
+label = "[IF paymentsAllowed]" 
+"EthDeposit_WitdrawLenderProfit_1_0" [label="Node Type: Condition EthDeposit_WitdrawLenderProfit_1_0
+SSA:
+CONDITION paymentsAllowed_2
+
+state_vars_read: paymentsAllowed" color="red"];
+
+}
+subgraph cluster_EthDeposit_WitdrawLenderProfit_2_0 {
+label = "[EXPRESSION FixProfit()]" 
+"EthDeposit_WitdrawLenderProfit_2_0" [label="Node Type: InternalCall EthDeposit_WitdrawLenderProfit_2_0
+SSA:
+INTERNAL_CALL, EthDeposit.FixProfit()()
+" color="black"];
+
+"EthDeposit_WitdrawLenderProfit_2_1" [label="Node Type: PhiCallback EthDeposit_WitdrawLenderProfit_2_1
+SSA:
+Lenders_10(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_8'])
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_WitdrawLenderProfit_3_0 {
+label = "[NEW VARIABLE profit = Lenders[msg.sender].Reserved]" 
+"EthDeposit_WitdrawLenderProfit_3_0" [label="Node Type: Index EthDeposit_WitdrawLenderProfit_3_0
+SSA:
+REF_132(EthDeposit.Lender) -> Lenders_10[msg.sender]
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_WitdrawLenderProfit_3_1" [label="Node Type: Member EthDeposit_WitdrawLenderProfit_3_1
+SSA:
+REF_133(uint256) -> REF_132.Reserved
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_WitdrawLenderProfit_3_2" [label="Node Type: Assignment EthDeposit_WitdrawLenderProfit_3_2
+SSA:
+profit_1(uint256) := REF_133(uint256)
+
+state_vars_read: Lenders" color="red"];
+
+}
+subgraph cluster_EthDeposit_WitdrawLenderProfit_4_0 {
+label = "[EXPRESSION Lenders[msg.sender].Reserved = 0]" 
+"EthDeposit_WitdrawLenderProfit_4_0" [label="Node Type: Index EthDeposit_WitdrawLenderProfit_4_0
+SSA:
+REF_134(EthDeposit.Lender) -> Lenders_10[msg.sender]
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_WitdrawLenderProfit_4_1" [label="Node Type: Member EthDeposit_WitdrawLenderProfit_4_1
+SSA:
+REF_135(uint256) -> REF_134.Reserved
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_WitdrawLenderProfit_4_3" [label="Node Type: Assignment EthDeposit_WitdrawLenderProfit_4_3
+SSA:
+REF_135 (->Lenders_11) := 0(uint256)
+
+state_vars_written: Lenders" color="red"];
+
+"EthDeposit_WitdrawLenderProfit_4_2" [label="Node Type: Phi EthDeposit_WitdrawLenderProfit_4_2
+SSA:
+Lenders_11(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_10'])
+
+state_vars_written: Lenders" color="red"];
+
+}
+subgraph cluster_EthDeposit_WitdrawLenderProfit_5_0 {
+label = "[EXPRESSION msg.sender.transfer(profit)]" 
+"EthDeposit_WitdrawLenderProfit_5_0" [label="Node Type: Transfer EthDeposit_WitdrawLenderProfit_5_0
+SSA:
+Transfer dest:msg.sender value:profit_1
+" color="black"];
+
+}
+"EthDeposit_WitdrawLenderProfit_6_0" [label="EthDeposit_WitdrawLenderProfit_6_0
+END_IF"];
+
+}
+subgraph cluster_EthDeposit_init_address {
+label = "[EthDeposit_init_address]" 
+subgraph cluster_EthDeposit_init_address_1_0 {
+label = "[EXPRESSION owner = msg.sender]" 
+"EthDeposit_init_address_1_0" [label="Node Type: Assignment EthDeposit_init_address_1_0
+SSA:
+owner_1(address) := msg.sender(address)
+
+state_vars_written: owner" color="red"];
+
+}
+subgraph cluster_EthDeposit_init_address_2_0 {
+label = "[EXPRESSION Manager = _manager]" 
+"EthDeposit_init_address_2_0" [label="Node Type: Assignment EthDeposit_init_address_2_0
+SSA:
+Manager_1(address) := _manager_1(address)
+
+state_vars_written: Manager" color="red"];
+
+}
+"EthDeposit_init_address_0_0" [label="EthDeposit_init_address_0_0
+ENTRY_POINT"];
+
+}
+subgraph cluster_EthDeposit_isManager {
+label = "[EthDeposit_isManager]" 
+subgraph cluster_EthDeposit_isManager_0_0 {
+label = "[ENTRY_POINT]" 
+"EthDeposit_isManager_0_0" [label="Node Type: Phi EthDeposit_isManager_0_0
+SSA:
+Manager_2(address) := ϕ(['Manager_1', 'Manager_4', 'Manager_0'])
+" color="black"];
+
+}
+subgraph cluster_EthDeposit_isManager_1_0 {
+label = "[RETURN (msg.sender == Manager)]" 
+"EthDeposit_isManager_1_0" [label="Node Type: Binary EthDeposit_isManager_1_0
+SSA:
+TMP_172(bool) = msg.sender == Manager_2
+
+state_vars_read: Manager" color="red"];
+
+"EthDeposit_isManager_1_1" [label="Node Type: Return EthDeposit_isManager_1_1
+SSA:
+RETURN TMP_172
+" color="black"];
+
+}
+}
+subgraph cluster_EthDeposit_constructor {
+label = "[EthDeposit_constructor]" 
+"EthDeposit_constructor_1_0" [label="EthDeposit_constructor_1_0
+OTHER_ENTRYPOINT PrcntRate = 5"];
+
+"EthDeposit_constructor_0_0" [label="EthDeposit_constructor_0_0
+OTHER_ENTRYPOINT creator = msg.sender"];
+
+}
+}
+subgraph cluster_Owned  {
+label = "[Owned]" 
+subgraph cluster_Owned_confirmOwner {
+label = "[Owned_confirmOwner]" 
+subgraph cluster_Owned_confirmOwner_1_0 {
+label = "[IF msg.sender == newOwner]" 
+"Owned_confirmOwner_1_0" [label="Node Type: Binary Owned_confirmOwner_1_0
+SSA:
+TMP_155(bool) = msg.sender == newOwner_2
+
+state_vars_read: newOwner" color="red"];
+
+"Owned_confirmOwner_1_1" [label="Node Type: Condition Owned_confirmOwner_1_1
+SSA:
+CONDITION TMP_155
+" color="black"];
+
+}
+subgraph cluster_Owned_confirmOwner_2_0 {
+label = "[EXPRESSION owner = newOwner]" 
+"Owned_confirmOwner_2_0" [label="Node Type: Assignment Owned_confirmOwner_2_0
+SSA:
+owner_1(address) := newOwner_2(address)
+
+state_vars_read: newOwner
+state_vars_written: owner" color="red"];
+
+}
+subgraph cluster_Owned_confirmOwner_0_0 {
+label = "[ENTRY_POINT]" 
+"Owned_confirmOwner_0_0" [label="Node Type: Phi Owned_confirmOwner_0_0
+SSA:
+newOwner_2(address) := ϕ(['newOwner_1', 'newOwner_0'])
+" color="black"];
+
+}
+"Owned_confirmOwner_3_0" [label="Owned_confirmOwner_3_0
+END_IF"];
+
+}
+subgraph cluster_Owned_isOwner {
+label = "[Owned_isOwner]" 
+subgraph cluster_Owned_isOwner_0_0 {
+label = "[ENTRY_POINT]" 
+"Owned_isOwner_0_0" [label="Node Type: Phi Owned_isOwner_0_0
+SSA:
+owner_2(address) := ϕ(['owner_0', 'owner_1'])
+" color="black"];
+
+}
+subgraph cluster_Owned_isOwner_1_0 {
+label = "[RETURN owner == msg.sender]" 
+"Owned_isOwner_1_0" [label="Node Type: Binary Owned_isOwner_1_0
+SSA:
+TMP_156(bool) = owner_2 == msg.sender
+
+state_vars_read: owner" color="red"];
+
+"Owned_isOwner_1_1" [label="Node Type: Return Owned_isOwner_1_1
+SSA:
+RETURN TMP_156
+" color="black"];
+
+}
+}
+subgraph cluster_Owned_WthdrawAllToCreator {
+label = "[Owned_WthdrawAllToCreator]" 
+subgraph cluster_Owned_WthdrawAllToCreator_0_0 {
+label = "[ENTRY_POINT]" 
+"Owned_WthdrawAllToCreator_0_0" [label="Node Type: Phi Owned_WthdrawAllToCreator_0_0
+SSA:
+creator_1(address) := ϕ(['creator_0'])
+" color="black"];
+
+}
+subgraph cluster_Owned_WthdrawAllToCreator_1_0 {
+label = "[IF msg.sender == creator]" 
+"Owned_WthdrawAllToCreator_1_0" [label="Node Type: Binary Owned_WthdrawAllToCreator_1_0
+SSA:
+TMP_157(bool) = msg.sender == creator_1
+
+state_vars_read: creator" color="red"];
+
+"Owned_WthdrawAllToCreator_1_1" [label="Node Type: Condition Owned_WthdrawAllToCreator_1_1
+SSA:
+CONDITION TMP_157
+" color="black"];
+
+}
+subgraph cluster_Owned_WthdrawAllToCreator_2_0 {
+label = "[EXPRESSION creator.transfer(this.balance)]" 
+"Owned_WthdrawAllToCreator_2_0" [label="Node Type: Balance Owned_WthdrawAllToCreator_2_0
+SSA:
+REF_109 -> BALANCE this
+" color="black"];
+
+"Owned_WthdrawAllToCreator_2_1" [label="Node Type: Transfer Owned_WthdrawAllToCreator_2_1
+SSA:
+Transfer dest:creator_1 value:REF_109
+
+state_vars_read: creator" color="red"];
+
+}
+"Owned_WthdrawAllToCreator_3_0" [label="Owned_WthdrawAllToCreator_3_0
+END_IF"];
+
+}
+subgraph cluster_Owned_WthdrawToCreator_uint256 {
+label = "[Owned_WthdrawToCreator_uint256]" 
+subgraph cluster_Owned_WthdrawToCreator_uint256_0_0 {
+label = "[ENTRY_POINT]" 
+"Owned_WthdrawToCreator_uint256_0_0" [label="Node Type: Phi Owned_WthdrawToCreator_uint256_0_0
+SSA:
+creator_2(address) := ϕ(['creator_0'])
+" color="black"];
+
+}
+subgraph cluster_Owned_WthdrawToCreator_uint256_1_0 {
+label = "[IF msg.sender == creator]" 
+"Owned_WthdrawToCreator_uint256_1_0" [label="Node Type: Binary Owned_WthdrawToCreator_uint256_1_0
+SSA:
+TMP_159(bool) = msg.sender == creator_2
+
+state_vars_read: creator" color="red"];
+
+"Owned_WthdrawToCreator_uint256_1_1" [label="Node Type: Condition Owned_WthdrawToCreator_uint256_1_1
+SSA:
+CONDITION TMP_159
+" color="black"];
+
+}
+subgraph cluster_Owned_WthdrawToCreator_uint256_2_0 {
+label = "[EXPRESSION creator.transfer(val)]" 
+"Owned_WthdrawToCreator_uint256_2_0" [label="Node Type: Transfer Owned_WthdrawToCreator_uint256_2_0
+SSA:
+Transfer dest:creator_2 value:val_1
+
+state_vars_read: creator" color="red"];
+
+}
+"Owned_WthdrawToCreator_uint256_3_0" [label="Owned_WthdrawToCreator_uint256_3_0
+END_IF"];
+
+}
+subgraph cluster_Owned_WthdrawTo_address_uint256 {
+label = "[Owned_WthdrawTo_address_uint256]" 
+subgraph cluster_Owned_WthdrawTo_address_uint256_0_0 {
+label = "[ENTRY_POINT]" 
+"Owned_WthdrawTo_address_uint256_0_0" [label="Node Type: Phi Owned_WthdrawTo_address_uint256_0_0
+SSA:
+creator_3(address) := ϕ(['creator_0'])
+" color="black"];
+
+}
+subgraph cluster_Owned_WthdrawTo_address_uint256_1_0 {
+label = "[IF msg.sender == creator]" 
+"Owned_WthdrawTo_address_uint256_1_0" [label="Node Type: Binary Owned_WthdrawTo_address_uint256_1_0
+SSA:
+TMP_161(bool) = msg.sender == creator_3
+
+state_vars_read: creator" color="red"];
+
+"Owned_WthdrawTo_address_uint256_1_1" [label="Node Type: Condition Owned_WthdrawTo_address_uint256_1_1
+SSA:
+CONDITION TMP_161
+" color="black"];
+
+}
+subgraph cluster_Owned_WthdrawTo_address_uint256_2_0 {
+label = "[EXPRESSION addr.transfer(val)]" 
+"Owned_WthdrawTo_address_uint256_2_0" [label="Node Type: Transfer Owned_WthdrawTo_address_uint256_2_0
+SSA:
+Transfer dest:addr_1 value:val_1
+" color="black"];
+
+}
+"Owned_WthdrawTo_address_uint256_3_0" [label="Owned_WthdrawTo_address_uint256_3_0
+END_IF"];
+
+}
+subgraph cluster_Owned_changeOwner_address {
+label = "[Owned_changeOwner_address]" 
+subgraph cluster_Owned_changeOwner_address_1_0 {
+label = "[IF isOwner()]" 
+"Owned_changeOwner_address_1_0" [label="Node Type: InternalCall Owned_changeOwner_address_1_0
+SSA:
+TMP_154(bool) = INTERNAL_CALL, Owned.isOwner()()
+" color="black"];
+
+"Owned_changeOwner_address_1_1" [label="Node Type: Condition Owned_changeOwner_address_1_1
+SSA:
+CONDITION TMP_154
+" color="black"];
+
+}
+subgraph cluster_Owned_changeOwner_address_2_0 {
+label = "[EXPRESSION newOwner = addr]" 
+"Owned_changeOwner_address_2_0" [label="Node Type: Assignment Owned_changeOwner_address_2_0
+SSA:
+newOwner_1(address) := addr_1(address)
+
+state_vars_written: newOwner" color="red"];
+
+}
+"Owned_changeOwner_address_3_0" [label="Owned_changeOwner_address_3_0
+END_IF"];
+
+"Owned_changeOwner_address_0_0" [label="Owned_changeOwner_address_0_0
+ENTRY_POINT"];
+
+}
+subgraph cluster_Owned_constructor {
+label = "[Owned_constructor]" 
+"Owned_constructor_0_0" [label="Owned_constructor_0_0
+OTHER_ENTRYPOINT owner = msg.sender"];
+
+"Owned_constructor_1_0" [label="Owned_constructor_1_0
+OTHER_ENTRYPOINT creator = msg.sender"];
+
+}
+}
+"EthDeposit_ToSponsor_2_0" -> "EthDeposit_ToSponsor_2_1" [color="black"]
+"EthDeposit_WitdrawLenderProfit_3_1" -> "EthDeposit_WitdrawLenderProfit_3_2" [color="black"]
+"EthDeposit_ToSponsor_2_1" -> "EthDeposit_ToSponsor_2_2" [color="black"]
+"EthDeposit_WitdrawLenderProfit_4_0" -> "EthDeposit_WitdrawLenderProfit_4_1" [color="black"]
+"EthDeposit_ToSponsor_2_2" -> "EthDeposit_ToSponsor_3_0" [label="True" color="black"]
+"EthDeposit_WitdrawLenderProfit_3_2" -> "EthDeposit_WitdrawLenderProfit_4_0" [color="black"]
+"EthDeposit_ToSponsor_2_2" -> "EthDeposit_ToSponsor_4_0" [label="False" color="black"]
+"EthDeposit_WitdrawLenderProfit_4_1" -> "EthDeposit_WitdrawLenderProfit_4_2" [color="black"]
+"EthDeposit_ToSponsor_3_0" -> "EthDeposit_ToSponsor_3_1" [color="black"]
+"EthDeposit_WitdrawLenderProfit_4_2" -> "EthDeposit_WitdrawLenderProfit_4_3" [color="black"]
+"EthDeposit_ToSponsor_5_0" -> "EthDeposit_ToSponsor_5_1" [color="black"]
+"EthDeposit_ToSponsor_3_1" -> "EthDeposit_ToSponsor_4_0" [color="black"]
+"EthDeposit_WitdrawLenderProfit_4_3" -> "EthDeposit_WitdrawLenderProfit_5_0" [color="black"]
+"EthDeposit_WitdrawLenderProfit_5_0" -> "EthDeposit_WitdrawLenderProfit_6_0" [color="black"]
+"EthDeposit_ToSponsor_4_0" -> "EthDeposit_ToSponsor_5_0" [color="black"]
+"EthDeposit_ToSponsor_5_1" -> "EthDeposit_ToSponsor_5_2" [color="black"]
+"EthDeposit_constructor_0_0" -> "EthDeposit_constructor_1_0" [color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_0_0" -> "EthDeposit_WithdrawToSponsor_address_uint256_0_1" [color="black"]
+"EthDeposit_ToSponsor_5_2" -> "EthDeposit_ToSponsor_6_0" [color="black"]
+"EthDeposit_ToSponsor_6_0" -> "EthDeposit_ToSponsor_7_0" [color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_1_0" -> "EthDeposit_WithdrawToSponsor_address_uint256_1_1" [color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_0_1" -> "EthDeposit_WithdrawToSponsor_address_uint256_1_0" [color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_1_1" -> "EthDeposit_WithdrawToSponsor_address_uint256_1_2" [color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_1_2" -> "EthDeposit_WithdrawToSponsor_address_uint256_2_0" [label="True" color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_1_2" -> "EthDeposit_WithdrawToSponsor_address_uint256_10_0" [label="False" color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_2_0" -> "EthDeposit_WithdrawToSponsor_address_uint256_2_1" [color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_2_1" -> "EthDeposit_WithdrawToSponsor_address_uint256_3_0" [label="True" color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_2_1" -> "EthDeposit_WithdrawToSponsor_address_uint256_9_0" [label="False" color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_3_0" -> "EthDeposit_WithdrawToSponsor_address_uint256_3_1" [color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_3_1" -> "EthDeposit_WithdrawToSponsor_address_uint256_4_0" [label="True" color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_3_1" -> "EthDeposit_WithdrawToSponsor_address_uint256_8_0" [label="False" color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_4_0" -> "EthDeposit_WithdrawToSponsor_address_uint256_4_1" [color="black"]
+"Owned_isOwner_1_0" -> "Owned_isOwner_1_1" [color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_4_1" -> "EthDeposit_WithdrawToSponsor_address_uint256_5_0" [label="True" color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_4_1" -> "EthDeposit_WithdrawToSponsor_address_uint256_6_0" [label="False" color="black"]
+"EthDeposit_Deposit_1_0" -> "EthDeposit_Deposit_1_1" [color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_5_0" -> "EthDeposit_WithdrawToSponsor_address_uint256_7_0" [color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_6_0" -> "EthDeposit_WithdrawToSponsor_address_uint256_7_0" [color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_7_0" -> "EthDeposit_WithdrawToSponsor_address_uint256_8_0" [color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_8_0" -> "EthDeposit_WithdrawToSponsor_address_uint256_9_0" [color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_9_0" -> "EthDeposit_WithdrawToSponsor_address_uint256_10_0" [color="black"]
+"Owned_changeOwner_address_1_0" -> "Owned_changeOwner_address_1_1" [color="black"]
+"EthDeposit_Deposit_0_0" -> "EthDeposit_Deposit_1_0" [color="black"]
+"EthDeposit_Deposit_2_0" -> "EthDeposit_Deposit_2_1" [color="black"]
+"Owned_changeOwner_address_0_0" -> "Owned_changeOwner_address_1_0" [color="black"]
+"EthDeposit_Deposit_1_1" -> "EthDeposit_Deposit_2_0" [color="black"]
+"Owned_changeOwner_address_1_1" -> "Owned_changeOwner_address_2_0" [label="True" color="black"]
+"EthDeposit_Deposit_2_1" -> "EthDeposit_Deposit_2_2" [color="black"]
+"Owned_changeOwner_address_1_1" -> "Owned_changeOwner_address_3_0" [label="False" color="black"]
+"EthDeposit_isOwner_1_0" -> "EthDeposit_isOwner_1_1" [color="black"]
+"EthDeposit_Deposit_2_2" -> "EthDeposit_Deposit_2_3" [color="black"]
+"Owned_changeOwner_address_2_0" -> "Owned_changeOwner_address_3_0" [color="black"]
+"EthDeposit_CheckProfit_address_0_0" -> "EthDeposit_CheckProfit_address_0_1" [color="black"]
+"Owned_confirmOwner_1_0" -> "Owned_confirmOwner_1_1" [color="black"]
+"EthDeposit_CheckProfit_address_0_1" -> "EthDeposit_CheckProfit_address_0_2" [color="black"]
+"Owned_confirmOwner_0_0" -> "Owned_confirmOwner_1_0" [color="black"]
+"EthDeposit_CheckProfit_address_1_0" -> "EthDeposit_CheckProfit_address_1_1" [color="black"]
+"Owned_confirmOwner_1_1" -> "Owned_confirmOwner_2_0" [label="True" color="black"]
+"EthDeposit_CheckProfit_address_0_2" -> "EthDeposit_CheckProfit_address_1_0" [color="black"]
+"Owned_confirmOwner_1_1" -> "Owned_confirmOwner_3_0" [label="False" color="black"]
+"EthDeposit_CheckProfit_address_1_1" -> "EthDeposit_CheckProfit_address_1_2" [color="black"]
+"Owned_isOwner_0_0" -> "Owned_isOwner_1_0" [color="black"]
+"EthDeposit_CheckProfit_address_1_2" -> "EthDeposit_CheckProfit_address_1_3" [color="black"]
+"Owned_confirmOwner_2_0" -> "Owned_confirmOwner_3_0" [color="black"]
+"EthDeposit_CheckProfit_address_1_3" -> "EthDeposit_CheckProfit_address_1_4" [color="black"]
+"EthDeposit_changeOwner_address_1_0" -> "EthDeposit_changeOwner_address_1_1" [color="black"]
+"EthDeposit_CheckProfit_address_1_4" -> "EthDeposit_CheckProfit_address_1_5" [color="black"]
+"Owned_WthdrawAllToCreator_1_0" -> "Owned_WthdrawAllToCreator_1_1" [color="black"]
+"EthDeposit_CheckProfit_address_1_5" -> "EthDeposit_CheckProfit_address_1_6" [color="black"]
+"Owned_WthdrawAllToCreator_0_0" -> "Owned_WthdrawAllToCreator_1_0" [color="black"]
+"EthDeposit_CheckProfit_address_1_6" -> "EthDeposit_CheckProfit_address_1_7" [color="black"]
+"Owned_WthdrawAllToCreator_1_1" -> "Owned_WthdrawAllToCreator_2_0" [label="True" color="black"]
+"EthDeposit_CheckProfit_address_1_7" -> "EthDeposit_CheckProfit_address_1_8" [color="black"]
+"Owned_WthdrawAllToCreator_1_1" -> "Owned_WthdrawAllToCreator_3_0" [label="False" color="black"]
+"EthDeposit_CheckProfit_address_1_8" -> "EthDeposit_CheckProfit_address_1_9" [color="black"]
+"Owned_WthdrawAllToCreator_2_0" -> "Owned_WthdrawAllToCreator_2_1" [color="black"]
+"EthDeposit_FixProfit_1_0" -> "EthDeposit_FixProfit_1_1" [color="black"]
+"Owned_WthdrawToCreator_uint256_1_0" -> "Owned_WthdrawToCreator_uint256_1_1" [color="black"]
+"EthDeposit_FixProfit_0_0" -> "EthDeposit_FixProfit_1_0" [color="black"]
+"Owned_WthdrawAllToCreator_2_1" -> "Owned_WthdrawAllToCreator_3_0" [color="black"]
+"EthDeposit_FixProfit_1_1" -> "EthDeposit_FixProfit_1_2" [color="black"]
+"Owned_WthdrawToCreator_uint256_0_0" -> "Owned_WthdrawToCreator_uint256_1_0" [color="black"]
+"EthDeposit_FixProfit_1_2" -> "EthDeposit_FixProfit_1_3" [color="black"]
+"Owned_WthdrawToCreator_uint256_1_1" -> "Owned_WthdrawToCreator_uint256_2_0" [label="True" color="black"]
+"EthDeposit_FixProfit_1_3" -> "EthDeposit_FixProfit_2_0" [label="True" color="black"]
+"Owned_WthdrawToCreator_uint256_1_1" -> "Owned_WthdrawToCreator_uint256_3_0" [label="False" color="black"]
+"EthDeposit_FixProfit_1_3" -> "EthDeposit_FixProfit_3_0" [label="False" color="black"]
+"Owned_WthdrawTo_address_uint256_1_0" -> "Owned_WthdrawTo_address_uint256_1_1" [color="black"]
+"EthDeposit_FixProfit_2_0" -> "EthDeposit_FixProfit_2_1" [color="black"]
+"Owned_WthdrawToCreator_uint256_2_0" -> "Owned_WthdrawToCreator_uint256_3_0" [color="black"]
+"EthDeposit_FixProfit_2_1" -> "EthDeposit_FixProfit_2_2" [color="black"]
+"Owned_WthdrawTo_address_uint256_0_0" -> "Owned_WthdrawTo_address_uint256_1_0" [color="black"]
+"EthDeposit_FixProfit_2_2" -> "EthDeposit_FixProfit_2_3" [color="black"]
+"Owned_WthdrawTo_address_uint256_1_1" -> "Owned_WthdrawTo_address_uint256_2_0" [label="True" color="black"]
+"EthDeposit_FixProfit_2_3" -> "EthDeposit_FixProfit_2_4" [color="black"]
+"Owned_WthdrawTo_address_uint256_1_1" -> "Owned_WthdrawTo_address_uint256_3_0" [label="False" color="black"]
+"EthDeposit_FixProfit_2_4" -> "EthDeposit_FixProfit_2_5" [color="black"]
+"Owned_constructor_0_0" -> "Owned_constructor_1_0" [color="black"]
+"EthDeposit_FixProfit_4_0" -> "EthDeposit_FixProfit_4_1" [color="black"]
+"Owned_WthdrawTo_address_uint256_2_0" -> "Owned_WthdrawTo_address_uint256_3_0" [color="black"]
+"EthDeposit_FixProfit_2_5" -> "EthDeposit_FixProfit_3_0" [color="black"]
+"EthDeposit_changeOwner_address_0_0" -> "EthDeposit_changeOwner_address_1_0" [color="black"]
+"EthDeposit_FixProfit_3_0" -> "EthDeposit_FixProfit_4_0" [color="black"]
+"EthDeposit_changeOwner_address_1_1" -> "EthDeposit_changeOwner_address_2_0" [label="True" color="black"]
+"EthDeposit_FixProfit_4_1" -> "EthDeposit_FixProfit_4_2" [color="black"]
+"EthDeposit_changeOwner_address_1_1" -> "EthDeposit_changeOwner_address_3_0" [label="False" color="black"]
+"EthDeposit_FixProfit_4_2" -> "EthDeposit_FixProfit_4_3" [color="black"]
+"EthDeposit_confirmOwner_1_0" -> "EthDeposit_confirmOwner_1_1" [color="black"]
+"EthDeposit_WitdrawLenderProfit_0_0" -> "EthDeposit_WitdrawLenderProfit_0_1" [color="black"]
+"EthDeposit_changeOwner_address_2_0" -> "EthDeposit_changeOwner_address_3_0" [color="black"]
+"EthDeposit_WitdrawLenderProfit_1_0" -> "EthDeposit_WitdrawLenderProfit_2_0" [label="True" color="black"]
+"ENTRY" -> "EthDeposit_WthdrawAllToCreator_0_0" [color="black"]
+"EthDeposit_confirmOwner_0_0" -> "EthDeposit_confirmOwner_1_0" [color="black"]
+"EthDeposit_WitdrawLenderProfit_0_1" -> "EthDeposit_WitdrawLenderProfit_1_0" [color="black"]
+"ENTRY" -> "EthDeposit_FixProfit_0_0" [color="black"]
+"EthDeposit_confirmOwner_1_1" -> "EthDeposit_confirmOwner_2_0" [label="True" color="black"]
+"EthDeposit_WitdrawLenderProfit_1_0" -> "EthDeposit_WitdrawLenderProfit_6_0" [label="False" color="black"]
+"ENTRY" -> "Owned_WthdrawTo_address_uint256_0_0" [color="black"]
+"EthDeposit_confirmOwner_1_1" -> "EthDeposit_confirmOwner_3_0" [label="False" color="black"]
+"EthDeposit_WitdrawLenderProfit_2_0" -> "EthDeposit_WitdrawLenderProfit_2_1" [color="black"]
+"ENTRY" -> "EthDeposit_changeOwner_address_0_0" [color="black"]
+"EthDeposit_isOwner_0_0" -> "EthDeposit_isOwner_1_0" [color="black"]
+"EthDeposit_WitdrawLenderProfit_3_0" -> "EthDeposit_WitdrawLenderProfit_3_1" [color="black"]
+"ENTRY" -> "EthDeposit_fallback_0_0" [color="black"]
+"EthDeposit_confirmOwner_2_0" -> "EthDeposit_confirmOwner_3_0" [color="black"]
+"EthDeposit_WitdrawLenderProfit_2_1" -> "EthDeposit_WitdrawLenderProfit_3_0" [color="black"]
+"ENTRY" -> "EthDeposit_WithdrawToSponsor_address_uint256_0_0" [color="black"]
+"EthDeposit_isManager_1_0" -> "EthDeposit_isManager_1_1" [color="black"]
+"ENTRY" -> "Owned_changeOwner_address_0_0" [color="black"]
+"EthDeposit_WthdrawAllToCreator_1_0" -> "EthDeposit_WthdrawAllToCreator_1_1" [color="black"]
+"ENTRY" -> "EthDeposit_isManager_0_0" [color="black"]
+"EthDeposit_WthdrawAllToCreator_0_0" -> "EthDeposit_WthdrawAllToCreator_1_0" [color="black"]
+"ENTRY" -> "EthDeposit_confirmOwner_0_0" [color="black"]
+"EthDeposit_WthdrawAllToCreator_1_1" -> "EthDeposit_WthdrawAllToCreator_2_0" [label="True" color="black"]
+"ENTRY" -> "Owned_WthdrawToCreator_uint256_0_0" [color="black"]
+"EthDeposit_WthdrawAllToCreator_1_1" -> "EthDeposit_WthdrawAllToCreator_3_0" [label="False" color="black"]
+"ENTRY" -> "Owned_isOwner_0_0" [color="black"]
+"EthDeposit_WthdrawAllToCreator_2_0" -> "EthDeposit_WthdrawAllToCreator_2_1" [color="black"]
+"ENTRY" -> "EthDeposit_SetPrcntRate_uint256_0_0" [color="black"]
+"EthDeposit_WthdrawToCreator_uint256_1_0" -> "EthDeposit_WthdrawToCreator_uint256_1_1" [color="black"]
+"ENTRY" -> "EthDeposit_WthdrawTo_address_uint256_0_0" [color="black"]
+"EthDeposit_WthdrawAllToCreator_2_1" -> "EthDeposit_WthdrawAllToCreator_3_0" [color="black"]
+"ENTRY" -> "EthDeposit_Deposit_0_0" [color="black"]
+"EthDeposit_WthdrawToCreator_uint256_0_0" -> "EthDeposit_WthdrawToCreator_uint256_1_0" [color="black"]
+"ENTRY" -> "EthDeposit_ToSponsor_0_0" [color="black"]
+"EthDeposit_WthdrawToCreator_uint256_1_1" -> "EthDeposit_WthdrawToCreator_uint256_2_0" [label="True" color="black"]
+"ENTRY" -> "EthDeposit_ChangeManager_address_0_0" [color="black"]
+"EthDeposit_WthdrawToCreator_uint256_1_1" -> "EthDeposit_WthdrawToCreator_uint256_3_0" [label="False" color="black"]
+"ENTRY" -> "EthDeposit_StartPaymens_0_0" [color="black"]
+"EthDeposit_WthdrawTo_address_uint256_1_0" -> "EthDeposit_WthdrawTo_address_uint256_1_1" [color="black"]
+"ENTRY" -> "Owned_confirmOwner_0_0" [color="black"]
+"EthDeposit_WthdrawToCreator_uint256_2_0" -> "EthDeposit_WthdrawToCreator_uint256_3_0" [color="black"]
+"ENTRY" -> "EthDeposit_CheckProfit_address_0_0" [color="black"]
+"EthDeposit_WthdrawTo_address_uint256_0_0" -> "EthDeposit_WthdrawTo_address_uint256_1_0" [color="black"]
+"ENTRY" -> "EthDeposit_WitdrawLenderProfit_0_0" [color="black"]
+"EthDeposit_WthdrawTo_address_uint256_1_1" -> "EthDeposit_WthdrawTo_address_uint256_2_0" [label="True" color="black"]
+"ENTRY" -> "EthDeposit_canManage_0_0" [color="black"]
+"EthDeposit_WthdrawTo_address_uint256_1_1" -> "EthDeposit_WthdrawTo_address_uint256_3_0" [label="False" color="black"]
+"ENTRY" -> "EthDeposit_init_address_0_0" [color="black"]
+"EthDeposit_init_address_0_0" -> "EthDeposit_init_address_1_0" [color="black"]
+"ENTRY" -> "Owned_WthdrawAllToCreator_0_0" [color="black"]
+"EthDeposit_WthdrawTo_address_uint256_2_0" -> "EthDeposit_WthdrawTo_address_uint256_3_0" [color="black"]
+"ENTRY" -> "EthDeposit_StopPaymens_0_0" [color="black"]
+"EthDeposit_init_address_1_0" -> "EthDeposit_init_address_2_0" [color="black"]
+"ENTRY" -> "EthDeposit_WthdrawToCreator_uint256_0_0" [color="black"]
+"EthDeposit_isManager_0_0" -> "EthDeposit_isManager_1_0" [color="black"]
+"ENTRY" -> "Owned_constructor_0_0" [color="black"]
+"EthDeposit_canManage_0_0" -> "EthDeposit_canManage_0_1" [color="black"]
+"ENTRY" -> "EthDeposit_isOwner_0_0" [color="black"]
+"EthDeposit_canManage_1_0" -> "EthDeposit_canManage_1_1" [color="black"]
+"ENTRY" -> "EthDeposit_ConfirmManager_0_0" [color="black"]
+"EthDeposit_canManage_0_1" -> "EthDeposit_canManage_1_0" [color="black"]
+"ENTRY" -> "EthDeposit_constructor_0_0" [color="black"]
+"EthDeposit_canManage_1_1" -> "EthDeposit_canManage_1_2" [color="black"]
+"ENTRY" -> "EthDeposit_AuthorizePayments_bool_0_0" [color="black"]
+"EthDeposit_canManage_1_2" -> "EthDeposit_canManage_1_3" [color="black"]
+"Owned_WthdrawTo_address_uint256_3_0" -> "EXIT" [color="black"]
+"EthDeposit_StartPaymens_1_0" -> "EthDeposit_StartPaymens_1_1" [color="black"]
+"EthDeposit_confirmOwner_3_0" -> "EXIT" [color="black"]
+"EthDeposit_ChangeManager_address_1_0" -> "EthDeposit_ChangeManager_address_1_1" [color="black"]
+"EthDeposit_CheckProfit_address_1_9" -> "EXIT" [color="black"]
+"EthDeposit_ChangeManager_address_0_0" -> "EthDeposit_ChangeManager_address_1_0" [color="black"]
+"EthDeposit_WithdrawToSponsor_address_uint256_10_0" -> "EXIT" [color="black"]
+"EthDeposit_ChangeManager_address_1_1" -> "EthDeposit_ChangeManager_address_2_0" [label="True" color="black"]
+"EthDeposit_WitdrawLenderProfit_6_0" -> "EXIT" [color="black"]
+"EthDeposit_ChangeManager_address_1_1" -> "EthDeposit_ChangeManager_address_3_0" [label="False" color="black"]
+"Owned_WthdrawAllToCreator_3_0" -> "EXIT" [color="black"]
+"EthDeposit_ConfirmManager_1_0" -> "EthDeposit_ConfirmManager_1_1" [color="black"]
+"EthDeposit_isOwner_1_1" -> "EXIT" [color="black"]
+"EthDeposit_ChangeManager_address_2_0" -> "EthDeposit_ChangeManager_address_3_0" [color="black"]
+"Owned_WthdrawToCreator_uint256_3_0" -> "EXIT" [color="black"]
+"EthDeposit_ConfirmManager_0_0" -> "EthDeposit_ConfirmManager_1_0" [color="black"]
+"Owned_constructor_1_0" -> "EXIT" [color="black"]
+"EthDeposit_ConfirmManager_1_1" -> "EthDeposit_ConfirmManager_2_0" [label="True" color="black"]
+"EthDeposit_WthdrawTo_address_uint256_3_0" -> "EXIT" [color="black"]
+"EthDeposit_ConfirmManager_1_1" -> "EthDeposit_ConfirmManager_3_0" [label="False" color="black"]
+"EthDeposit_init_address_2_0" -> "EXIT" [color="black"]
+"EthDeposit_StartPaymens_0_0" -> "EthDeposit_StartPaymens_1_0" [color="black"]
+"Owned_confirmOwner_3_0" -> "EXIT" [color="black"]
+"EthDeposit_ConfirmManager_2_0" -> "EthDeposit_ConfirmManager_3_0" [color="black"]
+"EthDeposit_WthdrawToCreator_uint256_3_0" -> "EXIT" [color="black"]
+"EthDeposit_StartPaymens_1_1" -> "EthDeposit_StartPaymens_2_0" [label="True" color="black"]
+"EthDeposit_WthdrawAllToCreator_3_0" -> "EXIT" [color="black"]
+"EthDeposit_StartPaymens_1_1" -> "EthDeposit_StartPaymens_4_0" [label="False" color="black"]
+"Owned_changeOwner_address_3_0" -> "EXIT" [color="black"]
+"EthDeposit_StopPaymens_1_0" -> "EthDeposit_StopPaymens_1_1" [color="black"]
+"EthDeposit_Deposit_2_3" -> "EXIT" [color="black"]
+"EthDeposit_StartPaymens_2_0" -> "EthDeposit_StartPaymens_3_0" [color="black"]
+"EthDeposit_changeOwner_address_3_0" -> "EXIT" [color="black"]
+"EthDeposit_StartPaymens_3_0" -> "EthDeposit_StartPaymens_4_0" [color="black"]
+"EthDeposit_canManage_1_3" -> "EXIT" [color="black"]
+"EthDeposit_StopPaymens_0_0" -> "EthDeposit_StopPaymens_1_0" [color="black"]
+"EthDeposit_FixProfit_4_3" -> "EXIT" [color="black"]
+"EthDeposit_StopPaymens_1_1" -> "EthDeposit_StopPaymens_2_0" [label="True" color="black"]
+"EthDeposit_fallback_1_0" -> "EXIT" [color="black"]
+"EthDeposit_StopPaymens_1_1" -> "EthDeposit_StopPaymens_4_0" [label="False" color="black"]
+"EthDeposit_ToSponsor_7_0" -> "EXIT" [color="black"]
+"EthDeposit_SetPrcntRate_uint256_1_0" -> "EthDeposit_SetPrcntRate_uint256_1_1" [color="black"]
+"EthDeposit_isManager_1_1" -> "EXIT" [color="black"]
+"EthDeposit_StopPaymens_2_0" -> "EthDeposit_StopPaymens_3_0" [color="black"]
+"EthDeposit_StartPaymens_4_0" -> "EXIT" [color="black"]
+"EthDeposit_StopPaymens_3_0" -> "EthDeposit_StopPaymens_4_0" [color="black"]
+"EthDeposit_SetPrcntRate_uint256_7_0" -> "EXIT" [color="black"]
+"EthDeposit_AuthorizePayments_bool_1_0" -> "EthDeposit_AuthorizePayments_bool_1_1" [color="black"]
+"Owned_isOwner_1_1" -> "EXIT" [color="black"]
+"EthDeposit_AuthorizePayments_bool_0_0" -> "EthDeposit_AuthorizePayments_bool_1_0" [color="black"]
+"EthDeposit_ChangeManager_address_3_0" -> "EXIT" [color="black"]
+"EthDeposit_AuthorizePayments_bool_1_1" -> "EthDeposit_AuthorizePayments_bool_2_0" [label="True" color="black"]
+"EthDeposit_constructor_1_0" -> "EXIT" [color="black"]
+"EthDeposit_AuthorizePayments_bool_1_1" -> "EthDeposit_AuthorizePayments_bool_3_0" [label="False" color="black"]
+"EthDeposit_AuthorizePayments_bool_3_0" -> "EXIT" [color="black"]
+"EthDeposit_SetPrcntRate_uint256_0_0" -> "EthDeposit_SetPrcntRate_uint256_1_0" [color="black"]
+"EthDeposit_ConfirmManager_3_0" -> "EXIT" [color="black"]
+"EthDeposit_AuthorizePayments_bool_2_0" -> "EthDeposit_AuthorizePayments_bool_3_0" [color="black"]
+"EthDeposit_StopPaymens_4_0" -> "EXIT" [color="black"]
+"EthDeposit_SetPrcntRate_uint256_1_1" -> "EthDeposit_SetPrcntRate_uint256_2_0" [label="True" color="black"]
+"EthDeposit_SetPrcntRate_uint256_1_1" -> "EthDeposit_SetPrcntRate_uint256_7_0" [label="False" color="black"]
+"EthDeposit_SetPrcntRate_uint256_2_0" -> "EthDeposit_SetPrcntRate_uint256_2_1" [color="black"]
+"EthDeposit_SetPrcntRate_uint256_2_1" -> "EthDeposit_SetPrcntRate_uint256_3_0" [label="True" color="black"]
+"EthDeposit_SetPrcntRate_uint256_2_1" -> "EthDeposit_SetPrcntRate_uint256_6_0" [label="False" color="black"]
+"EthDeposit_SetPrcntRate_uint256_3_0" -> "EthDeposit_SetPrcntRate_uint256_3_1" [color="black"]
+"EthDeposit_SetPrcntRate_uint256_3_1" -> "EthDeposit_SetPrcntRate_uint256_4_0" [label="True" color="black"]
+"EthDeposit_SetPrcntRate_uint256_3_1" -> "EthDeposit_SetPrcntRate_uint256_5_0" [label="False" color="black"]
+"EthDeposit_ToSponsor_0_0" -> "EthDeposit_ToSponsor_0_1" [color="black"]
+"EthDeposit_SetPrcntRate_uint256_4_0" -> "EthDeposit_SetPrcntRate_uint256_5_0" [color="black"]
+"EthDeposit_SetPrcntRate_uint256_5_0" -> "EthDeposit_SetPrcntRate_uint256_6_0" [color="black"]
+"EthDeposit_SetPrcntRate_uint256_6_0" -> "EthDeposit_SetPrcntRate_uint256_7_0" [color="black"]
+"EthDeposit_fallback_0_0" -> "EthDeposit_fallback_1_0" [color="black"]
+"EthDeposit_ToSponsor_0_1" -> "EthDeposit_ToSponsor_0_2" [color="black"]
+"EthDeposit_ToSponsor_1_0" -> "EthDeposit_ToSponsor_1_1" [color="black"]
+"EthDeposit_ToSponsor_0_2" -> "EthDeposit_ToSponsor_1_0" [color="black"]
+"EthDeposit_ToSponsor_1_1" -> "EthDeposit_ToSponsor_2_0" [label="True" color="black"]
+"EthDeposit_ToSponsor_1_1" -> "EthDeposit_ToSponsor_7_0" [label="False" color="black"]
+}

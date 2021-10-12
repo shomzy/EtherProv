@@ -1,0 +1,339 @@
+1	Owned#changeOwner#address#0#0	Owned#changeOwner#address#0#0	Node	ENTRY_POINT	NULL	False	False
+1	Owned#changeOwner#address#1#0	Owned#changeOwner#address#1#0	InternalCall	TMP_154(bool) = INTERNAL_CALL, Owned.isOwner()()	NULL	False	False
+1	Owned#changeOwner#address#1#1	Owned#changeOwner#address#1#0	Condition	CONDITION TMP_154	NULL	True	False
+1	Owned#changeOwner#address#1#1	Owned#changeOwner#address#1#0	Condition	CONDITION TMP_154	NULL	False	True
+1	Owned#changeOwner#address#2#0	Owned#changeOwner#address#2#0	Assignment	newOwner_1(address) := addr_1(address)	NULL	False	False
+1	Owned#changeOwner#address#3#0	Owned#changeOwner#address#3#0	Node	END_IF	NULL	False	False
+1	Owned#confirmOwner#0#0	Owned#confirmOwner#0#0	Phi	newOwner_2(address) := ϕ(['newOwner_1', 'newOwner_0'])	NULL	False	False
+1	Owned#confirmOwner#1#0	Owned#confirmOwner#1#0	Binary	TMP_155(bool) = msg.sender == newOwner_2	NULL	False	False
+1	Owned#confirmOwner#1#1	Owned#confirmOwner#1#0	Condition	CONDITION TMP_155	NULL	True	False
+1	Owned#confirmOwner#1#1	Owned#confirmOwner#1#0	Condition	CONDITION TMP_155	NULL	False	True
+1	Owned#confirmOwner#2#0	Owned#confirmOwner#2#0	Assignment	owner_1(address) := newOwner_2(address)	NULL	False	False
+1	Owned#confirmOwner#3#0	Owned#confirmOwner#3#0	Node	END_IF	NULL	False	False
+1	Owned#isOwner#0#0	Owned#isOwner#0#0	Phi	owner_2(address) := ϕ(['owner_0', 'owner_1'])	NULL	False	False
+1	Owned#isOwner#1#0	Owned#isOwner#1#0	Binary	TMP_156(bool) = owner_2 == msg.sender	NULL	False	False
+1	Owned#isOwner#1#1	Owned#isOwner#1#0	Return	RETURN TMP_156	NULL	False	False
+1	Owned#WthdrawAllToCreator#0#0	Owned#WthdrawAllToCreator#0#0	Phi	creator_1(address) := ϕ(['creator_0'])	NULL	False	False
+1	Owned#WthdrawAllToCreator#1#0	Owned#WthdrawAllToCreator#1#0	Binary	TMP_157(bool) = msg.sender == creator_1	NULL	False	False
+1	Owned#WthdrawAllToCreator#1#1	Owned#WthdrawAllToCreator#1#0	Condition	CONDITION TMP_157	NULL	True	False
+1	Owned#WthdrawAllToCreator#1#1	Owned#WthdrawAllToCreator#1#0	Condition	CONDITION TMP_157	NULL	False	True
+1	Owned#WthdrawAllToCreator#2#0	Owned#WthdrawAllToCreator#2#0	Balance	REF_109 -> BALANCE this	NULL	False	False
+1	Owned#WthdrawAllToCreator#2#1	Owned#WthdrawAllToCreator#2#0	Transfer	Transfer dest:creator_1 value:REF_109	Owned#WthdrawAllToCreator#REF_109	False	False
+1	Owned#WthdrawAllToCreator#3#0	Owned#WthdrawAllToCreator#3#0	Node	END_IF	NULL	False	False
+1	Owned#WthdrawToCreator#uint256#0#0	Owned#WthdrawToCreator#uint256#0#0	Phi	creator_2(address) := ϕ(['creator_0'])	NULL	False	False
+1	Owned#WthdrawToCreator#uint256#1#0	Owned#WthdrawToCreator#uint256#1#0	Binary	TMP_159(bool) = msg.sender == creator_2	NULL	False	False
+1	Owned#WthdrawToCreator#uint256#1#1	Owned#WthdrawToCreator#uint256#1#0	Condition	CONDITION TMP_159	NULL	True	False
+1	Owned#WthdrawToCreator#uint256#1#1	Owned#WthdrawToCreator#uint256#1#0	Condition	CONDITION TMP_159	NULL	False	True
+1	Owned#WthdrawToCreator#uint256#2#0	Owned#WthdrawToCreator#uint256#2#0	Transfer	Transfer dest:creator_2 value:val_1	Owned#val_1#55#31	False	False
+1	Owned#WthdrawToCreator#uint256#3#0	Owned#WthdrawToCreator#uint256#3#0	Node	END_IF	NULL	False	False
+1	Owned#WthdrawTo#address#uint256#0#0	Owned#WthdrawTo#address#uint256#0#0	Phi	creator_3(address) := ϕ(['creator_0'])	NULL	False	False
+1	Owned#WthdrawTo#address#uint256#1#0	Owned#WthdrawTo#address#uint256#1#0	Binary	TMP_161(bool) = msg.sender == creator_3	NULL	False	False
+1	Owned#WthdrawTo#address#uint256#1#1	Owned#WthdrawTo#address#uint256#1#0	Condition	CONDITION TMP_161	NULL	True	False
+1	Owned#WthdrawTo#address#uint256#1#1	Owned#WthdrawTo#address#uint256#1#0	Condition	CONDITION TMP_161	NULL	False	True
+1	Owned#WthdrawTo#address#uint256#2#0	Owned#WthdrawTo#address#uint256#2#0	Transfer	Transfer dest:addr_1 value:val_1	Owned#val_1#68#37	False	False
+1	Owned#WthdrawTo#address#uint256#3#0	Owned#WthdrawTo#address#uint256#3#0	Node	END_IF	NULL	False	False
+1	Owned#constructor#0#0	Owned#constructor#0#0	Node	OTHER_ENTRYPOINT owner = msg.sender	NULL	False	False
+1	Owned#constructor#1#0	Owned#constructor#1#0	Node	OTHER_ENTRYPOINT creator = msg.sender	NULL	False	False
+1	EthDeposit#changeOwner#address#0#0	EthDeposit#changeOwner#address#0#0	Node	ENTRY_POINT	NULL	False	False
+1	EthDeposit#changeOwner#address#1#0	EthDeposit#changeOwner#address#1#0	InternalCall	TMP_163(bool) = INTERNAL_CALL, Owned.isOwner()()	NULL	False	False
+1	EthDeposit#changeOwner#address#1#1	EthDeposit#changeOwner#address#1#0	Condition	CONDITION TMP_163	NULL	True	False
+1	EthDeposit#changeOwner#address#1#1	EthDeposit#changeOwner#address#1#0	Condition	CONDITION TMP_163	NULL	False	True
+1	EthDeposit#changeOwner#address#2#0	EthDeposit#changeOwner#address#2#0	Assignment	newOwner_1(address) := addr_1(address)	NULL	False	False
+1	EthDeposit#changeOwner#address#3#0	EthDeposit#changeOwner#address#3#0	Node	END_IF	NULL	False	False
+1	EthDeposit#confirmOwner#0#0	EthDeposit#confirmOwner#0#0	Phi	newOwner_2(address) := ϕ(['newOwner_0', 'newOwner_1'])	NULL	False	False
+1	EthDeposit#confirmOwner#1#0	EthDeposit#confirmOwner#1#0	Binary	TMP_164(bool) = msg.sender == newOwner_2	NULL	False	False
+1	EthDeposit#confirmOwner#1#1	EthDeposit#confirmOwner#1#0	Condition	CONDITION TMP_164	NULL	True	False
+1	EthDeposit#confirmOwner#1#1	EthDeposit#confirmOwner#1#0	Condition	CONDITION TMP_164	NULL	False	True
+1	EthDeposit#confirmOwner#2#0	EthDeposit#confirmOwner#2#0	Assignment	owner_1(address) := newOwner_2(address)	NULL	False	False
+1	EthDeposit#confirmOwner#3#0	EthDeposit#confirmOwner#3#0	Node	END_IF	NULL	False	False
+1	EthDeposit#isOwner#0#0	EthDeposit#isOwner#0#0	Phi	owner_2(address) := ϕ(['owner_1', 'owner_0'])	NULL	False	False
+1	EthDeposit#isOwner#1#0	EthDeposit#isOwner#1#0	Binary	TMP_165(bool) = owner_2 == msg.sender	NULL	False	False
+1	EthDeposit#isOwner#1#1	EthDeposit#isOwner#1#0	Return	RETURN TMP_165	NULL	False	False
+1	EthDeposit#WthdrawAllToCreator#0#0	EthDeposit#WthdrawAllToCreator#0#0	Phi	creator_1(address) := ϕ(['creator_0'])	NULL	False	False
+1	EthDeposit#WthdrawAllToCreator#1#0	EthDeposit#WthdrawAllToCreator#1#0	Binary	TMP_166(bool) = msg.sender == creator_1	NULL	False	False
+1	EthDeposit#WthdrawAllToCreator#1#1	EthDeposit#WthdrawAllToCreator#1#0	Condition	CONDITION TMP_166	NULL	True	False
+1	EthDeposit#WthdrawAllToCreator#1#1	EthDeposit#WthdrawAllToCreator#1#0	Condition	CONDITION TMP_166	NULL	False	True
+1	EthDeposit#WthdrawAllToCreator#2#0	EthDeposit#WthdrawAllToCreator#2#0	Balance	REF_113 -> BALANCE this	NULL	False	False
+1	EthDeposit#WthdrawAllToCreator#2#1	EthDeposit#WthdrawAllToCreator#2#0	Transfer	Transfer dest:creator_1 value:REF_113	EthDeposit#WthdrawAllToCreator#REF_113	False	False
+1	EthDeposit#WthdrawAllToCreator#3#0	EthDeposit#WthdrawAllToCreator#3#0	Node	END_IF	NULL	False	False
+1	EthDeposit#WthdrawToCreator#uint256#0#0	EthDeposit#WthdrawToCreator#uint256#0#0	Phi	creator_2(address) := ϕ(['creator_0'])	NULL	False	False
+1	EthDeposit#WthdrawToCreator#uint256#1#0	EthDeposit#WthdrawToCreator#uint256#1#0	Binary	TMP_168(bool) = msg.sender == creator_2	NULL	False	False
+1	EthDeposit#WthdrawToCreator#uint256#1#1	EthDeposit#WthdrawToCreator#uint256#1#0	Condition	CONDITION TMP_168	NULL	True	False
+1	EthDeposit#WthdrawToCreator#uint256#1#1	EthDeposit#WthdrawToCreator#uint256#1#0	Condition	CONDITION TMP_168	NULL	False	True
+1	EthDeposit#WthdrawToCreator#uint256#2#0	EthDeposit#WthdrawToCreator#uint256#2#0	Transfer	Transfer dest:creator_2 value:val_1	EthDeposit#val_1#55#31	False	False
+1	EthDeposit#WthdrawToCreator#uint256#3#0	EthDeposit#WthdrawToCreator#uint256#3#0	Node	END_IF	NULL	False	False
+1	EthDeposit#WthdrawTo#address#uint256#0#0	EthDeposit#WthdrawTo#address#uint256#0#0	Phi	creator_3(address) := ϕ(['creator_0'])	NULL	False	False
+1	EthDeposit#WthdrawTo#address#uint256#1#0	EthDeposit#WthdrawTo#address#uint256#1#0	Binary	TMP_170(bool) = msg.sender == creator_3	NULL	False	False
+1	EthDeposit#WthdrawTo#address#uint256#1#1	EthDeposit#WthdrawTo#address#uint256#1#0	Condition	CONDITION TMP_170	NULL	True	False
+1	EthDeposit#WthdrawTo#address#uint256#1#1	EthDeposit#WthdrawTo#address#uint256#1#0	Condition	CONDITION TMP_170	NULL	False	True
+1	EthDeposit#WthdrawTo#address#uint256#2#0	EthDeposit#WthdrawTo#address#uint256#2#0	Transfer	Transfer dest:addr_1 value:val_1	EthDeposit#val_1#68#37	False	False
+1	EthDeposit#WthdrawTo#address#uint256#3#0	EthDeposit#WthdrawTo#address#uint256#3#0	Node	END_IF	NULL	False	False
+1	EthDeposit#init#address#0#0	EthDeposit#init#address#0#0	Node	ENTRY_POINT	NULL	False	False
+1	EthDeposit#init#address#1#0	EthDeposit#init#address#1#0	Assignment	owner_1(address) := msg.sender(address)	NULL	False	False
+1	EthDeposit#init#address#2#0	EthDeposit#init#address#2#0	Assignment	Manager_1(address) := _manager_1(address)	NULL	False	False
+1	EthDeposit#isManager#0#0	EthDeposit#isManager#0#0	Phi	Manager_2(address) := ϕ(['Manager_1', 'Manager_4', 'Manager_0'])	NULL	False	False
+1	EthDeposit#isManager#1#0	EthDeposit#isManager#1#0	Binary	TMP_172(bool) = msg.sender == Manager_2	NULL	False	False
+1	EthDeposit#isManager#1#1	EthDeposit#isManager#1#0	Return	RETURN TMP_172	NULL	False	False
+1	EthDeposit#canManage#0#0	EthDeposit#canManage#0#0	Phi	owner_2(address) := ϕ(['owner_0', 'owner_1'])	NULL	False	False
+1	EthDeposit#canManage#0#1	EthDeposit#canManage#0#0	Phi	Manager_3(address) := ϕ(['Manager_1', 'Manager_4', 'Manager_0'])	NULL	False	False
+1	EthDeposit#canManage#1#0	EthDeposit#canManage#1#0	Binary	TMP_173(bool) = msg.sender == Manager_3	NULL	False	False
+1	EthDeposit#canManage#1#1	EthDeposit#canManage#1#0	Binary	TMP_174(bool) = msg.sender == owner_2	NULL	False	False
+1	EthDeposit#canManage#1#2	EthDeposit#canManage#1#0	Binary	TMP_175(bool) = TMP_173 || TMP_174	NULL	False	False
+1	EthDeposit#canManage#1#3	EthDeposit#canManage#1#0	Return	RETURN TMP_175	NULL	False	False
+1	EthDeposit#ChangeManager#address#0#0	EthDeposit#ChangeManager#address#0#0	Node	ENTRY_POINT	NULL	False	False
+1	EthDeposit#ChangeManager#address#1#0	EthDeposit#ChangeManager#address#1#0	InternalCall	TMP_176(bool) = INTERNAL_CALL, EthDeposit.canManage()()	NULL	False	False
+1	EthDeposit#ChangeManager#address#1#1	EthDeposit#ChangeManager#address#1#0	Condition	CONDITION TMP_176	NULL	True	False
+1	EthDeposit#ChangeManager#address#1#1	EthDeposit#ChangeManager#address#1#0	Condition	CONDITION TMP_176	NULL	False	True
+1	EthDeposit#ChangeManager#address#2#0	EthDeposit#ChangeManager#address#2#0	Assignment	NewManager_1(address) := _newManager_1(address)	NULL	False	False
+1	EthDeposit#ChangeManager#address#3#0	EthDeposit#ChangeManager#address#3#0	Node	END_IF	NULL	False	False
+1	EthDeposit#ConfirmManager#0#0	EthDeposit#ConfirmManager#0#0	Phi	NewManager_2(address) := ϕ(['NewManager_1', 'NewManager_0'])	NULL	False	False
+1	EthDeposit#ConfirmManager#1#0	EthDeposit#ConfirmManager#1#0	Binary	TMP_177(bool) = msg.sender == NewManager_2	NULL	False	False
+1	EthDeposit#ConfirmManager#1#1	EthDeposit#ConfirmManager#1#0	Condition	CONDITION TMP_177	NULL	True	False
+1	EthDeposit#ConfirmManager#1#1	EthDeposit#ConfirmManager#1#0	Condition	CONDITION TMP_177	NULL	False	True
+1	EthDeposit#ConfirmManager#2#0	EthDeposit#ConfirmManager#2#0	Assignment	Manager_4(address) := NewManager_2(address)	NULL	False	False
+1	EthDeposit#ConfirmManager#3#0	EthDeposit#ConfirmManager#3#0	Node	END_IF	NULL	False	False
+1	EthDeposit#StartPaymens#0#0	EthDeposit#StartPaymens#0#0	Node	ENTRY_POINT	NULL	False	False
+1	EthDeposit#StartPaymens#1#0	EthDeposit#StartPaymens#1#0	InternalCall	TMP_178(bool) = INTERNAL_CALL, EthDeposit.canManage()()	NULL	False	False
+1	EthDeposit#StartPaymens#1#1	EthDeposit#StartPaymens#1#0	Condition	CONDITION TMP_178	NULL	True	False
+1	EthDeposit#StartPaymens#1#1	EthDeposit#StartPaymens#1#0	Condition	CONDITION TMP_178	NULL	False	True
+1	EthDeposit#StartPaymens#2#0	EthDeposit#StartPaymens#2#0	InternalCall	INTERNAL_CALL, EthDeposit.AuthorizePayments(bool)(True)	NULL	False	False
+1	EthDeposit#StartPaymens#3#0	EthDeposit#StartPaymens#3#0	EventCall	Emit StartOfPayments()	NULL	False	False
+1	EthDeposit#StartPaymens#4#0	EthDeposit#StartPaymens#4#0	Node	END_IF	NULL	False	False
+1	EthDeposit#StopPaymens#0#0	EthDeposit#StopPaymens#0#0	Node	ENTRY_POINT	NULL	False	False
+1	EthDeposit#StopPaymens#1#0	EthDeposit#StopPaymens#1#0	InternalCall	TMP_181(bool) = INTERNAL_CALL, EthDeposit.canManage()()	NULL	False	False
+1	EthDeposit#StopPaymens#1#1	EthDeposit#StopPaymens#1#0	Condition	CONDITION TMP_181	NULL	True	False
+1	EthDeposit#StopPaymens#1#1	EthDeposit#StopPaymens#1#0	Condition	CONDITION TMP_181	NULL	False	True
+1	EthDeposit#StopPaymens#2#0	EthDeposit#StopPaymens#2#0	InternalCall	INTERNAL_CALL, EthDeposit.AuthorizePayments(bool)(False)	NULL	False	False
+1	EthDeposit#StopPaymens#3#0	EthDeposit#StopPaymens#3#0	EventCall	Emit EndOfPayments()	NULL	False	False
+1	EthDeposit#StopPaymens#4#0	EthDeposit#StopPaymens#4#0	Node	END_IF	NULL	False	False
+1	EthDeposit#AuthorizePayments#bool#0#0	EthDeposit#AuthorizePayments#bool#0#0	Node	ENTRY_POINT	NULL	False	False
+1	EthDeposit#AuthorizePayments#bool#1#0	EthDeposit#AuthorizePayments#bool#1#0	InternalCall	TMP_184(bool) = INTERNAL_CALL, Owned.isOwner()()	NULL	False	False
+1	EthDeposit#AuthorizePayments#bool#1#1	EthDeposit#AuthorizePayments#bool#1#0	Condition	CONDITION TMP_184	NULL	True	False
+1	EthDeposit#AuthorizePayments#bool#1#1	EthDeposit#AuthorizePayments#bool#1#0	Condition	CONDITION TMP_184	NULL	False	True
+1	EthDeposit#AuthorizePayments#bool#2#0	EthDeposit#AuthorizePayments#bool#2#0	Assignment	paymentsAllowed_1(bool) := val_1(bool)	NULL	False	False
+1	EthDeposit#AuthorizePayments#bool#3#0	EthDeposit#AuthorizePayments#bool#3#0	Node	END_IF	NULL	False	False
+1	EthDeposit#SetPrcntRate#uint256#0#0	EthDeposit#SetPrcntRate#uint256#0#0	Phi	PrcntRate_1(uint256) := ϕ(['PrcntRate_0', 'PrcntRate_2'])	NULL	False	False
+1	EthDeposit#SetPrcntRate#uint256#1#0	EthDeposit#SetPrcntRate#uint256#1#0	InternalCall	TMP_185(bool) = INTERNAL_CALL, EthDeposit.canManage()()	NULL	False	False
+1	EthDeposit#SetPrcntRate#uint256#1#1	EthDeposit#SetPrcntRate#uint256#1#0	Condition	CONDITION TMP_185	NULL	True	False
+1	EthDeposit#SetPrcntRate#uint256#1#1	EthDeposit#SetPrcntRate#uint256#1#0	Condition	CONDITION TMP_185	NULL	False	True
+1	EthDeposit#SetPrcntRate#uint256#2#0	EthDeposit#SetPrcntRate#uint256#2#0	Binary	TMP_186(bool) = val_1 != PrcntRate_2	NULL	False	False
+1	EthDeposit#SetPrcntRate#uint256#2#1	EthDeposit#SetPrcntRate#uint256#2#0	Condition	CONDITION TMP_186	NULL	True	False
+1	EthDeposit#SetPrcntRate#uint256#2#1	EthDeposit#SetPrcntRate#uint256#2#0	Condition	CONDITION TMP_186	NULL	False	True
+1	EthDeposit#SetPrcntRate#uint256#3#0	EthDeposit#SetPrcntRate#uint256#3#0	Binary	TMP_187(bool) = val_1 >= 1	NULL	False	False
+1	EthDeposit#SetPrcntRate#uint256#3#1	EthDeposit#SetPrcntRate#uint256#3#0	Condition	CONDITION TMP_187	NULL	True	False
+1	EthDeposit#SetPrcntRate#uint256#3#1	EthDeposit#SetPrcntRate#uint256#3#0	Condition	CONDITION TMP_187	NULL	False	True
+1	EthDeposit#SetPrcntRate#uint256#4#0	EthDeposit#SetPrcntRate#uint256#4#0	Assignment	PrcntRate_3(uint256) := val_1(uint256)	NULL	False	False
+1	EthDeposit#SetPrcntRate#uint256#5#0	EthDeposit#SetPrcntRate#uint256#5#0	Node	END_IF	NULL	False	False
+1	EthDeposit#SetPrcntRate#uint256#6#0	EthDeposit#SetPrcntRate#uint256#6#0	Node	END_IF	NULL	False	False
+1	EthDeposit#SetPrcntRate#uint256#7#0	EthDeposit#SetPrcntRate#uint256#7#0	Node	END_IF	NULL	False	False
+1	EthDeposit#fallback#0#0	EthDeposit#fallback#0#0	Node	ENTRY_POINT	NULL	False	False
+1	EthDeposit#fallback#1#0	EthDeposit#fallback#1#0	InternalCall	INTERNAL_CALL, EthDeposit.ToSponsor()()	NULL	False	False
+1	EthDeposit#ToSponsor#0#0	EthDeposit#ToSponsor#0#0	Phi	SponsorsQty_1(uint256) := ϕ(['SponsorsQty_0', 'SponsorsQty_2'])	NULL	False	False
+1	EthDeposit#ToSponsor#0#1	EthDeposit#ToSponsor#0#0	Phi	CharterCapital_1(uint256) := ϕ(['CharterCapital_2', 'CharterCapital_0', 'CharterCapital_4'])	NULL	False	False
+1	EthDeposit#ToSponsor#0#2	EthDeposit#ToSponsor#0#0	Phi	Sponsors_1(mapping(address => uint256)) := ϕ(['Sponsors_3', 'Sponsors_2', 'Sponsors_0'])	NULL	False	False
+1	EthDeposit#ToSponsor#1#0	EthDeposit#ToSponsor#1#0	Binary	TMP_189(bool) = msg.value >= 1000000000000000000	NULL	False	False
+1	EthDeposit#ToSponsor#1#1	EthDeposit#ToSponsor#1#0	Condition	CONDITION TMP_189	NULL	True	False
+1	EthDeposit#ToSponsor#1#1	EthDeposit#ToSponsor#1#0	Condition	CONDITION TMP_189	NULL	False	True
+1	EthDeposit#ToSponsor#2#0	EthDeposit#ToSponsor#2#0	Index	REF_116(uint256) -> Sponsors_1[msg.sender]	NULL	False	False
+1	EthDeposit#ToSponsor#2#1	EthDeposit#ToSponsor#2#0	Binary	TMP_190(bool) = REF_116 == 0	NULL	False	False
+1	EthDeposit#ToSponsor#2#2	EthDeposit#ToSponsor#2#0	Condition	CONDITION TMP_190	NULL	True	False
+1	EthDeposit#ToSponsor#2#2	EthDeposit#ToSponsor#2#0	Condition	CONDITION TMP_190	NULL	False	True
+1	EthDeposit#ToSponsor#3#0	EthDeposit#ToSponsor#3#0	Assignment	TMP_191(uint256) := SponsorsQty_1(uint256)	NULL	False	False
+1	EthDeposit#ToSponsor#3#1	EthDeposit#ToSponsor#3#0	Binary	SponsorsQty_2(uint256) = SponsorsQty_1 + 1	NULL	False	False
+1	EthDeposit#ToSponsor#4#0	EthDeposit#ToSponsor#4#0	Node	END_IF	NULL	False	False
+1	EthDeposit#ToSponsor#5#0	EthDeposit#ToSponsor#5#0	Index	REF_117(uint256) -> Sponsors_1[msg.sender]	NULL	False	False
+1	EthDeposit#ToSponsor#5#1	EthDeposit#ToSponsor#5#0	Phi	Sponsors_2(mapping(address => uint256)) := ϕ(['Sponsors_1'])	NULL	False	False
+1	EthDeposit#ToSponsor#5#2	EthDeposit#ToSponsor#5#0	Binary	REF_117(-> Sponsors_2) = REF_117 + msg.value	NULL	False	False
+1	EthDeposit#ToSponsor#6#0	EthDeposit#ToSponsor#6#0	Binary	CharterCapital_2(uint256) = CharterCapital_1 + msg.value	NULL	False	False
+1	EthDeposit#ToSponsor#7#0	EthDeposit#ToSponsor#7#0	Node	END_IF	NULL	False	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#0#0	EthDeposit#WithdrawToSponsor#address#uint256#0#0	Phi	CharterCapital_3(uint256) := ϕ(['CharterCapital_2', 'CharterCapital_0', 'CharterCapital_4'])	NULL	False	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#0#1	EthDeposit#WithdrawToSponsor#address#uint256#0#0	Phi	Sponsors_3(mapping(address => uint256)) := ϕ(['Sponsors_3', 'Sponsors_2', 'Sponsors_0'])	NULL	False	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#1#0	EthDeposit#WithdrawToSponsor#address#uint256#1#0	Index	REF_118(uint256) -> Sponsors_3[_addr_1]	NULL	False	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#1#1	EthDeposit#WithdrawToSponsor#address#uint256#1#0	Binary	TMP_192(bool) = REF_118 > 0	NULL	False	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#1#2	EthDeposit#WithdrawToSponsor#address#uint256#1#0	Condition	CONDITION TMP_192	NULL	True	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#1#2	EthDeposit#WithdrawToSponsor#address#uint256#1#0	Condition	CONDITION TMP_192	NULL	False	True
+1	EthDeposit#WithdrawToSponsor#address#uint256#2#0	EthDeposit#WithdrawToSponsor#address#uint256#2#0	InternalCall	TMP_193(bool) = INTERNAL_CALL, Owned.isOwner()()	NULL	False	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#2#1	EthDeposit#WithdrawToSponsor#address#uint256#2#0	Condition	CONDITION TMP_193	NULL	True	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#2#1	EthDeposit#WithdrawToSponsor#address#uint256#2#0	Condition	CONDITION TMP_193	NULL	False	True
+1	EthDeposit#WithdrawToSponsor#address#uint256#3#0	EthDeposit#WithdrawToSponsor#address#uint256#3#0	Send	TMP_194 = SEND dest:_addr_1 value:_wei_1	EthDeposit#_wei_1#249#47	False	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#3#1	EthDeposit#WithdrawToSponsor#address#uint256#3#0	Condition	CONDITION TMP_194	NULL	True	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#3#1	EthDeposit#WithdrawToSponsor#address#uint256#3#0	Condition	CONDITION TMP_194	NULL	False	True
+1	EthDeposit#WithdrawToSponsor#address#uint256#4#0	EthDeposit#WithdrawToSponsor#address#uint256#4#0	Binary	TMP_195(bool) = CharterCapital_4 >= _wei_1	NULL	False	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#4#1	EthDeposit#WithdrawToSponsor#address#uint256#4#0	Condition	CONDITION TMP_195	NULL	True	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#4#1	EthDeposit#WithdrawToSponsor#address#uint256#4#0	Condition	CONDITION TMP_195	NULL	False	True
+1	EthDeposit#WithdrawToSponsor#address#uint256#5#0	EthDeposit#WithdrawToSponsor#address#uint256#5#0	Binary	CharterCapital_5(uint256) = CharterCapital_4 - _wei_1	NULL	False	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#6#0	EthDeposit#WithdrawToSponsor#address#uint256#6#0	Assignment	CharterCapital_6(uint256) := 0(uint256)	NULL	False	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#7#0	EthDeposit#WithdrawToSponsor#address#uint256#7#0	Phi	CharterCapital_7(uint256) := ϕ(['CharterCapital_5', 'CharterCapital_6'])	NULL	False	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#8#0	EthDeposit#WithdrawToSponsor#address#uint256#8#0	Node	END_IF	NULL	False	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#9#0	EthDeposit#WithdrawToSponsor#address#uint256#9#0	Node	END_IF	NULL	False	False
+1	EthDeposit#WithdrawToSponsor#address#uint256#10#0	EthDeposit#WithdrawToSponsor#address#uint256#10#0	Node	END_IF	NULL	False	False
+1	EthDeposit#Deposit#0#0	EthDeposit#Deposit#0#0	Phi	Lenders_1(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_8', 'Lenders_11', 'Lenders_0', 'Lenders_3', 'Lenders_4'])	NULL	False	False
+1	EthDeposit#Deposit#1#0	EthDeposit#Deposit#1#0	InternalCall	INTERNAL_CALL, EthDeposit.FixProfit()()	NULL	False	False
+1	EthDeposit#Deposit#1#1	EthDeposit#Deposit#1#0	PhiCallback	Lenders_2(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_8'])	NULL	False	False
+1	EthDeposit#Deposit#2#0	EthDeposit#Deposit#2#0	Index	REF_120(EthDeposit.Lender) -> Lenders_2[msg.sender]	NULL	False	False
+1	EthDeposit#Deposit#2#1	EthDeposit#Deposit#2#0	Member	REF_121(uint256) -> REF_120.Amount	NULL	False	False
+1	EthDeposit#Deposit#2#2	EthDeposit#Deposit#2#0	Phi	Lenders_3(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_2'])	NULL	False	False
+1	EthDeposit#Deposit#2#3	EthDeposit#Deposit#2#0	Binary	REF_121(-> Lenders_3) = REF_121 + msg.value	NULL	False	False
+1	EthDeposit#CheckProfit#address#0#0	EthDeposit#CheckProfit#address#0#0	Phi	addr_1(address) := ϕ(['msg.sender'])	NULL	False	False
+1	EthDeposit#CheckProfit#address#0#1	EthDeposit#CheckProfit#address#0#0	Phi	PrcntRate_4(uint256) := ϕ(['PrcntRate_0', 'PrcntRate_2'])	NULL	False	False
+1	EthDeposit#CheckProfit#address#0#2	EthDeposit#CheckProfit#address#0#0	Phi	Lenders_4(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_8', 'Lenders_11', 'Lenders_0', 'Lenders_3', 'Lenders_4'])	NULL	False	False
+1	EthDeposit#CheckProfit#address#1#0	EthDeposit#CheckProfit#address#1#0	Index	REF_122(EthDeposit.Lender) -> Lenders_4[addr_1]	NULL	False	False
+1	EthDeposit#CheckProfit#address#1#1	EthDeposit#CheckProfit#address#1#0	Member	REF_123(uint256) -> REF_122.Amount	NULL	False	False
+1	EthDeposit#CheckProfit#address#1#2	EthDeposit#CheckProfit#address#1#0	Binary	TMP_197(uint256) = REF_123 / 100	NULL	False	False
+1	EthDeposit#CheckProfit#address#1#3	EthDeposit#CheckProfit#address#1#0	Binary	TMP_198(uint256) = TMP_197 * PrcntRate_4	NULL	False	False
+1	EthDeposit#CheckProfit#address#1#4	EthDeposit#CheckProfit#address#1#0	Index	REF_124(EthDeposit.Lender) -> Lenders_4[addr_1]	NULL	False	False
+1	EthDeposit#CheckProfit#address#1#5	EthDeposit#CheckProfit#address#1#0	Member	REF_125(uint256) -> REF_124.LastLendTime	NULL	False	False
+1	EthDeposit#CheckProfit#address#1#6	EthDeposit#CheckProfit#address#1#0	Binary	TMP_199(uint256) = now - REF_125	NULL	False	False
+1	EthDeposit#CheckProfit#address#1#7	EthDeposit#CheckProfit#address#1#0	Binary	TMP_200(uint256) = TMP_199 / 86400	NULL	False	False
+1	EthDeposit#CheckProfit#address#1#8	EthDeposit#CheckProfit#address#1#0	Binary	TMP_201(uint256) = TMP_198 * TMP_200	NULL	False	False
+1	EthDeposit#CheckProfit#address#1#9	EthDeposit#CheckProfit#address#1#0	Return	RETURN TMP_201	NULL	False	False
+1	EthDeposit#FixProfit#0#0	EthDeposit#FixProfit#0#0	Phi	Lenders_5(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_8', 'Lenders_11', 'Lenders_0', 'Lenders_3', 'Lenders_4'])	NULL	False	False
+1	EthDeposit#FixProfit#1#0	EthDeposit#FixProfit#1#0	Index	REF_126(EthDeposit.Lender) -> Lenders_5[msg.sender]	NULL	False	False
+1	EthDeposit#FixProfit#1#1	EthDeposit#FixProfit#1#0	Member	REF_127(uint256) -> REF_126.Amount	NULL	False	False
+1	EthDeposit#FixProfit#1#2	EthDeposit#FixProfit#1#0	Binary	TMP_202(bool) = REF_127 > 0	NULL	False	False
+1	EthDeposit#FixProfit#1#3	EthDeposit#FixProfit#1#0	Condition	CONDITION TMP_202	NULL	True	False
+1	EthDeposit#FixProfit#1#3	EthDeposit#FixProfit#1#0	Condition	CONDITION TMP_202	NULL	False	True
+1	EthDeposit#FixProfit#2#0	EthDeposit#FixProfit#2#0	Index	REF_128(EthDeposit.Lender) -> Lenders_5[msg.sender]	NULL	False	False
+1	EthDeposit#FixProfit#2#1	EthDeposit#FixProfit#2#0	Member	REF_129(uint256) -> REF_128.Reserved	NULL	False	False
+1	EthDeposit#FixProfit#2#2	EthDeposit#FixProfit#2#0	InternalCall	TMP_203(uint256) = INTERNAL_CALL, EthDeposit.CheckProfit(address)(msg.sender)	NULL	False	False
+1	EthDeposit#FixProfit#2#3	EthDeposit#FixProfit#2#0	PhiCallback	Lenders_6(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_4'])	NULL	False	False
+1	EthDeposit#FixProfit#2#4	EthDeposit#FixProfit#2#0	Phi	Lenders_7(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_5'])	NULL	False	False
+1	EthDeposit#FixProfit#2#5	EthDeposit#FixProfit#2#0	Binary	REF_129(-> Lenders_7) = REF_129 + TMP_203	NULL	False	False
+1	EthDeposit#FixProfit#3#0	EthDeposit#FixProfit#3#0	Node	END_IF	NULL	False	False
+1	EthDeposit#FixProfit#4#0	EthDeposit#FixProfit#4#0	Index	REF_130(EthDeposit.Lender) -> Lenders_7[msg.sender]	NULL	False	False
+1	EthDeposit#FixProfit#4#1	EthDeposit#FixProfit#4#0	Member	REF_131(uint256) -> REF_130.LastLendTime	NULL	False	False
+1	EthDeposit#FixProfit#4#2	EthDeposit#FixProfit#4#0	Phi	Lenders_8(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_7'])	NULL	False	False
+1	EthDeposit#FixProfit#4#3	EthDeposit#FixProfit#4#0	Assignment	REF_131 (->Lenders_8) := now(uint256)	NULL	False	False
+1	EthDeposit#WitdrawLenderProfit#0#0	EthDeposit#WitdrawLenderProfit#0#0	Phi	paymentsAllowed_2(bool) := ϕ(['paymentsAllowed_0', 'paymentsAllowed_1'])	NULL	False	False
+1	EthDeposit#WitdrawLenderProfit#0#1	EthDeposit#WitdrawLenderProfit#0#0	Phi	Lenders_9(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_8', 'Lenders_11', 'Lenders_0', 'Lenders_3', 'Lenders_4'])	NULL	False	False
+1	EthDeposit#WitdrawLenderProfit#1#0	EthDeposit#WitdrawLenderProfit#1#0	Condition	CONDITION paymentsAllowed_2	NULL	True	False
+1	EthDeposit#WitdrawLenderProfit#1#0	EthDeposit#WitdrawLenderProfit#1#0	Condition	CONDITION paymentsAllowed_2	NULL	False	True
+1	EthDeposit#WitdrawLenderProfit#2#0	EthDeposit#WitdrawLenderProfit#2#0	InternalCall	INTERNAL_CALL, EthDeposit.FixProfit()()	NULL	False	False
+1	EthDeposit#WitdrawLenderProfit#2#1	EthDeposit#WitdrawLenderProfit#2#0	PhiCallback	Lenders_10(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_8'])	NULL	False	False
+1	EthDeposit#WitdrawLenderProfit#3#0	EthDeposit#WitdrawLenderProfit#3#0	Index	REF_132(EthDeposit.Lender) -> Lenders_10[msg.sender]	NULL	False	False
+1	EthDeposit#WitdrawLenderProfit#3#1	EthDeposit#WitdrawLenderProfit#3#0	Member	REF_133(uint256) -> REF_132.Reserved	NULL	False	False
+1	EthDeposit#WitdrawLenderProfit#3#2	EthDeposit#WitdrawLenderProfit#3#0	Assignment	profit_1(uint256) := REF_133(uint256)	NULL	False	False
+1	EthDeposit#WitdrawLenderProfit#4#0	EthDeposit#WitdrawLenderProfit#4#0	Index	REF_134(EthDeposit.Lender) -> Lenders_10[msg.sender]	NULL	False	False
+1	EthDeposit#WitdrawLenderProfit#4#1	EthDeposit#WitdrawLenderProfit#4#0	Member	REF_135(uint256) -> REF_134.Reserved	NULL	False	False
+1	EthDeposit#WitdrawLenderProfit#4#2	EthDeposit#WitdrawLenderProfit#4#0	Phi	Lenders_11(mapping(address => EthDeposit.Lender)) := ϕ(['Lenders_10'])	NULL	False	False
+1	EthDeposit#WitdrawLenderProfit#4#3	EthDeposit#WitdrawLenderProfit#4#0	Assignment	REF_135 (->Lenders_11) := 0(uint256)	NULL	False	False
+1	EthDeposit#WitdrawLenderProfit#5#0	EthDeposit#WitdrawLenderProfit#5#0	Transfer	Transfer dest:msg.sender value:profit_1	EthDeposit#profit_1#315#13	False	False
+1	EthDeposit#WitdrawLenderProfit#6#0	EthDeposit#WitdrawLenderProfit#6#0	Node	END_IF	NULL	False	False
+1	EthDeposit#constructor#0#0	EthDeposit#constructor#0#0	Node	OTHER_ENTRYPOINT creator = msg.sender	NULL	False	False
+1	EthDeposit#constructor#1#0	EthDeposit#constructor#1#0	Node	OTHER_ENTRYPOINT PrcntRate = 5	NULL	False	False
+2	VouchCoin#VouchCoin#0#0	VouchCoin#VouchCoin#0#0	Node	ENTRY_POINT	NULL	False	False
+2	VouchCoin#VouchCoin#1#0	VouchCoin#VouchCoin#1#0	Assignment	owner_1(address) := msg.sender(address)	NULL	False	False
+2	VouchCoin#VouchCoin#2#0	VouchCoin#VouchCoin#2#0	Index	REF_269(uint256) -> balanceOf_0[msg.sender]	NULL	False	False
+2	VouchCoin#VouchCoin#2#1	VouchCoin#VouchCoin#2#0	Phi	balanceOf_1(mapping(address => uint256)) := ϕ(['balanceOf_0'])	NULL	False	False
+2	VouchCoin#VouchCoin#2#2	VouchCoin#VouchCoin#2#0	Assignment	REF_269 (->balanceOf_1) := 10000000000000000(uint256)	NULL	False	False
+2	VouchCoin#VouchCoin#3#0	VouchCoin#VouchCoin#3#0	Assignment	totalSupply_1(uint256) := 10000000000000000(uint256)	NULL	False	False
+2	VouchCoin#VouchCoin#4#0	VouchCoin#VouchCoin#4#0	Assignment	name_1(string) := VouchCoin(string)	NULL	False	False
+2	VouchCoin#VouchCoin#5#0	VouchCoin#VouchCoin#5#0	Assignment	decimals_1(uint256) := 8(uint256)	NULL	False	False
+2	VouchCoin#balance#address#0#0	VouchCoin#balance#address#0#0	Phi	balanceOf_2(mapping(address => uint256)) := ϕ(['balanceOf_1', 'balanceOf_0', 'balanceOf_2', 'balanceOf_5'])	NULL	False	False
+2	VouchCoin#balance#address#1#0	VouchCoin#balance#address#1#0	Index	REF_270(uint256) -> balanceOf_2[user_1]	NULL	False	False
+2	VouchCoin#balance#address#1#1	VouchCoin#balance#address#1#0	Return	RETURN REF_270	NULL	False	False
+2	VouchCoin#transfer#address#uint256#0#0	VouchCoin#transfer#address#uint256#0#0	Phi	owner_2(address) := ϕ(['owner_0', 'owner_1'])	NULL	False	False
+2	VouchCoin#transfer#address#uint256#0#1	VouchCoin#transfer#address#uint256#0#0	Phi	balanceOf_3(mapping(address => uint256)) := ϕ(['balanceOf_1', 'balanceOf_0', 'balanceOf_2', 'balanceOf_5'])	NULL	False	False
+2	VouchCoin#transfer#address#uint256#1#0	VouchCoin#transfer#address#uint256#1#0	Binary	TMP_573(bool) = _to_1 == 0	NULL	False	False
+2	VouchCoin#transfer#address#uint256#1#1	VouchCoin#transfer#address#uint256#1#0	Condition	CONDITION TMP_573	NULL	True	False
+2	VouchCoin#transfer#address#uint256#1#1	VouchCoin#transfer#address#uint256#1#0	Condition	CONDITION TMP_573	NULL	False	True
+2	VouchCoin#transfer#address#uint256#2#0	VouchCoin#transfer#address#uint256#2#0	Node	THROW	NULL	False	False
+2	VouchCoin#transfer#address#uint256#3#0	VouchCoin#transfer#address#uint256#3#0	Node	END_IF	NULL	False	False
+2	VouchCoin#transfer#address#uint256#4#0	VouchCoin#transfer#address#uint256#4#0	Index	REF_271(uint256) -> balanceOf_3[owner_2]	NULL	False	False
+2	VouchCoin#transfer#address#uint256#4#1	VouchCoin#transfer#address#uint256#4#0	Binary	TMP_574(bool) = REF_271 < _value_1	NULL	False	False
+2	VouchCoin#transfer#address#uint256#4#2	VouchCoin#transfer#address#uint256#4#0	Condition	CONDITION TMP_574	NULL	True	False
+2	VouchCoin#transfer#address#uint256#4#2	VouchCoin#transfer#address#uint256#4#0	Condition	CONDITION TMP_574	NULL	False	True
+2	VouchCoin#transfer#address#uint256#5#0	VouchCoin#transfer#address#uint256#5#0	Node	THROW	NULL	False	False
+2	VouchCoin#transfer#address#uint256#6#0	VouchCoin#transfer#address#uint256#6#0	Node	END_IF	NULL	False	False
+2	VouchCoin#transfer#address#uint256#7#0	VouchCoin#transfer#address#uint256#7#0	Index	REF_272(uint256) -> balanceOf_3[_to_1]	NULL	False	False
+2	VouchCoin#transfer#address#uint256#7#1	VouchCoin#transfer#address#uint256#7#0	Binary	TMP_575(uint256) = REF_272 + _value_1	NULL	False	False
+2	VouchCoin#transfer#address#uint256#7#2	VouchCoin#transfer#address#uint256#7#0	Index	REF_273(uint256) -> balanceOf_3[_to_1]	NULL	False	False
+2	VouchCoin#transfer#address#uint256#7#3	VouchCoin#transfer#address#uint256#7#0	Binary	TMP_576(bool) = TMP_575 < REF_273	NULL	False	False
+2	VouchCoin#transfer#address#uint256#7#4	VouchCoin#transfer#address#uint256#7#0	Condition	CONDITION TMP_576	NULL	False	True
+2	VouchCoin#transfer#address#uint256#7#4	VouchCoin#transfer#address#uint256#7#0	Condition	CONDITION TMP_576	NULL	True	False
+2	VouchCoin#transfer#address#uint256#8#0	VouchCoin#transfer#address#uint256#8#0	Node	THROW	NULL	False	False
+2	VouchCoin#transfer#address#uint256#9#0	VouchCoin#transfer#address#uint256#9#0	Node	END_IF	NULL	False	False
+2	VouchCoin#transfer#address#uint256#10#0	VouchCoin#transfer#address#uint256#10#0	Index	REF_274(uint256) -> balanceOf_3[owner_2]	NULL	False	False
+2	VouchCoin#transfer#address#uint256#10#1	VouchCoin#transfer#address#uint256#10#0	Phi	balanceOf_4(mapping(address => uint256)) := ϕ(['balanceOf_3'])	NULL	False	False
+2	VouchCoin#transfer#address#uint256#10#2	VouchCoin#transfer#address#uint256#10#0	Binary	REF_274(-> balanceOf_4) = REF_274 - _value_1	NULL	False	False
+2	VouchCoin#transfer#address#uint256#11#0	VouchCoin#transfer#address#uint256#11#0	Index	REF_275(uint256) -> balanceOf_4[_to_1]	NULL	False	False
+2	VouchCoin#transfer#address#uint256#11#1	VouchCoin#transfer#address#uint256#11#0	Phi	balanceOf_5(mapping(address => uint256)) := ϕ(['balanceOf_4'])	NULL	False	False
+2	VouchCoin#transfer#address#uint256#11#2	VouchCoin#transfer#address#uint256#11#0	Binary	REF_275(-> balanceOf_5) = REF_275 + _value_1	NULL	False	False
+2	VouchCoin#transfer#address#uint256#12#0	VouchCoin#transfer#address#uint256#12#0	EventCall	Emit Transfer()	NULL	False	False
+2	VouchCoin#fallback#0#0	VouchCoin#fallback#0#0	Node	ENTRY_POINT	NULL	False	False
+2	VouchCoin#fallback#1#0	VouchCoin#fallback#1#0	Node	THROW	NULL	False	False
+2	VouchCoin#constructor#0#0	VouchCoin#constructor#0#0	Node	OTHER_ENTRYPOINT standard = VouchCoin	NULL	False	False
+3	BDSMtoken#BDSMtoken#0#0	BDSMtoken#BDSMtoken#0#0	Phi	totalSupply_1(uint256) := ϕ(['totalSupply_0'])	NULL	False	False
+3	BDSMtoken#BDSMtoken#1#0	BDSMtoken#BDSMtoken#1#0	Assignment	owner_1(address) := msg.sender(address)	NULL	False	False
+3	BDSMtoken#BDSMtoken#2#0	BDSMtoken#BDSMtoken#2#0	Index	REF_296(uint256) -> balances_0[owner_1]	NULL	False	False
+3	BDSMtoken#BDSMtoken#2#1	BDSMtoken#BDSMtoken#2#0	Phi	balances_1(mapping(address => uint256)) := ϕ(['balances_0'])	NULL	False	False
+3	BDSMtoken#BDSMtoken#2#2	BDSMtoken#BDSMtoken#2#0	Assignment	REF_296 (->balances_1) := totalSupply_1(uint256)	NULL	False	False
+3	BDSMtoken#sub#uint256#uint256#0#0	BDSMtoken#sub#uint256#uint256#0#0	Phi	a_1(uint256) := ϕ(['REF_299', 'REF_309', 'REF_307'])	NULL	False	False
+3	BDSMtoken#sub#uint256#uint256#0#1	BDSMtoken#sub#uint256#uint256#0#0	Phi	b_1(uint256) := ϕ(['_value_1', '_value_1'])	NULL	False	False
+3	BDSMtoken#sub#uint256#uint256#1#0	BDSMtoken#sub#uint256#uint256#1#0	Binary	TMP_615(bool) = b_1 <= a_1	NULL	False	False
+3	BDSMtoken#sub#uint256#uint256#1#1	BDSMtoken#sub#uint256#uint256#1#0	SolidityCall	TMP_616(None) = SOLIDITY_CALL assert(bool)(TMP_615)	NULL	False	False
+3	BDSMtoken#sub#uint256#uint256#2#0	BDSMtoken#sub#uint256#uint256#2#0	Binary	TMP_617(uint256) = a_1 - b_1	NULL	False	False
+3	BDSMtoken#sub#uint256#uint256#2#1	BDSMtoken#sub#uint256#uint256#2#0	Return	RETURN TMP_617	NULL	False	False
+3	BDSMtoken#add#uint256#uint256#0#0	BDSMtoken#add#uint256#uint256#0#0	Phi	a_1(uint256) := ϕ(['REF_305', 'REF_301'])	NULL	False	False
+3	BDSMtoken#add#uint256#uint256#0#1	BDSMtoken#add#uint256#uint256#0#0	Phi	b_1(uint256) := ϕ(['_value_1', '_value_1'])	NULL	False	False
+3	BDSMtoken#add#uint256#uint256#1#0	BDSMtoken#add#uint256#uint256#1#0	Binary	TMP_618(uint256) = a_1 + b_1	NULL	False	False
+3	BDSMtoken#add#uint256#uint256#1#1	BDSMtoken#add#uint256#uint256#1#0	Assignment	c_1(uint256) := TMP_618(uint256)	NULL	False	False
+3	BDSMtoken#add#uint256#uint256#2#0	BDSMtoken#add#uint256#uint256#2#0	Binary	TMP_619(bool) = c_1 >= a_1	NULL	False	False
+3	BDSMtoken#add#uint256#uint256#2#1	BDSMtoken#add#uint256#uint256#2#0	SolidityCall	TMP_620(None) = SOLIDITY_CALL assert(bool)(TMP_619)	NULL	False	False
+3	BDSMtoken#add#uint256#uint256#3#0	BDSMtoken#add#uint256#uint256#3#0	Return	RETURN c_1	NULL	False	False
+3	BDSMtoken#balanceOf#address#0#0	BDSMtoken#balanceOf#address#0#0	Phi	balances_2(mapping(address => uint256)) := ϕ(['balances_7', 'balances_12', 'balances_2', 'balances_0', 'balances_1'])	NULL	False	False
+3	BDSMtoken#balanceOf#address#1#0	BDSMtoken#balanceOf#address#1#0	Index	REF_297(uint256) -> balances_2[_owner_1]	NULL	False	False
+3	BDSMtoken#balanceOf#address#1#1	BDSMtoken#balanceOf#address#1#0	Return	RETURN REF_297	NULL	False	False
+3	BDSMtoken#transfer#address#uint256#0#0	BDSMtoken#transfer#address#uint256#0#0	Phi	balances_3(mapping(address => uint256)) := ϕ(['balances_7', 'balances_12', 'balances_2', 'balances_0', 'balances_1'])	NULL	False	False
+3	BDSMtoken#transfer#address#uint256#1#0	BDSMtoken#transfer#address#uint256#1#0	Binary	TMP_621(bool) = _to_1 != 0	NULL	False	False
+3	BDSMtoken#transfer#address#uint256#1#1	BDSMtoken#transfer#address#uint256#1#0	SolidityCall	TMP_622(None) = SOLIDITY_CALL require(bool)(TMP_621)	NULL	False	False
+3	BDSMtoken#transfer#address#uint256#2#0	BDSMtoken#transfer#address#uint256#2#0	Index	REF_298(uint256) -> balances_3[msg.sender]	NULL	False	False
+3	BDSMtoken#transfer#address#uint256#2#1	BDSMtoken#transfer#address#uint256#2#0	Index	REF_299(uint256) -> balances_3[msg.sender]	NULL	False	False
+3	BDSMtoken#transfer#address#uint256#2#2	BDSMtoken#transfer#address#uint256#2#0	InternalCall	TMP_623(uint256) = INTERNAL_CALL, BDSMtoken.sub(uint256,uint256)(REF_299,_value_1)	NULL	False	False
+3	BDSMtoken#transfer#address#uint256#2#3	BDSMtoken#transfer#address#uint256#2#0	Phi	balances_5(mapping(address => uint256)) := ϕ(['balances_3'])	NULL	False	False
+3	BDSMtoken#transfer#address#uint256#2#4	BDSMtoken#transfer#address#uint256#2#0	Assignment	REF_298 (->balances_5) := TMP_623(uint256)	NULL	False	False
+3	BDSMtoken#transfer#address#uint256#3#0	BDSMtoken#transfer#address#uint256#3#0	Index	REF_300(uint256) -> balances_5[_to_1]	NULL	False	False
+3	BDSMtoken#transfer#address#uint256#3#1	BDSMtoken#transfer#address#uint256#3#0	Index	REF_301(uint256) -> balances_5[_to_1]	NULL	False	False
+3	BDSMtoken#transfer#address#uint256#3#2	BDSMtoken#transfer#address#uint256#3#0	InternalCall	TMP_624(uint256) = INTERNAL_CALL, BDSMtoken.add(uint256,uint256)(REF_301,_value_1)	NULL	False	False
+3	BDSMtoken#transfer#address#uint256#3#3	BDSMtoken#transfer#address#uint256#3#0	Phi	balances_7(mapping(address => uint256)) := ϕ(['balances_5'])	NULL	False	False
+3	BDSMtoken#transfer#address#uint256#3#4	BDSMtoken#transfer#address#uint256#3#0	Assignment	REF_300 (->balances_7) := TMP_624(uint256)	NULL	False	False
+3	BDSMtoken#transfer#address#uint256#4#0	BDSMtoken#transfer#address#uint256#4#0	EventCall	Emit Transfer()	NULL	False	False
+3	BDSMtoken#transfer#address#uint256#5#0	BDSMtoken#transfer#address#uint256#5#0	Return	RETURN True	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#0#0	BDSMtoken#transferFrom#address#address#uint256#0#0	Phi	balances_8(mapping(address => uint256)) := ϕ(['balances_7', 'balances_12', 'balances_2', 'balances_0', 'balances_1'])	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#0#1	BDSMtoken#transferFrom#address#address#uint256#0#0	Phi	allowed_1(mapping(address => mapping(address => uint256))) := ϕ(['allowed_4', 'allowed_5', 'allowed_6', 'allowed_0'])	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#1#0	BDSMtoken#transferFrom#address#address#uint256#1#0	Binary	TMP_626(bool) = _to_1 != 0	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#1#1	BDSMtoken#transferFrom#address#address#uint256#1#0	SolidityCall	TMP_627(None) = SOLIDITY_CALL require(bool)(TMP_626)	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#2#0	BDSMtoken#transferFrom#address#address#uint256#2#0	Index	REF_302(mapping(address => uint256)) -> allowed_1[_from_1]	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#2#1	BDSMtoken#transferFrom#address#address#uint256#2#0	Index	REF_303(uint256) -> REF_302[msg.sender]	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#2#2	BDSMtoken#transferFrom#address#address#uint256#2#0	Binary	TMP_628(bool) = _value_1 < REF_303	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#2#3	BDSMtoken#transferFrom#address#address#uint256#2#0	SolidityCall	TMP_629(None) = SOLIDITY_CALL require(bool)(TMP_628)	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#3#0	BDSMtoken#transferFrom#address#address#uint256#3#0	Index	REF_304(uint256) -> balances_8[_to_1]	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#3#1	BDSMtoken#transferFrom#address#address#uint256#3#0	Index	REF_305(uint256) -> balances_8[_to_1]	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#3#2	BDSMtoken#transferFrom#address#address#uint256#3#0	InternalCall	TMP_630(uint256) = INTERNAL_CALL, BDSMtoken.add(uint256,uint256)(REF_305,_value_1)	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#3#3	BDSMtoken#transferFrom#address#address#uint256#3#0	Phi	balances_10(mapping(address => uint256)) := ϕ(['balances_8'])	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#3#4	BDSMtoken#transferFrom#address#address#uint256#3#0	Assignment	REF_304 (->balances_10) := TMP_630(uint256)	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#4#0	BDSMtoken#transferFrom#address#address#uint256#4#0	Index	REF_306(uint256) -> balances_10[_from_1]	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#4#1	BDSMtoken#transferFrom#address#address#uint256#4#0	Index	REF_307(uint256) -> balances_10[_from_1]	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#4#2	BDSMtoken#transferFrom#address#address#uint256#4#0	InternalCall	TMP_631(uint256) = INTERNAL_CALL, BDSMtoken.sub(uint256,uint256)(REF_307,_value_1)	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#4#3	BDSMtoken#transferFrom#address#address#uint256#4#0	Phi	balances_12(mapping(address => uint256)) := ϕ(['balances_10'])	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#4#4	BDSMtoken#transferFrom#address#address#uint256#4#0	Assignment	REF_306 (->balances_12) := TMP_631(uint256)	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#5#0	BDSMtoken#transferFrom#address#address#uint256#5#0	Index	REF_308(mapping(address => uint256)) -> allowed_3[_from_1]	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#5#1	BDSMtoken#transferFrom#address#address#uint256#5#0	Index	REF_309(uint256) -> REF_308[msg.sender]	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#5#2	BDSMtoken#transferFrom#address#address#uint256#5#0	InternalCall	TMP_632(uint256) = INTERNAL_CALL, BDSMtoken.sub(uint256,uint256)(REF_309,_value_1)	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#6#0	BDSMtoken#transferFrom#address#address#uint256#6#0	EventCall	Emit Transfer()	NULL	False	False
+3	BDSMtoken#transferFrom#address#address#uint256#7#0	BDSMtoken#transferFrom#address#address#uint256#7#0	Return	RETURN True	NULL	False	False
+3	BDSMtoken#approve#address#uint256#0#0	BDSMtoken#approve#address#uint256#0#0	Node	ENTRY_POINT	NULL	False	False
+3	BDSMtoken#approve#address#uint256#1#0	BDSMtoken#approve#address#uint256#1#0	Index	REF_310(mapping(address => uint256)) -> allowed_4[msg.sender]	NULL	False	False
+3	BDSMtoken#approve#address#uint256#1#1	BDSMtoken#approve#address#uint256#1#0	Index	REF_311(uint256) -> REF_310[_spender_1]	NULL	False	False
+3	BDSMtoken#approve#address#uint256#1#2	BDSMtoken#approve#address#uint256#1#0	Phi	allowed_5(mapping(address => mapping(address => uint256))) := ϕ(['allowed_4'])	NULL	False	False
+3	BDSMtoken#approve#address#uint256#1#3	BDSMtoken#approve#address#uint256#1#0	Assignment	REF_311 (->allowed_5) := _value_1(uint256)	NULL	False	False
+3	BDSMtoken#approve#address#uint256#2#0	BDSMtoken#approve#address#uint256#2#0	EventCall	Emit Approval()	NULL	False	False
+3	BDSMtoken#approve#address#uint256#3#0	BDSMtoken#approve#address#uint256#3#0	Return	RETURN True	NULL	False	False
+3	BDSMtoken#allowance#address#address#0#0	BDSMtoken#allowance#address#address#0#0	Phi	allowed_6(mapping(address => mapping(address => uint256))) := ϕ(['allowed_4', 'allowed_5', 'allowed_6', 'allowed_0'])	NULL	False	False
+3	BDSMtoken#allowance#address#address#1#0	BDSMtoken#allowance#address#address#1#0	Index	REF_312(mapping(address => uint256)) -> allowed_6[_owner_1]	NULL	False	False
+3	BDSMtoken#allowance#address#address#1#1	BDSMtoken#allowance#address#address#1#0	Index	REF_313(uint256) -> REF_312[_spender_1]	NULL	False	False
+3	BDSMtoken#allowance#address#address#1#2	BDSMtoken#allowance#address#address#1#0	Return	RETURN REF_313	NULL	False	False
+3	BDSMtoken#constructor#0#0	BDSMtoken#constructor#0#0	Node	OTHER_ENTRYPOINT symbol = BDSM	NULL	False	False
+3	BDSMtoken#constructor#1#0	BDSMtoken#constructor#1#0	Node	OTHER_ENTRYPOINT name = BDSMtoken	NULL	False	False
+3	BDSMtoken#constructor#2#0	BDSMtoken#constructor#2#0	Node	OTHER_ENTRYPOINT totalSupply = 1000000000000	NULL	False	False
+3	BDSMtoken#slitherConstructorConstantVariables#0#0	BDSMtoken#slitherConstructorConstantVariables#0#0	Node	OTHER_ENTRYPOINT decimals = 12	NULL	False	False

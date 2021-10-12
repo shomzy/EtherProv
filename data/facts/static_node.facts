@@ -1,0 +1,183 @@
+1	Owned#changeOwner#address#0#0	Owned#changeOwner#address	ENTRY_POINT	None
+1	Owned#changeOwner#address#1#0	Owned#changeOwner#address	IF	isOwner()
+1	Owned#changeOwner#address#2#0	Owned#changeOwner#address	EXPRESSION	newOwner = addr
+1	Owned#changeOwner#address#3#0	Owned#changeOwner#address	END_IF	None
+1	Owned#confirmOwner#0#0	Owned#confirmOwner	ENTRY_POINT	None
+1	Owned#confirmOwner#1#0	Owned#confirmOwner	IF	msg.sender == newOwner
+1	Owned#confirmOwner#2#0	Owned#confirmOwner	EXPRESSION	owner = newOwner
+1	Owned#confirmOwner#3#0	Owned#confirmOwner	END_IF	None
+1	Owned#isOwner#0#0	Owned#isOwner	ENTRY_POINT	None
+1	Owned#isOwner#1#0	Owned#isOwner	RETURN	owner == msg.sender
+1	Owned#WthdrawAllToCreator#0#0	Owned#WthdrawAllToCreator	ENTRY_POINT	None
+1	Owned#WthdrawAllToCreator#1#0	Owned#WthdrawAllToCreator	IF	msg.sender == creator
+1	Owned#WthdrawAllToCreator#2#0	Owned#WthdrawAllToCreator	EXPRESSION	creator.transfer(this.balance)
+1	Owned#WthdrawAllToCreator#3#0	Owned#WthdrawAllToCreator	END_IF	None
+1	Owned#WthdrawToCreator#uint256#0#0	Owned#WthdrawToCreator#uint256	ENTRY_POINT	None
+1	Owned#WthdrawToCreator#uint256#1#0	Owned#WthdrawToCreator#uint256	IF	msg.sender == creator
+1	Owned#WthdrawToCreator#uint256#2#0	Owned#WthdrawToCreator#uint256	EXPRESSION	creator.transfer(val)
+1	Owned#WthdrawToCreator#uint256#3#0	Owned#WthdrawToCreator#uint256	END_IF	None
+1	Owned#WthdrawTo#address#uint256#0#0	Owned#WthdrawTo#address#uint256	ENTRY_POINT	None
+1	Owned#WthdrawTo#address#uint256#1#0	Owned#WthdrawTo#address#uint256	IF	msg.sender == creator
+1	Owned#WthdrawTo#address#uint256#2#0	Owned#WthdrawTo#address#uint256	EXPRESSION	addr.transfer(val)
+1	Owned#WthdrawTo#address#uint256#3#0	Owned#WthdrawTo#address#uint256	END_IF	None
+1	Owned#constructor#0#0	Owned#constructor	OTHER_ENTRYPOINT	owner = msg.sender
+1	Owned#constructor#1#0	Owned#constructor	OTHER_ENTRYPOINT	creator = msg.sender
+1	EthDeposit#changeOwner#address#0#0	EthDeposit#changeOwner#address	ENTRY_POINT	None
+1	EthDeposit#changeOwner#address#1#0	EthDeposit#changeOwner#address	IF	isOwner()
+1	EthDeposit#changeOwner#address#2#0	EthDeposit#changeOwner#address	EXPRESSION	newOwner = addr
+1	EthDeposit#changeOwner#address#3#0	EthDeposit#changeOwner#address	END_IF	None
+1	EthDeposit#confirmOwner#0#0	EthDeposit#confirmOwner	ENTRY_POINT	None
+1	EthDeposit#confirmOwner#1#0	EthDeposit#confirmOwner	IF	msg.sender == newOwner
+1	EthDeposit#confirmOwner#2#0	EthDeposit#confirmOwner	EXPRESSION	owner = newOwner
+1	EthDeposit#confirmOwner#3#0	EthDeposit#confirmOwner	END_IF	None
+1	EthDeposit#isOwner#0#0	EthDeposit#isOwner	ENTRY_POINT	None
+1	EthDeposit#isOwner#1#0	EthDeposit#isOwner	RETURN	owner == msg.sender
+1	EthDeposit#WthdrawAllToCreator#0#0	EthDeposit#WthdrawAllToCreator	ENTRY_POINT	None
+1	EthDeposit#WthdrawAllToCreator#1#0	EthDeposit#WthdrawAllToCreator	IF	msg.sender == creator
+1	EthDeposit#WthdrawAllToCreator#2#0	EthDeposit#WthdrawAllToCreator	EXPRESSION	creator.transfer(this.balance)
+1	EthDeposit#WthdrawAllToCreator#3#0	EthDeposit#WthdrawAllToCreator	END_IF	None
+1	EthDeposit#WthdrawToCreator#uint256#0#0	EthDeposit#WthdrawToCreator#uint256	ENTRY_POINT	None
+1	EthDeposit#WthdrawToCreator#uint256#1#0	EthDeposit#WthdrawToCreator#uint256	IF	msg.sender == creator
+1	EthDeposit#WthdrawToCreator#uint256#2#0	EthDeposit#WthdrawToCreator#uint256	EXPRESSION	creator.transfer(val)
+1	EthDeposit#WthdrawToCreator#uint256#3#0	EthDeposit#WthdrawToCreator#uint256	END_IF	None
+1	EthDeposit#WthdrawTo#address#uint256#0#0	EthDeposit#WthdrawTo#address#uint256	ENTRY_POINT	None
+1	EthDeposit#WthdrawTo#address#uint256#1#0	EthDeposit#WthdrawTo#address#uint256	IF	msg.sender == creator
+1	EthDeposit#WthdrawTo#address#uint256#2#0	EthDeposit#WthdrawTo#address#uint256	EXPRESSION	addr.transfer(val)
+1	EthDeposit#WthdrawTo#address#uint256#3#0	EthDeposit#WthdrawTo#address#uint256	END_IF	None
+1	EthDeposit#init#address#0#0	EthDeposit#init#address	ENTRY_POINT	None
+1	EthDeposit#init#address#1#0	EthDeposit#init#address	EXPRESSION	owner = msg.sender
+1	EthDeposit#init#address#2#0	EthDeposit#init#address	EXPRESSION	Manager = _manager
+1	EthDeposit#isManager#0#0	EthDeposit#isManager	ENTRY_POINT	None
+1	EthDeposit#isManager#1#0	EthDeposit#isManager	RETURN	(msg.sender == Manager)
+1	EthDeposit#canManage#0#0	EthDeposit#canManage	ENTRY_POINT	None
+1	EthDeposit#canManage#1#0	EthDeposit#canManage	RETURN	(msg.sender == Manager || msg.sender == owner)
+1	EthDeposit#ChangeManager#address#0#0	EthDeposit#ChangeManager#address	ENTRY_POINT	None
+1	EthDeposit#ChangeManager#address#1#0	EthDeposit#ChangeManager#address	IF	canManage()
+1	EthDeposit#ChangeManager#address#2#0	EthDeposit#ChangeManager#address	EXPRESSION	NewManager = _newManager
+1	EthDeposit#ChangeManager#address#3#0	EthDeposit#ChangeManager#address	END_IF	None
+1	EthDeposit#ConfirmManager#0#0	EthDeposit#ConfirmManager	ENTRY_POINT	None
+1	EthDeposit#ConfirmManager#1#0	EthDeposit#ConfirmManager	IF	msg.sender == NewManager
+1	EthDeposit#ConfirmManager#2#0	EthDeposit#ConfirmManager	EXPRESSION	Manager = NewManager
+1	EthDeposit#ConfirmManager#3#0	EthDeposit#ConfirmManager	END_IF	None
+1	EthDeposit#StartPaymens#0#0	EthDeposit#StartPaymens	ENTRY_POINT	None
+1	EthDeposit#StartPaymens#1#0	EthDeposit#StartPaymens	IF	canManage()
+1	EthDeposit#StartPaymens#2#0	EthDeposit#StartPaymens	EXPRESSION	AuthorizePayments(true)
+1	EthDeposit#StartPaymens#3#0	EthDeposit#StartPaymens	EXPRESSION	StartOfPayments(msg.sender,now)
+1	EthDeposit#StartPaymens#4#0	EthDeposit#StartPaymens	END_IF	None
+1	EthDeposit#StopPaymens#0#0	EthDeposit#StopPaymens	ENTRY_POINT	None
+1	EthDeposit#StopPaymens#1#0	EthDeposit#StopPaymens	IF	canManage()
+1	EthDeposit#StopPaymens#2#0	EthDeposit#StopPaymens	EXPRESSION	AuthorizePayments(false)
+1	EthDeposit#StopPaymens#3#0	EthDeposit#StopPaymens	EXPRESSION	EndOfPayments(msg.sender,now)
+1	EthDeposit#StopPaymens#4#0	EthDeposit#StopPaymens	END_IF	None
+1	EthDeposit#AuthorizePayments#bool#0#0	EthDeposit#AuthorizePayments#bool	ENTRY_POINT	None
+1	EthDeposit#AuthorizePayments#bool#1#0	EthDeposit#AuthorizePayments#bool	IF	isOwner()
+1	EthDeposit#AuthorizePayments#bool#2#0	EthDeposit#AuthorizePayments#bool	EXPRESSION	paymentsAllowed = val
+1	EthDeposit#AuthorizePayments#bool#3#0	EthDeposit#AuthorizePayments#bool	END_IF	None
+1	EthDeposit#SetPrcntRate#uint256#0#0	EthDeposit#SetPrcntRate#uint256	ENTRY_POINT	None
+1	EthDeposit#SetPrcntRate#uint256#1#0	EthDeposit#SetPrcntRate#uint256	IF	canManage()
+1	EthDeposit#SetPrcntRate#uint256#2#0	EthDeposit#SetPrcntRate#uint256	IF	val != PrcntRate
+1	EthDeposit#SetPrcntRate#uint256#3#0	EthDeposit#SetPrcntRate#uint256	IF	val >= 1
+1	EthDeposit#SetPrcntRate#uint256#4#0	EthDeposit#SetPrcntRate#uint256	EXPRESSION	PrcntRate = val
+1	EthDeposit#SetPrcntRate#uint256#5#0	EthDeposit#SetPrcntRate#uint256	END_IF	None
+1	EthDeposit#SetPrcntRate#uint256#6#0	EthDeposit#SetPrcntRate#uint256	END_IF	None
+1	EthDeposit#SetPrcntRate#uint256#7#0	EthDeposit#SetPrcntRate#uint256	END_IF	None
+1	EthDeposit#fallback#0#0	EthDeposit#fallback	ENTRY_POINT	None
+1	EthDeposit#fallback#1#0	EthDeposit#fallback	EXPRESSION	ToSponsor()
+1	EthDeposit#ToSponsor#0#0	EthDeposit#ToSponsor	ENTRY_POINT	None
+1	EthDeposit#ToSponsor#1#0	EthDeposit#ToSponsor	IF	msg.value >= 1000000000000000000
+1	EthDeposit#ToSponsor#2#0	EthDeposit#ToSponsor	IF	Sponsors[msg.sender] == 0
+1	EthDeposit#ToSponsor#3#0	EthDeposit#ToSponsor	EXPRESSION	SponsorsQty ++
+1	EthDeposit#ToSponsor#4#0	EthDeposit#ToSponsor	END_IF	None
+1	EthDeposit#ToSponsor#5#0	EthDeposit#ToSponsor	EXPRESSION	Sponsors[msg.sender] += msg.value
+1	EthDeposit#ToSponsor#6#0	EthDeposit#ToSponsor	EXPRESSION	CharterCapital += msg.value
+1	EthDeposit#ToSponsor#7#0	EthDeposit#ToSponsor	END_IF	None
+1	EthDeposit#WithdrawToSponsor#address#uint256#0#0	EthDeposit#WithdrawToSponsor#address#uint256	ENTRY_POINT	None
+1	EthDeposit#WithdrawToSponsor#address#uint256#1#0	EthDeposit#WithdrawToSponsor#address#uint256	IF	Sponsors[_addr] > 0
+1	EthDeposit#WithdrawToSponsor#address#uint256#2#0	EthDeposit#WithdrawToSponsor#address#uint256	IF	isOwner()
+1	EthDeposit#WithdrawToSponsor#address#uint256#3#0	EthDeposit#WithdrawToSponsor#address#uint256	IF	_addr.send(_wei)
+1	EthDeposit#WithdrawToSponsor#address#uint256#4#0	EthDeposit#WithdrawToSponsor#address#uint256	IF	CharterCapital >= _wei
+1	EthDeposit#WithdrawToSponsor#address#uint256#5#0	EthDeposit#WithdrawToSponsor#address#uint256	EXPRESSION	CharterCapital -= _wei
+1	EthDeposit#WithdrawToSponsor#address#uint256#6#0	EthDeposit#WithdrawToSponsor#address#uint256	EXPRESSION	CharterCapital = 0
+1	EthDeposit#WithdrawToSponsor#address#uint256#7#0	EthDeposit#WithdrawToSponsor#address#uint256	END_IF	None
+1	EthDeposit#WithdrawToSponsor#address#uint256#8#0	EthDeposit#WithdrawToSponsor#address#uint256	END_IF	None
+1	EthDeposit#WithdrawToSponsor#address#uint256#9#0	EthDeposit#WithdrawToSponsor#address#uint256	END_IF	None
+1	EthDeposit#WithdrawToSponsor#address#uint256#10#0	EthDeposit#WithdrawToSponsor#address#uint256	END_IF	None
+1	EthDeposit#Deposit#0#0	EthDeposit#Deposit	ENTRY_POINT	None
+1	EthDeposit#Deposit#1#0	EthDeposit#Deposit	EXPRESSION	FixProfit()
+1	EthDeposit#Deposit#2#0	EthDeposit#Deposit	EXPRESSION	Lenders[msg.sender].Amount += msg.value
+1	EthDeposit#CheckProfit#address#0#0	EthDeposit#CheckProfit#address	ENTRY_POINT	None
+1	EthDeposit#CheckProfit#address#1#0	EthDeposit#CheckProfit#address	RETURN	((Lenders[addr].Amount / 100) * PrcntRate) * ((now - Lenders[addr].LastLendTime) / 86400)
+1	EthDeposit#FixProfit#0#0	EthDeposit#FixProfit	ENTRY_POINT	None
+1	EthDeposit#FixProfit#1#0	EthDeposit#FixProfit	IF	Lenders[msg.sender].Amount > 0
+1	EthDeposit#FixProfit#2#0	EthDeposit#FixProfit	EXPRESSION	Lenders[msg.sender].Reserved += CheckProfit(msg.sender)
+1	EthDeposit#FixProfit#3#0	EthDeposit#FixProfit	END_IF	None
+1	EthDeposit#FixProfit#4#0	EthDeposit#FixProfit	EXPRESSION	Lenders[msg.sender].LastLendTime = now
+1	EthDeposit#WitdrawLenderProfit#0#0	EthDeposit#WitdrawLenderProfit	ENTRY_POINT	None
+1	EthDeposit#WitdrawLenderProfit#1#0	EthDeposit#WitdrawLenderProfit	IF	paymentsAllowed
+1	EthDeposit#WitdrawLenderProfit#2#0	EthDeposit#WitdrawLenderProfit	EXPRESSION	FixProfit()
+1	EthDeposit#WitdrawLenderProfit#3#0	EthDeposit#WitdrawLenderProfit	NEW VARIABLE	profit = Lenders[msg.sender].Reserved
+1	EthDeposit#WitdrawLenderProfit#4#0	EthDeposit#WitdrawLenderProfit	EXPRESSION	Lenders[msg.sender].Reserved = 0
+1	EthDeposit#WitdrawLenderProfit#5#0	EthDeposit#WitdrawLenderProfit	EXPRESSION	msg.sender.transfer(profit)
+1	EthDeposit#WitdrawLenderProfit#6#0	EthDeposit#WitdrawLenderProfit	END_IF	None
+1	EthDeposit#constructor#0#0	EthDeposit#constructor	OTHER_ENTRYPOINT	creator = msg.sender
+1	EthDeposit#constructor#1#0	EthDeposit#constructor	OTHER_ENTRYPOINT	PrcntRate = 5
+2	VouchCoin#VouchCoin#0#0	VouchCoin#VouchCoin	ENTRY_POINT	None
+2	VouchCoin#VouchCoin#1#0	VouchCoin#VouchCoin	EXPRESSION	owner = msg.sender
+2	VouchCoin#VouchCoin#2#0	VouchCoin#VouchCoin	EXPRESSION	balanceOf[msg.sender] = 10000000000000000
+2	VouchCoin#VouchCoin#3#0	VouchCoin#VouchCoin	EXPRESSION	totalSupply = 10000000000000000
+2	VouchCoin#VouchCoin#4#0	VouchCoin#VouchCoin	EXPRESSION	name = VouchCoin
+2	VouchCoin#VouchCoin#5#0	VouchCoin#VouchCoin	EXPRESSION	decimals = 8
+2	VouchCoin#balance#address#0#0	VouchCoin#balance#address	ENTRY_POINT	None
+2	VouchCoin#balance#address#1#0	VouchCoin#balance#address	RETURN	balanceOf[user]
+2	VouchCoin#transfer#address#uint256#0#0	VouchCoin#transfer#address#uint256	ENTRY_POINT	None
+2	VouchCoin#transfer#address#uint256#1#0	VouchCoin#transfer#address#uint256	IF	_to == 0x0
+2	VouchCoin#transfer#address#uint256#2#0	VouchCoin#transfer#address#uint256	THROW	None
+2	VouchCoin#transfer#address#uint256#3#0	VouchCoin#transfer#address#uint256	END_IF	None
+2	VouchCoin#transfer#address#uint256#4#0	VouchCoin#transfer#address#uint256	IF	balanceOf[owner] < _value
+2	VouchCoin#transfer#address#uint256#5#0	VouchCoin#transfer#address#uint256	THROW	None
+2	VouchCoin#transfer#address#uint256#6#0	VouchCoin#transfer#address#uint256	END_IF	None
+2	VouchCoin#transfer#address#uint256#7#0	VouchCoin#transfer#address#uint256	IF	balanceOf[_to] + _value < balanceOf[_to]
+2	VouchCoin#transfer#address#uint256#8#0	VouchCoin#transfer#address#uint256	THROW	None
+2	VouchCoin#transfer#address#uint256#9#0	VouchCoin#transfer#address#uint256	END_IF	None
+2	VouchCoin#transfer#address#uint256#10#0	VouchCoin#transfer#address#uint256	EXPRESSION	balanceOf[owner] -= _value
+2	VouchCoin#transfer#address#uint256#11#0	VouchCoin#transfer#address#uint256	EXPRESSION	balanceOf[_to] += _value
+2	VouchCoin#transfer#address#uint256#12#0	VouchCoin#transfer#address#uint256	EXPRESSION	Transfer(owner,_to,_value)
+2	VouchCoin#fallback#0#0	VouchCoin#fallback	ENTRY_POINT	None
+2	VouchCoin#fallback#1#0	VouchCoin#fallback	THROW	None
+2	VouchCoin#constructor#0#0	VouchCoin#constructor	OTHER_ENTRYPOINT	standard = VouchCoin
+3	BDSMtoken#BDSMtoken#0#0	BDSMtoken#BDSMtoken	ENTRY_POINT	None
+3	BDSMtoken#BDSMtoken#1#0	BDSMtoken#BDSMtoken	EXPRESSION	owner = msg.sender
+3	BDSMtoken#BDSMtoken#2#0	BDSMtoken#BDSMtoken	EXPRESSION	balances[owner] = totalSupply
+3	BDSMtoken#sub#uint256#uint256#0#0	BDSMtoken#sub#uint256#uint256	ENTRY_POINT	None
+3	BDSMtoken#sub#uint256#uint256#1#0	BDSMtoken#sub#uint256#uint256	EXPRESSION	assert(bool)(b <= a)
+3	BDSMtoken#sub#uint256#uint256#2#0	BDSMtoken#sub#uint256#uint256	RETURN	a - b
+3	BDSMtoken#add#uint256#uint256#0#0	BDSMtoken#add#uint256#uint256	ENTRY_POINT	None
+3	BDSMtoken#add#uint256#uint256#1#0	BDSMtoken#add#uint256#uint256	NEW VARIABLE	c = a + b
+3	BDSMtoken#add#uint256#uint256#2#0	BDSMtoken#add#uint256#uint256	EXPRESSION	assert(bool)(c >= a)
+3	BDSMtoken#add#uint256#uint256#3#0	BDSMtoken#add#uint256#uint256	RETURN	c
+3	BDSMtoken#balanceOf#address#0#0	BDSMtoken#balanceOf#address	ENTRY_POINT	None
+3	BDSMtoken#balanceOf#address#1#0	BDSMtoken#balanceOf#address	RETURN	balances[_owner]
+3	BDSMtoken#transfer#address#uint256#0#0	BDSMtoken#transfer#address#uint256	ENTRY_POINT	None
+3	BDSMtoken#transfer#address#uint256#1#0	BDSMtoken#transfer#address#uint256	EXPRESSION	require(bool)(_to != 0x0)
+3	BDSMtoken#transfer#address#uint256#2#0	BDSMtoken#transfer#address#uint256	EXPRESSION	balances[msg.sender] = sub(balances[msg.sender],_value)
+3	BDSMtoken#transfer#address#uint256#3#0	BDSMtoken#transfer#address#uint256	EXPRESSION	balances[_to] = add(balances[_to],_value)
+3	BDSMtoken#transfer#address#uint256#4#0	BDSMtoken#transfer#address#uint256	EXPRESSION	Transfer(msg.sender,_to,_value)
+3	BDSMtoken#transfer#address#uint256#5#0	BDSMtoken#transfer#address#uint256	RETURN	true
+3	BDSMtoken#transferFrom#address#address#uint256#0#0	BDSMtoken#transferFrom#address#address#uint256	ENTRY_POINT	None
+3	BDSMtoken#transferFrom#address#address#uint256#1#0	BDSMtoken#transferFrom#address#address#uint256	EXPRESSION	require(bool)(_to != 0x0)
+3	BDSMtoken#transferFrom#address#address#uint256#2#0	BDSMtoken#transferFrom#address#address#uint256	EXPRESSION	require(bool)(_value < allowed[_from][msg.sender])
+3	BDSMtoken#transferFrom#address#address#uint256#3#0	BDSMtoken#transferFrom#address#address#uint256	EXPRESSION	balances[_to] = add(balances[_to],_value)
+3	BDSMtoken#transferFrom#address#address#uint256#4#0	BDSMtoken#transferFrom#address#address#uint256	EXPRESSION	balances[_from] = sub(balances[_from],_value)
+3	BDSMtoken#transferFrom#address#address#uint256#5#0	BDSMtoken#transferFrom#address#address#uint256	EXPRESSION	sub(allowed[_from][msg.sender],_value)
+3	BDSMtoken#transferFrom#address#address#uint256#6#0	BDSMtoken#transferFrom#address#address#uint256	EXPRESSION	Transfer(_from,_to,_value)
+3	BDSMtoken#transferFrom#address#address#uint256#7#0	BDSMtoken#transferFrom#address#address#uint256	RETURN	true
+3	BDSMtoken#approve#address#uint256#0#0	BDSMtoken#approve#address#uint256	ENTRY_POINT	None
+3	BDSMtoken#approve#address#uint256#1#0	BDSMtoken#approve#address#uint256	EXPRESSION	allowed[msg.sender][_spender] = _value
+3	BDSMtoken#approve#address#uint256#2#0	BDSMtoken#approve#address#uint256	EXPRESSION	Approval(msg.sender,_spender,_value)
+3	BDSMtoken#approve#address#uint256#3#0	BDSMtoken#approve#address#uint256	RETURN	true
+3	BDSMtoken#allowance#address#address#0#0	BDSMtoken#allowance#address#address	ENTRY_POINT	None
+3	BDSMtoken#allowance#address#address#1#0	BDSMtoken#allowance#address#address	RETURN	allowed[_owner][_spender]
+3	BDSMtoken#constructor#0#0	BDSMtoken#constructor	OTHER_ENTRYPOINT	symbol = BDSM
+3	BDSMtoken#constructor#1#0	BDSMtoken#constructor	OTHER_ENTRYPOINT	name = BDSMtoken
+3	BDSMtoken#constructor#2#0	BDSMtoken#constructor	OTHER_ENTRYPOINT	totalSupply = 1000000000000
+3	BDSMtoken#slitherConstructorConstantVariables#0#0	BDSMtoken#slitherConstructorConstantVariables	OTHER_ENTRYPOINT	decimals = 12

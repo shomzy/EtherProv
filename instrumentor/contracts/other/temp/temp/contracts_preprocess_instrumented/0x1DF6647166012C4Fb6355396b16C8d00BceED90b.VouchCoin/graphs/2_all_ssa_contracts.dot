@@ -1,0 +1,296 @@
+strict digraph {
+subgraph cluster_VouchCoin  {
+label = "[VouchCoin]" 
+subgraph cluster_VouchCoin_transfer_address_uint256 {
+label = "[VouchCoin_transfer_address_uint256]" 
+subgraph cluster_VouchCoin_transfer_address_uint256_1_0 {
+label = "[IF _to == 0x0]" 
+"VouchCoin_transfer_address_uint256_1_1" [label="Node Type: Condition VouchCoin_transfer_address_uint256_1_1
+SSA:
+CONDITION TMP_573
+" color="black"];
+
+"VouchCoin_transfer_address_uint256_1_0" [label="Node Type: Binary VouchCoin_transfer_address_uint256_1_0
+SSA:
+TMP_573(bool) = _to_1 == 0
+" color="black"];
+
+}
+subgraph cluster_VouchCoin_transfer_address_uint256_4_0 {
+label = "[IF balanceOf[owner] < _value]" 
+"VouchCoin_transfer_address_uint256_4_0" [label="Node Type: Index VouchCoin_transfer_address_uint256_4_0
+SSA:
+REF_271(uint256) -> balanceOf_3[owner_2]
+
+state_vars_read: owner
+state_vars_written: balanceOf" color="red"];
+
+"VouchCoin_transfer_address_uint256_4_1" [label="Node Type: Binary VouchCoin_transfer_address_uint256_4_1
+SSA:
+TMP_574(bool) = REF_271 < _value_1
+
+state_vars_read: balanceOf" color="red"];
+
+"VouchCoin_transfer_address_uint256_4_2" [label="Node Type: Condition VouchCoin_transfer_address_uint256_4_2
+SSA:
+CONDITION TMP_574
+" color="black"];
+
+}
+subgraph cluster_VouchCoin_transfer_address_uint256_7_0 {
+label = "[IF balanceOf[_to] + _value < balanceOf[_to]]" 
+"VouchCoin_transfer_address_uint256_7_0" [label="Node Type: Index VouchCoin_transfer_address_uint256_7_0
+SSA:
+REF_272(uint256) -> balanceOf_3[_to_1]
+
+state_vars_written: balanceOf" color="red"];
+
+"VouchCoin_transfer_address_uint256_7_1" [label="Node Type: Binary VouchCoin_transfer_address_uint256_7_1
+SSA:
+TMP_575(uint256) = REF_272 + _value_1
+
+state_vars_read: balanceOf" color="red"];
+
+"VouchCoin_transfer_address_uint256_7_2" [label="Node Type: Index VouchCoin_transfer_address_uint256_7_2
+SSA:
+REF_273(uint256) -> balanceOf_3[_to_1]
+
+state_vars_written: balanceOf" color="red"];
+
+"VouchCoin_transfer_address_uint256_7_3" [label="Node Type: Binary VouchCoin_transfer_address_uint256_7_3
+SSA:
+TMP_576(bool) = TMP_575 < REF_273
+
+state_vars_read: balanceOf" color="red"];
+
+"VouchCoin_transfer_address_uint256_7_4" [label="Node Type: Condition VouchCoin_transfer_address_uint256_7_4
+SSA:
+CONDITION TMP_576
+" color="black"];
+
+}
+subgraph cluster_VouchCoin_transfer_address_uint256_10_0 {
+label = "[EXPRESSION balanceOf[owner] -= _value]" 
+"VouchCoin_transfer_address_uint256_10_0" [label="Node Type: Index VouchCoin_transfer_address_uint256_10_0
+SSA:
+REF_274(uint256) -> balanceOf_3[owner_2]
+
+state_vars_read: owner
+state_vars_written: balanceOf" color="red"];
+
+"VouchCoin_transfer_address_uint256_10_2" [label="Node Type: Binary VouchCoin_transfer_address_uint256_10_2
+SSA:
+REF_274(-> balanceOf_4) = REF_274 - _value_1
+
+state_vars_read: balanceOf
+state_vars_written: balanceOf" color="red"];
+
+"VouchCoin_transfer_address_uint256_10_1" [label="Node Type: Phi VouchCoin_transfer_address_uint256_10_1
+SSA:
+balanceOf_4(mapping(address => uint256)) := ϕ(['balanceOf_3'])
+
+state_vars_written: balanceOf" color="red"];
+
+}
+subgraph cluster_VouchCoin_transfer_address_uint256_11_0 {
+label = "[EXPRESSION balanceOf[_to] += _value]" 
+"VouchCoin_transfer_address_uint256_11_0" [label="Node Type: Index VouchCoin_transfer_address_uint256_11_0
+SSA:
+REF_275(uint256) -> balanceOf_4[_to_1]
+
+state_vars_written: balanceOf" color="red"];
+
+"VouchCoin_transfer_address_uint256_11_2" [label="Node Type: Binary VouchCoin_transfer_address_uint256_11_2
+SSA:
+REF_275(-> balanceOf_5) = REF_275 + _value_1
+
+state_vars_read: balanceOf
+state_vars_written: balanceOf" color="red"];
+
+"VouchCoin_transfer_address_uint256_11_1" [label="Node Type: Phi VouchCoin_transfer_address_uint256_11_1
+SSA:
+balanceOf_5(mapping(address => uint256)) := ϕ(['balanceOf_4'])
+
+state_vars_written: balanceOf" color="red"];
+
+}
+subgraph cluster_VouchCoin_transfer_address_uint256_0_0 {
+label = "[ENTRY_POINT]" 
+"VouchCoin_transfer_address_uint256_0_1" [label="Node Type: Phi VouchCoin_transfer_address_uint256_0_1
+SSA:
+balanceOf_3(mapping(address => uint256)) := ϕ(['balanceOf_1', 'balanceOf_0', 'balanceOf_2', 'balanceOf_5'])
+" color="black"];
+
+"VouchCoin_transfer_address_uint256_0_0" [label="Node Type: Phi VouchCoin_transfer_address_uint256_0_0
+SSA:
+owner_2(address) := ϕ(['owner_0', 'owner_1'])
+" color="black"];
+
+}
+subgraph cluster_VouchCoin_transfer_address_uint256_12_0 {
+label = "[EXPRESSION Transfer(owner,_to,_value)]" 
+"VouchCoin_transfer_address_uint256_12_0" [label="Node Type: EventCall VouchCoin_transfer_address_uint256_12_0
+SSA:
+Emit Transfer()
+" color="black"];
+
+}
+"VouchCoin_transfer_address_uint256_5_0" [label="VouchCoin_transfer_address_uint256_5_0
+THROW"];
+
+"VouchCoin_transfer_address_uint256_6_0" [label="VouchCoin_transfer_address_uint256_6_0
+END_IF"];
+
+"VouchCoin_transfer_address_uint256_8_0" [label="VouchCoin_transfer_address_uint256_8_0
+THROW"];
+
+"VouchCoin_transfer_address_uint256_2_0" [label="VouchCoin_transfer_address_uint256_2_0
+THROW"];
+
+"VouchCoin_transfer_address_uint256_9_0" [label="VouchCoin_transfer_address_uint256_9_0
+END_IF"];
+
+"VouchCoin_transfer_address_uint256_3_0" [label="VouchCoin_transfer_address_uint256_3_0
+END_IF"];
+
+}
+subgraph cluster_VouchCoin_balance_address {
+label = "[VouchCoin_balance_address]" 
+subgraph cluster_VouchCoin_balance_address_1_0 {
+label = "[RETURN balanceOf[user]]" 
+"VouchCoin_balance_address_1_1" [label="Node Type: Return VouchCoin_balance_address_1_1
+SSA:
+RETURN REF_270
+
+state_vars_read: balanceOf" color="red"];
+
+"VouchCoin_balance_address_1_0" [label="Node Type: Index VouchCoin_balance_address_1_0
+SSA:
+REF_270(uint256) -> balanceOf_2[user_1]
+
+state_vars_written: balanceOf" color="red"];
+
+}
+subgraph cluster_VouchCoin_balance_address_0_0 {
+label = "[ENTRY_POINT]" 
+"VouchCoin_balance_address_0_0" [label="Node Type: Phi VouchCoin_balance_address_0_0
+SSA:
+balanceOf_2(mapping(address => uint256)) := ϕ(['balanceOf_1', 'balanceOf_0', 'balanceOf_2', 'balanceOf_5'])
+" color="black"];
+
+}
+}
+subgraph cluster_VouchCoin_VouchCoin {
+label = "[VouchCoin_VouchCoin]" 
+subgraph cluster_VouchCoin_VouchCoin_2_0 {
+label = "[EXPRESSION balanceOf[msg.sender] = 10000000000000000]" 
+"VouchCoin_VouchCoin_2_2" [label="Node Type: Assignment VouchCoin_VouchCoin_2_2
+SSA:
+REF_269 (->balanceOf_1) := 10000000000000000(uint256)
+
+state_vars_written: balanceOf" color="red"];
+
+"VouchCoin_VouchCoin_2_0" [label="Node Type: Index VouchCoin_VouchCoin_2_0
+SSA:
+REF_269(uint256) -> balanceOf_0[msg.sender]
+
+state_vars_written: balanceOf" color="red"];
+
+"VouchCoin_VouchCoin_2_1" [label="Node Type: Phi VouchCoin_VouchCoin_2_1
+SSA:
+balanceOf_1(mapping(address => uint256)) := ϕ(['balanceOf_0'])
+
+state_vars_written: balanceOf" color="red"];
+
+}
+subgraph cluster_VouchCoin_VouchCoin_1_0 {
+label = "[EXPRESSION owner = msg.sender]" 
+"VouchCoin_VouchCoin_1_0" [label="Node Type: Assignment VouchCoin_VouchCoin_1_0
+SSA:
+owner_1(address) := msg.sender(address)
+
+state_vars_written: owner" color="red"];
+
+}
+subgraph cluster_VouchCoin_VouchCoin_5_0 {
+label = "[EXPRESSION decimals = 8]" 
+"VouchCoin_VouchCoin_5_0" [label="Node Type: Assignment VouchCoin_VouchCoin_5_0
+SSA:
+decimals_1(uint256) := 8(uint256)
+
+state_vars_written: decimals" color="red"];
+
+}
+subgraph cluster_VouchCoin_VouchCoin_4_0 {
+label = "[EXPRESSION name = VouchCoin]" 
+"VouchCoin_VouchCoin_4_0" [label="Node Type: Assignment VouchCoin_VouchCoin_4_0
+SSA:
+name_1(string) := VouchCoin(string)
+
+state_vars_written: name" color="red"];
+
+}
+subgraph cluster_VouchCoin_VouchCoin_3_0 {
+label = "[EXPRESSION totalSupply = 10000000000000000]" 
+"VouchCoin_VouchCoin_3_0" [label="Node Type: Assignment VouchCoin_VouchCoin_3_0
+SSA:
+totalSupply_1(uint256) := 10000000000000000(uint256)
+
+state_vars_written: totalSupply" color="red"];
+
+}
+"VouchCoin_VouchCoin_0_0" [label="VouchCoin_VouchCoin_0_0
+ENTRY_POINT"];
+
+}
+subgraph cluster_VouchCoin_constructor {
+label = "[VouchCoin_constructor]" 
+"VouchCoin_constructor_0_0" [label="VouchCoin_constructor_0_0
+OTHER_ENTRYPOINT standard = VouchCoin"];
+
+}
+subgraph cluster_VouchCoin_fallback {
+label = "[VouchCoin_fallback]" 
+"VouchCoin_fallback_1_0" [label="VouchCoin_fallback_1_0
+THROW"];
+
+"VouchCoin_fallback_0_0" [label="VouchCoin_fallback_0_0
+ENTRY_POINT"];
+
+}
+}
+"VouchCoin_transfer_address_uint256_7_4" -> "VouchCoin_transfer_address_uint256_9_0" [label="False" color="black"]
+"VouchCoin_transfer_address_uint256_10_0" -> "VouchCoin_transfer_address_uint256_10_1" [color="black"]
+"VouchCoin_transfer_address_uint256_9_0" -> "VouchCoin_transfer_address_uint256_10_0" [color="black"]
+"VouchCoin_transfer_address_uint256_10_1" -> "VouchCoin_transfer_address_uint256_10_2" [color="black"]
+"VouchCoin_transfer_address_uint256_11_0" -> "VouchCoin_transfer_address_uint256_11_1" [color="black"]
+"VouchCoin_transfer_address_uint256_10_2" -> "VouchCoin_transfer_address_uint256_11_0" [color="black"]
+"VouchCoin_transfer_address_uint256_11_1" -> "VouchCoin_transfer_address_uint256_11_2" [color="black"]
+"VouchCoin_VouchCoin_2_0" -> "VouchCoin_VouchCoin_2_1" [color="black"]
+"VouchCoin_transfer_address_uint256_11_2" -> "VouchCoin_transfer_address_uint256_12_0" [color="black"]
+"VouchCoin_fallback_0_0" -> "VouchCoin_fallback_1_0" [color="black"]
+"VouchCoin_VouchCoin_0_0" -> "VouchCoin_VouchCoin_1_0" [color="black"]
+"VouchCoin_VouchCoin_1_0" -> "VouchCoin_VouchCoin_2_0" [color="black"]
+"VouchCoin_VouchCoin_2_1" -> "VouchCoin_VouchCoin_2_2" [color="black"]
+"VouchCoin_VouchCoin_2_2" -> "VouchCoin_VouchCoin_3_0" [color="black"]
+"VouchCoin_VouchCoin_3_0" -> "VouchCoin_VouchCoin_4_0" [color="black"]
+"VouchCoin_VouchCoin_4_0" -> "VouchCoin_VouchCoin_5_0" [color="black"]
+"VouchCoin_balance_address_1_0" -> "VouchCoin_balance_address_1_1" [color="black"]
+"VouchCoin_balance_address_0_0" -> "VouchCoin_balance_address_1_0" [color="black"]
+"VouchCoin_transfer_address_uint256_0_0" -> "VouchCoin_transfer_address_uint256_0_1" [color="black"]
+"VouchCoin_transfer_address_uint256_1_0" -> "VouchCoin_transfer_address_uint256_1_1" [color="black"]
+"VouchCoin_transfer_address_uint256_0_1" -> "VouchCoin_transfer_address_uint256_1_0" [color="black"]
+"VouchCoin_transfer_address_uint256_1_1" -> "VouchCoin_transfer_address_uint256_2_0" [label="True" color="black"]
+"VouchCoin_transfer_address_uint256_1_1" -> "VouchCoin_transfer_address_uint256_3_0" [label="False" color="black"]
+"VouchCoin_transfer_address_uint256_4_0" -> "VouchCoin_transfer_address_uint256_4_1" [color="black"]
+"VouchCoin_transfer_address_uint256_3_0" -> "VouchCoin_transfer_address_uint256_4_0" [color="black"]
+"VouchCoin_transfer_address_uint256_4_1" -> "VouchCoin_transfer_address_uint256_4_2" [color="black"]
+"VouchCoin_transfer_address_uint256_4_2" -> "VouchCoin_transfer_address_uint256_5_0" [label="True" color="black"]
+"VouchCoin_transfer_address_uint256_4_2" -> "VouchCoin_transfer_address_uint256_6_0" [label="False" color="black"]
+"VouchCoin_transfer_address_uint256_7_0" -> "VouchCoin_transfer_address_uint256_7_1" [color="black"]
+"VouchCoin_transfer_address_uint256_6_0" -> "VouchCoin_transfer_address_uint256_7_0" [color="black"]
+"VouchCoin_transfer_address_uint256_7_1" -> "VouchCoin_transfer_address_uint256_7_2" [color="black"]
+"VouchCoin_transfer_address_uint256_7_2" -> "VouchCoin_transfer_address_uint256_7_3" [color="black"]
+"VouchCoin_transfer_address_uint256_7_3" -> "VouchCoin_transfer_address_uint256_7_4" [color="black"]
+"VouchCoin_transfer_address_uint256_7_4" -> "VouchCoin_transfer_address_uint256_8_0" [label="True" color="black"]
+}

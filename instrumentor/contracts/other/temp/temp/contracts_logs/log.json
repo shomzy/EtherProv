@@ -1,0 +1,488 @@
+{
+    "/home/slinoy/Downloads/Simple_contract/instrumentor/contracts/other/temp/temp/contracts_preprocess/0xdcfaE5EC906742f66E57e09Ce098f5ADb76abABa.EthDeposit.sol": {
+        "Owned": {
+            "not_instr": {
+                "runtime_byte_size": 2616,
+                "constructor": {
+                    "err": null,
+                    "gas": 379096
+                },
+                "fallback": null,
+                "functions": [
+                    {
+                        "name": "WthdrawTo",
+                        "err": "execution reverted: VM Exception while processing transaction: revert",
+                        "gas": null,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "WthdrawAllToCreator",
+                        "err": null,
+                        "gas": 24424,
+                        "path_statements_count": 6,
+                        "contains_loop": false
+                    },
+                    {
+                        "name": "changeOwner",
+                        "err": null,
+                        "gas": 43481,
+                        "path_statements_count": 7,
+                        "contains_loop": false
+                    },
+                    {
+                        "name": "WthdrawToCreator",
+                        "err": "execution reverted: VM Exception while processing transaction: revert",
+                        "gas": null,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "confirmOwner",
+                        "err": null,
+                        "gas": 24672,
+                        "path_statements_count": 6,
+                        "contains_loop": false
+                    }
+                ]
+            },
+            "instr": {
+                "path_statements_contain_loop": false,
+                "runtime_byte_size": 4524,
+                "constructor": {
+                    "err": null,
+                    "gas": 586004
+                },
+                "fallback": null,
+                "functions": [
+                    {
+                        "name": "WthdrawTo",
+                        "err": "execution reverted: VM Exception while processing transaction: revert",
+                        "gas": null
+                    },
+                    {
+                        "name": "WthdrawAllToCreator",
+                        "err": null,
+                        "gas": 29098
+                    },
+                    {
+                        "name": "changeOwner",
+                        "err": null,
+                        "gas": 49889
+                    },
+                    {
+                        "name": "WthdrawToCreator",
+                        "err": "execution reverted: VM Exception while processing transaction: revert",
+                        "gas": null
+                    },
+                    {
+                        "name": "confirmOwner",
+                        "err": null,
+                        "gas": 29412
+                    }
+                ]
+            }
+        },
+        "EthDeposit": {
+            "not_instr": {
+                "runtime_byte_size": 9680,
+                "constructor": {
+                    "err": null,
+                    "gas": 1161638
+                },
+                "fallback": null,
+                "functions": [
+                    {
+                        "name": "changeOwner",
+                        "err": null,
+                        "gas": 43811,
+                        "path_statements_count": 7,
+                        "contains_loop": false
+                    },
+                    {
+                        "name": "confirmOwner",
+                        "err": null,
+                        "gas": 25112,
+                        "path_statements_count": 6,
+                        "contains_loop": false
+                    },
+                    {
+                        "name": "WthdrawTo",
+                        "err": "execution reverted: VM Exception while processing transaction: revert",
+                        "gas": null,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "SetPrcntRate",
+                        "err": null,
+                        "gas": 23421,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "WitdrawLenderProfit",
+                        "err": null,
+                        "gas": 22255,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "StopPaymens",
+                        "err": null,
+                        "gas": 23465,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "ConfirmManager",
+                        "err": null,
+                        "gas": 22335,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "FixProfit",
+                        "err": null,
+                        "gas": 42689,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "WthdrawAllToCreator",
+                        "err": null,
+                        "gas": 24556,
+                        "path_statements_count": 6,
+                        "contains_loop": false
+                    },
+                    {
+                        "name": "WithdrawToSponsor",
+                        "err": null,
+                        "gas": 23131,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "Deposit",
+                        "err": null,
+                        "gas": 29504,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "ToSponsor",
+                        "err": null,
+                        "gas": 21554,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "ChangeManager",
+                        "err": null,
+                        "gas": 23611,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "StartPaymens",
+                        "err": null,
+                        "gas": 23003,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "CheckProfit",
+                        "err": null,
+                        "gas": 24706,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "init",
+                        "err": null,
+                        "gas": 63362,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "WthdrawToCreator",
+                        "err": "execution reverted: VM Exception while processing transaction: revert",
+                        "gas": null,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "AuthorizePayments",
+                        "err": null,
+                        "gas": 43253,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "fallback",
+                        "err": null,
+                        "gas": 21093,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    }
+                ]
+            },
+            "instr": {
+                "path_statements_contain_loop": false,
+                "runtime_byte_size": 11588,
+                "constructor": {
+                    "err": null,
+                    "gas": 1368511
+                },
+                "fallback": null,
+                "functions": [
+                    {
+                        "name": "changeOwner",
+                        "err": null,
+                        "gas": 50219
+                    },
+                    {
+                        "name": "confirmOwner",
+                        "err": null,
+                        "gas": 29852
+                    },
+                    {
+                        "name": "WthdrawTo",
+                        "err": "execution reverted: VM Exception while processing transaction: revert",
+                        "gas": null
+                    },
+                    {
+                        "name": "SetPrcntRate",
+                        "err": "no path generation",
+                        "gas": null
+                    },
+                    {
+                        "name": "WitdrawLenderProfit",
+                        "err": "no path generation",
+                        "gas": null
+                    },
+                    {
+                        "name": "StopPaymens",
+                        "err": "no path generation",
+                        "gas": null
+                    },
+                    {
+                        "name": "ConfirmManager",
+                        "err": "no path generation",
+                        "gas": null
+                    },
+                    {
+                        "name": "FixProfit",
+                        "err": "no path generation",
+                        "gas": null
+                    },
+                    {
+                        "name": "WthdrawAllToCreator",
+                        "err": null,
+                        "gas": 29230
+                    },
+                    {
+                        "name": "WithdrawToSponsor",
+                        "err": "no path generation",
+                        "gas": null
+                    },
+                    {
+                        "name": "Deposit",
+                        "err": "no path generation",
+                        "gas": null
+                    },
+                    {
+                        "name": "ToSponsor",
+                        "err": "no path generation",
+                        "gas": null
+                    },
+                    {
+                        "name": "ChangeManager",
+                        "err": "no path generation",
+                        "gas": null
+                    },
+                    {
+                        "name": "StartPaymens",
+                        "err": "no path generation",
+                        "gas": null
+                    },
+                    {
+                        "name": "CheckProfit",
+                        "err": "no path generation",
+                        "gas": null
+                    },
+                    {
+                        "name": "init",
+                        "err": "no path generation",
+                        "gas": null
+                    },
+                    {
+                        "name": "WthdrawToCreator",
+                        "err": "execution reverted: VM Exception while processing transaction: revert",
+                        "gas": null
+                    },
+                    {
+                        "name": "AuthorizePayments",
+                        "err": "no path generation",
+                        "gas": null
+                    },
+                    {
+                        "name": "fallback",
+                        "err": "no path generation",
+                        "gas": null
+                    }
+                ]
+            }
+        }
+    },
+    "/home/slinoy/Downloads/Simple_contract/instrumentor/contracts/other/temp/temp/contracts_preprocess/0x1DF6647166012C4Fb6355396b16C8d00BceED90b.VouchCoin.sol": {
+        "VouchCoin": {
+            "not_instr": {
+                "runtime_byte_size": 4098,
+                "constructor": {
+                    "err": null,
+                    "gas": 625768,
+                    "path_statements_count": 8,
+                    "contains_loop": false
+                },
+                "fallback": null,
+                "functions": [
+                    {
+                        "name": "transfer",
+                        "err": null,
+                        "gas": 32501,
+                        "path_statements_count": 12,
+                        "contains_loop": false
+                    },
+                    {
+                        "name": "balance",
+                        "err": null,
+                        "gas": 22767,
+                        "path_statements_count": 4,
+                        "contains_loop": false
+                    },
+                    {
+                        "name": "fallback",
+                        "err": "execution reverted: VM Exception while processing transaction: revert",
+                        "gas": null,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    }
+                ]
+            },
+            "instr": {
+                "path_statements_contain_loop": false,
+                "runtime_byte_size": 5844,
+                "constructor": {
+                    "err": null,
+                    "gas": 821969
+                },
+                "fallback": null,
+                "functions": [
+                    {
+                        "name": "transfer",
+                        "err": null,
+                        "gas": 36381
+                    },
+                    {
+                        "name": "balance",
+                        "err": null,
+                        "gas": 27545
+                    },
+                    {
+                        "name": "fallback",
+                        "err": "execution reverted: VM Exception while processing transaction: revert",
+                        "gas": null
+                    }
+                ]
+            }
+        }
+    },
+    "/home/slinoy/Downloads/Simple_contract/instrumentor/contracts/other/temp/temp/contracts_preprocess/0xc26e4380D51cbcfd4b592949A5e7A796788017c1.BDSMtoken.sol": {
+        "BDSMtoken": {
+            "not_instr": {
+                "runtime_byte_size": 7028,
+                "constructor": {
+                    "err": null,
+                    "gas": 924020,
+                    "path_statements_count": 5,
+                    "contains_loop": false
+                },
+                "fallback": null,
+                "functions": [
+                    {
+                        "name": "transfer",
+                        "err": null,
+                        "gas": 27739,
+                        "path_statements_count": 15,
+                        "contains_loop": true
+                    },
+                    {
+                        "name": "transferFrom",
+                        "err": "execution reverted: VM Exception while processing transaction: revert",
+                        "gas": null,
+                        "path_statements_count": null,
+                        "contains_loop": null
+                    },
+                    {
+                        "name": "approve",
+                        "err": null,
+                        "gas": 43925,
+                        "path_statements_count": 6,
+                        "contains_loop": false
+                    },
+                    {
+                        "name": "allowance",
+                        "err": null,
+                        "gas": 23326,
+                        "path_statements_count": 4,
+                        "contains_loop": false
+                    },
+                    {
+                        "name": "balanceOf",
+                        "err": null,
+                        "gas": 22745,
+                        "path_statements_count": 4,
+                        "contains_loop": false
+                    }
+                ]
+            },
+            "instr": {
+                "path_statements_contain_loop": true,
+                "runtime_byte_size": 9732,
+                "constructor": {
+                    "err": null,
+                    "gas": 1225145
+                },
+                "fallback": null,
+                "functions": [
+                    {
+                        "name": "transfer",
+                        "err": null,
+                        "gas": 86262
+                    },
+                    {
+                        "name": "transferFrom",
+                        "err": "execution reverted: VM Exception while processing transaction: revert",
+                        "gas": null
+                    },
+                    {
+                        "name": "approve",
+                        "err": null,
+                        "gas": 48589
+                    },
+                    {
+                        "name": "allowance",
+                        "err": null,
+                        "gas": 27279
+                    },
+                    {
+                        "name": "balanceOf",
+                        "err": null,
+                        "gas": 38292
+                    }
+                ]
+            }
+        }
+    }
+}
